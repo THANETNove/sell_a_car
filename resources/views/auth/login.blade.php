@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('เข้าสู่ระบบ') }}</div>
+                    <h4 class="card-header btn_3">{{ __('เข้าสู่ระบบ') }}</h4>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -64,8 +64,9 @@
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                        <a class="btn add_cart2" href="{{ route('password.request') }}">
+
+                                            Forgot Your Password?
                                         </a>
                                     @endif
                                 </div>

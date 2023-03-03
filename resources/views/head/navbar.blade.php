@@ -12,7 +12,7 @@
                     <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">หน้าเเรก</a>
+                                <a class="nav-link" href="{{ url('/') }}">หน้าเเรก</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
@@ -39,8 +39,14 @@
                                 </div>
 
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">ติดต่อเรา</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="contact.html">ติดต่อเรา</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                    <a class="dropdown-item" href="{{ url('/#') }}">Facebook</a>
+                                    <a class="dropdown-item" href="{{ url('/#') }}">Line</a>
+                                    <a class="dropdown-item" href="{{ url('/#') }}">instagram</a>
+                                    <a class="dropdown-item" href="{{ url('/#') }}">twitter</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
