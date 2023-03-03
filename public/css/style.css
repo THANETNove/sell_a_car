@@ -8011,13 +8011,18 @@ h6 {
 
 @media only screen and (min-width: 576px) {
 
-
-
-
   .buy-now {
     display: none;
   }
 }
 
+
+.container2 {
+  margin-top: 80px !important;
+}
+
+.btn_3 {
+  padding-top: -800px !important;
+}
 
 /*# sourceMappingURL=style.css.map */
