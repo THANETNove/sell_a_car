@@ -127,3 +127,13 @@
 <script src="{{ URL::asset('js/mail-script.js') }}"></script>
 <!-- custom js -->
 <script src="{{ URL::asset('js/custom.js') }}"></script>
+
+
+
+
+
+
+
+
+<script src="{{ URL::asset('js/stellar.js') }}"></script>
+<script src="{{ URL::asset('js/price_rangs.js') }}"></script>

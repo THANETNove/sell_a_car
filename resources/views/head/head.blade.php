@@ -1,7 +1,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>aranoz</title>
+    <title>ซื้อขายรถ เเละ รถมือสอง</title>
     <link rel="icon" href="{{ URL::asset('img/favicon.png') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
@@ -20,3 +20,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css/slick.css') }}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+
+
+
+    <link rel="stylesheet" href="{{ URL::asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/price_rangs.css') }}">
