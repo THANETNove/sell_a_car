@@ -1,7 +1,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ซื้อขายรถ เเละ รถมือสอง</title>
+    <title>101landshop</title>
     <link rel="icon" href="{{ URL::asset('img/favicon.png') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
