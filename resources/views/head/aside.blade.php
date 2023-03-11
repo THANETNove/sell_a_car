@@ -14,38 +14,41 @@
     <div class="" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             {{-- !  ส่วนของ admin  --}}
-            <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/virtual-reality.html">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">money</i>
-                    </div>
-                    <span class="nav-link-text ms-1">กำหนด point ขั้นต่ำ </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/virtual-reality.html">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">view_in_ar</i>
-                    </div>
-                    <span class="nav-link-text ms-1">เพิ่ม point Users</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/virtual-reality.html">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">money</i>
-                    </div>
-                    <span class="nav-link-text ms-1">ยี่ห้อ รถยนต์</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/virtual-reality.html">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">money</i>
-                    </div>
-                    <span class="nav-link-text ms-1">รุ่น รถยนต์</span>
-                </a>
-            </li>
+            @if (Auth::user()->status === 'admin')
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/virtual-reality.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">money</i>
+                        </div>
+                        <span class="nav-link-text ms-1">กำหนด point ขั้นต่ำ </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/virtual-reality.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">view_in_ar</i>
+                        </div>
+                        <span class="nav-link-text ms-1">เพิ่ม point Users</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="{{ url('/car_brand') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">money</i>
+                        </div>
+                        <span class="nav-link-text ms-1">ยี่ห้อ รถยนต์</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="../pages/virtual-reality.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">money</i>
+                        </div>
+                        <span class="nav-link-text ms-1">รุ่น รถยนต์</span>
+                    </a>
+                </li>
+            @endif
+
             {{-- !**  user ทั่วไป  --}}
             <li class="nav-item">
                 <a class="nav-link text-white active bg-gradient-primary" href="../pages/dashboard.html">
@@ -64,7 +67,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/billing.html">
+                <a class="nav-link text-white " href="{{ url('/address') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">receipt_long</i>
                     </div>

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\CartBrandController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +24,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/address', [AddressController::class, 'index']);
+Route::post('/add-address',[ AddressController::class,'store']);
+Route::put('update-address/{id}',[ AddressController::class,'update']);
+
+Route::get('/car_brand', [CartBrandController::class, 'index']);
