@@ -60,7 +60,12 @@ class CarModelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data =  CarModel::find($id);
+        $data_car = DB::table('car_brands')
+        ->orderBy('id','ASC')
+        ->get();
+
+        return view('car_model.edit',['data' => $data,'data_car' => $data_car]);
     }
 
     /**
@@ -68,7 +73,12 @@ class CarModelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $member =  CarModel::find($id);
+        $member->id_car_name = $request['id_car_name'];
+        $member->model_name = $request['model_name'];
+        $member->save();
+        return redirect('car_model')->with('message', "เเก้ไขสำเร็จ" );
     }
 
     /**

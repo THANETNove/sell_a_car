@@ -97,7 +97,7 @@ class AddressController extends Controller
         $member->twitter = $request['twitter'];
         $member->save();
 
-        return redirect('address')->with('message', "บันทึกสำเร็จ" );
+        return redirect('address')->with('message', "เเก้ไขสำเร็จ" );
     }
 
     /**

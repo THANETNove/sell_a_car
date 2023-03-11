@@ -73,7 +73,7 @@ class CarBrandController extends Controller
         $member->car_brands_name = $request['car_name'];
         $member->save();
 
-        return redirect('car_brand')->with('message', "บันทึกสำเร็จ" );
+        return redirect('car_brand')->with('message', "เเก้ไขสำเร็จ" );
     }
 
     /**
