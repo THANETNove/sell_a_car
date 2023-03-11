@@ -83,17 +83,19 @@ class CarBrandController extends Controller
     {
         //
 
-    /*     dd($id);
+     
 
-        $data = DB::table('car_brands')
-        ->orderBy('id','DESC')
+        $data = DB::table('car_models')
+        ->where('id_car_name', $id)
         ->get();
-        foreach( $data as $data) {
-            $image_path = public_path().'/images/product/'.$image; 
-            unlink($image_path);
+        foreach( $data as $val) {
+            $flight = CarModel::find($val->id);
+            $flight->delete();
         }
 
-
-        $data->delete(); */
+        $flight = CarBrand::find($id);
+        $flight->delete();
+        return redirect('car_brand')->with('message', "ลบข้อมูลสำเร็จ" );
+        
     }
 }

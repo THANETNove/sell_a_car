@@ -57,13 +57,14 @@
                                                 Edit
                                             </a>
                                         </td>
-                                        {{--                                   <td class="align-middle">
-                                            <a href="{{ url('/delete-car_brand', $data->id) }}"
+                                        <td class="align-middle">
+                                            <a onClick="javascript:return confirm('ข้อมูลรถยนต์   {{ $data->car_brands_name }} ทั้งหมด จะถูกลบ คุณต้องการลบข้อมูลใช่หรือไม่ ! ');"
+                                                href="{{ url('/delete-car_brand', $data->id) }}"
                                                 class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                 data-original-title="delete user">
                                                 delete
                                             </a>
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

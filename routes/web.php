@@ -35,6 +35,8 @@ Route::get('/add-car_brand', [CarBrandController::class, 'create']);
 Route::get('/edit-car_brand/{id}', [CarBrandController::class, 'edit']);
 Route::post('/add-car_brand_name', [CarBrandController::class, 'store']);
 Route::put('update-car_brand_name/{id}',[ CarBrandController::class,'update']);
+Route::get('/delete-car_brand/{id}', [CarBrandController::class, 'destroy']);
+
 
 Route::get('/car_model', [CarModelController::class, 'index']);
 Route::get('/add-model_car', [CarModelController::class, 'create']);
