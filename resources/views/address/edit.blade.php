@@ -22,7 +22,8 @@
                                         action="{{ url('update-address', $data->id) }}">
                                         @csrf
                                         @method('PUT')
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline --}} my-3">
+                                            <label class="form-label">ชื่อ</label>
                                             <input type="text" class="form-control  @error('fname') is-invalid @enderror"
                                                 name="fname" value="{{ $data->fname }}" autofocus required>
                                             @error('fname')
@@ -31,7 +32,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline --}}">
+                                            <label class="form-label">นามสกุล</label>
                                             <input type="text" class="form-control  @error('lname') is-invalid @enderror"
                                                 name="lname" value="{{ $data->lname }}" required>
                                             @error('lname')
@@ -40,7 +42,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline --}} ">
+                                            <label class="form-label">เบอร์โทรติดต่อ</label>
                                             <input type="text" class="form-control @error('tel') is-invalid @enderror"
                                                 value="{{ $data->tel }}" name="tel" required>
                                             @error('tel')
@@ -49,7 +52,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline --}}">
+                                            <label class="form-label">ที่อยู่</label>
                                             <input type="text"
                                                 class="form-control  @error('address') is-invalid @enderror" name="address"
                                                 value="{{ $data->address }}" required>
@@ -59,7 +63,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline --}} ">
+                                            <label class="form-label">แขวง/ตําบล</label>
                                             <input type="text"
                                                 class="form-control  @error('subDistrict') is-invalid @enderror"
                                                 name="subDistrict" value="{{ $data->subDistrict }}" required>
@@ -69,7 +74,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">เขต/อําเภอ</label>
                                             <input type="text"
                                                 class="form-control @error('district') is-invalid @enderror" name="district"
                                                 value="{{ $data->district }}" required>
@@ -80,7 +86,8 @@
                                             @enderror
 
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">จังหวัด</label>
                                             <input type="text"
                                                 class="form-control @error('province') is-invalid @enderror" name="province"
                                                 value="{{ $data->province }}" required>
@@ -90,7 +97,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">รหัสไปรษณีย์</label>
                                             <input type="text"
                                                 class="form-control @error('zipCode') is-invalid @enderror" name="zipCode"
                                                 value="{{ $data->zipCode }}" required>
@@ -100,19 +108,23 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">Url facebook</label>
                                             <input type="text" class="form-control" value="{{ $data->facebook }}"
                                                 name="facebook">
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">Url Line</label>
                                             <input type="text" class="form-control" value="{{ $data->line }}"
                                                 name="line">
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">Url instagram</label>
                                             <input type="text" class="form-control" value="{{ $data->instagram }}"
                                                 name="instagram">
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
+                                        <div class="{{-- input-group input-group-outline my-3 --}}">
+                                            <label class="form-label">Url twitter</label>
                                             <input type="text" class="form-control" value="{{ $data->twitter }}"
                                                 name="twitter">
                                         </div>

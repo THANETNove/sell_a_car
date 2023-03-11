@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CarBrand;
+use DB;
+use Auth;
 
-class CartBrandController extends Controller
+class CarBrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('car_brand.index');
+        $data = DB::table('car_brands')
+        ->orderBy('id','DESC')
+        ->get();
+       
+
+        return view('car_brand.index',['data' => $data]);
     }
 
     /**
@@ -19,7 +27,7 @@ class CartBrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('car_brand.create');
     }
 
     /**
@@ -27,7 +35,13 @@ class CartBrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //car_brands_name
+
+        $member =  new CarBrand;
+        $member->car_brands_name = $request['car_name'];
+        $member->save();
+
+        return redirect('car_brand')->with('message', "บันทึกสำเร็จ" );
     }
 
     /**
@@ -43,7 +57,9 @@ class CartBrandController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data =  CarBrand::find($id);
+
+        return view('car_brand.edit',['data' => $data]);
     }
 
     /**
@@ -51,7 +67,12 @@ class CartBrandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $member =  CarBrand::find($id);
+        $member->car_brands_name = $request['car_name'];
+        $member->save();
+
+        return redirect('car_brand')->with('message', "บันทึกสำเร็จ" );
     }
 
     /**
