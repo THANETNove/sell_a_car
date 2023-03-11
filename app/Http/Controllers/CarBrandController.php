@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CarBrand;
+use App\Models\CarModel;
 use DB;
 use Auth;
 
@@ -81,5 +82,18 @@ class CarBrandController extends Controller
     public function destroy(string $id)
     {
         //
+
+    /*     dd($id);
+
+        $data = DB::table('car_brands')
+        ->orderBy('id','DESC')
+        ->get();
+        foreach( $data as $data) {
+            $image_path = public_path().'/images/product/'.$image; 
+            unlink($image_path);
+        }
+
+
+        $data->delete(); */
     }
 }
