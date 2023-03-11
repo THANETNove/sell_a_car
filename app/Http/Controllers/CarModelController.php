@@ -76,6 +76,8 @@ class CarModelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $flight = CarModel::find($id);
+        $flight->delete();
+        return redirect('car_model')->with('message', "ลบข้อมูลสำเร็จ" );
     }
 }

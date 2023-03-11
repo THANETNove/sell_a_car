@@ -32,6 +32,7 @@
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Date</th>
                                     <th class="text-secondary opacity-7"></th>
+                                    <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,14 @@
                                                 class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                 data-original-title="Edit user">
                                                 Edit
+                                            </a>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a onClick="javascript:return confirm('ข้อมูลรุ่นรถยนต์   {{ $data->model_name }}  จะถูกลบ คุณต้องการลบข้อมูลใช่หรือไม่ ! ');"
+                                                href="{{ url('/delete-model_name', $data->id) }}"
+                                                class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                data-original-title="delete user">
+                                                delete
                                             </a>
                                         </td>
                                     </tr>

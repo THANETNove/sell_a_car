@@ -41,3 +41,4 @@ Route::get('/delete-car_brand/{id}', [CarBrandController::class, 'destroy']);
 Route::get('/car_model', [CarModelController::class, 'index']);
 Route::get('/add-model_car', [CarModelController::class, 'create']);
 Route::post('/add-model_name', [CarModelController::class, 'store']);
+Route::get('/delete-model_name/{id}', [CarModelController::class, 'destroy']);
