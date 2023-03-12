@@ -18,7 +18,8 @@ class AddPointController extends Controller
      */
     public function index()
     {
-        return view('add_point.index');
+        $data = DB::table('add_points')->where('id_user', Auth::user()->id)->get();
+        return view('add_point.index',['data' => $data]);
     }
 
     /**
@@ -59,10 +60,8 @@ class AddPointController extends Controller
                 $imagefile = $request->file('image');
                 $imagefile->move(public_path().'/img/slip',$dateText."".$imagefile->getClientOriginalName());
                 $dateImg =  $dateText."".$imagefile->getClientOriginalName();
-                $member->images = json_encode($dateImg);
+                $member->images = $dateImg;
                 
-              
-
             }
         
          $member->save();

@@ -7,6 +7,7 @@ use App\Http\Controllers\CarBrandController;
 use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\BankNameController;
 use App\Http\Controllers\AddPointController;
+use App\Http\Controllers\MoneyCustomersController;
 
 
 /*
@@ -57,3 +58,5 @@ Route::get('/delete-bank_name/{id}', [BankNameController::class, 'destroy']);
 Route::get('/add_point', [AddPointController::class, 'index']);
 Route::get('/create_point', [AddPointController::class, 'create']);
 Route::post('/add-point', [AddPointController::class, 'store']);
+
+Route::get('/money-customers', [MoneyCustomersController::class, 'index']);
