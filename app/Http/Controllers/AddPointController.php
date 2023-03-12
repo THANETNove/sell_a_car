@@ -8,6 +8,8 @@ use App\Models\AddPoint;
 use DB;
 use Auth;
 
+
+
 class AddPointController extends Controller
 {
     /**
@@ -32,20 +34,16 @@ class AddPointController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        if ($request['point_bank_name'] == "null") {
+          //  return back()->withErrors(['point_bank_name', 'Name is required']);
+             return redirect('create_point')->with('error', "กรุณาเลือกช่องทางการชำระเงิน" );
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
+        }
         $validated = $request->validate([
-            'point_bank_name' => ['required', 'string', 'max:255'],
             'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg'],
             /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
         ]);
-
+dd("ada",$request['point_bank_name']);
         $dateText = Str::random(12);
 
         $member = new AddPoint;
@@ -68,6 +66,14 @@ class AddPointController extends Controller
          $member->save();
 
          dd("สำเร็จ");
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+  //
     }
 
     /**

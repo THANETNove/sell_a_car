@@ -21,30 +21,30 @@
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">จำนวนเงิน</label>
-                                        <input type="text" class="form-control  @error('point') is-invalid @enderror"
-                                            name="car_name" required>
+                                        <input type="number" class="form-control  @error('point') is-invalid @enderror"
+                                            name="point" required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">ว/ด/ป/เวลา</label>
+                                        <label class="form-label">ว/ด/ป/เวลา สลิป</label>
                                         <input type="text" class="form-control  @error('car_name') is-invalid @enderror"
                                             name="date" required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <select class="form-select" name="point_bank_name"
                                             aria-label="Default select example">
-                                            <option selected>&nbsp;&nbsp;เลือกธนาคารที่โอน</option>
+                                            <option value="null" selected>&nbsp;&nbsp;เลือกธนาคารที่โอน</option>
                                             @foreach ($data as $data)
                                                 <option value="{{ $data->bank_name }}">{{ $data->bank_name }}
                                                 </option>
                                             @endforeach
                                             <option value="อื่นๆ">อื่นๆ</option>
                                         </select>
-                                        @error('point_bank_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $point_bank_name }} </strong>
-                                            </span>
-                                        @enderror
                                     </div>
+                                    @if (session('error'))
+                                        <h6 class="error-input1">
+                                            {{ session('error') }}
+                                        </h6>
+                                    @endif
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">ชื่อช่องทางชำระเงินอื่นๆ</label>
                                         <input type="text" class="form-control  @error('other') is-invalid @enderror"
