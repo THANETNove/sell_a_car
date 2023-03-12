@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CarBrandController;
 use App\Http\Controllers\CarModelController;
+use App\Http\Controllers\BankNameController;
+use App\Http\Controllers\AddPointController;
 
 
 /*
@@ -44,3 +46,12 @@ Route::post('/add-model_name', [CarModelController::class, 'store']);
 Route::get('/edit-model_name/{id}', [CarModelController::class, 'edit']);
 Route::put('/update-model_name/{id}', [CarModelController::class, 'update']);
 Route::get('/delete-model_name/{id}', [CarModelController::class, 'destroy']);
+
+
+Route::get('/bank_name', [BankNameController::class, 'index']);
+Route::get('/create_bank_name', [BankNameController::class, 'create']);
+Route::post('/add-bank_name', [BankNameController::class, 'store']);
+Route::get('/delete-bank_name/{id}', [BankNameController::class, 'destroy']);
+
+
+Route::get('/add_point', [AddPointController::class, 'index']);
