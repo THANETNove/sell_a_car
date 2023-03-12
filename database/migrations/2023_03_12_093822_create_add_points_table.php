@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('point_bank_name')->nullable();
             $table->string('other')->nullable();
             $table->string('images')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

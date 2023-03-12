@@ -14,6 +14,7 @@ class AddPoint extends Model
         'date',
         'point_bank_name',
         'other',
-        'images'
+        'images',
+        'status'
     ];
 }
