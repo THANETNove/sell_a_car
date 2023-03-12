@@ -31,11 +31,11 @@
                                             @foreach ($data_car as $data_car)
                                                 @if ($data->id_car_name === $data_car->id)
                                                     <option value="{{ $data_car->id }}" selected>
-                                                        {{ $data_car->car_brands_name }}
+                                                        &nbsp;&nbsp;{{ $data_car->car_brands_name }}
                                                     </option>
                                                 @else
                                                     <option value="{{ $data_car->id }}">
-                                                        {{ $data_car->car_brands_name }}
+                                                        &nbsp;&nbsp;{{ $data_car->car_brands_name }}
                                                     </option>
                                                 @endif
                                             @endforeach

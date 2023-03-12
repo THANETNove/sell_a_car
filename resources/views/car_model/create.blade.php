@@ -32,7 +32,8 @@
                                     <div class="input-group input-group-outline my-3">
                                         <select class="form-select" name="id_car_name" aria-label="Default select example">
                                             @foreach ($data as $data)
-                                                <option value="{{ $data->id }}" selected>{{ $data->car_brands_name }}
+                                                <option value="{{ $data->id }}" selected>
+                                                    &nbsp;&nbsp;{{ $data->car_brands_name }}
                                                 </option>
                                             @endforeach
                                         </select>

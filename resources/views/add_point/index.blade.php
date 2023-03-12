@@ -8,7 +8,7 @@
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 beet">
                         <h6 class="text-white text-capitalize ps-3">ประวัติการเติมเงิน</h6>
                         <h6 class="text-white text-capitalize ps-3">
-                            <a href="{{ url('/add-car_brand') }}" class="btn btn-outline-light">
+                            <a href="{{ url('/create_point') }}" class="btn btn-outline-light">
                                 เติมเงิน
                             </a>
                         </h6>

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\AddPoint;
+use DB;
+use Auth;
+
 class AddPointController extends Controller
 {
     /**
@@ -19,7 +23,8 @@ class AddPointController extends Controller
      */
     public function create()
     {
-        //
+        $data = DB::table('bank_names')->get();
+        return view('add_point.create',['data' => $data]);
     }
 
     /**
@@ -35,7 +40,34 @@ class AddPointController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $validated = $request->validate([
+            'point_bank_name' => ['required', 'string', 'max:255'],
+            'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg'],
+            /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
+        ]);
+
+        $dateText = Str::random(12);
+
+        $member = new AddPoint;
+        $member->point = $request['point'];
+        $member->date = $request['date'];
+        $member->point_bank_name = $request['point_bank_name'];
+        $member->other = $request['other'];
+
+        $dateImg = [];
+            if($request->hasFile('image')){
+                $imagefile = $request->file('image');
+               /*  $image->move(public_path().'/images/product',$dateText."".$image->getClientOriginalName()); */
+                foreach ($imagefile as $image) {
+                  $data =   $image->move(public_path().'/images/slip',$dateText."".$image->getClientOriginalName());
+                  $dateImg[] =  $dateText."".$image->getClientOriginalName();
+                }
+            }
+    /*     dd($dateImg); */
+        $member->images = json_encode($dateImg);
+         $member->save();
+
+         dd("สำเร็จ");
     }
 
     /**
