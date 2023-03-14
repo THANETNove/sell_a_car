@@ -75,10 +75,10 @@
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if ($data->status == 1)
+                                            @if ($data->status == 'approved')
                                                 <span
                                                     class="badge badge-sm bg-gradient-success">เติมเงินเข้าสู่ระบบเรียบร้อย</span>
-                                            @elseif($data->status == 2)
+                                            @elseif($data->status == 'reject')
                                                 <span
                                                     class="badge badge-sm badge badge badge-sm bg-gradient-danger">สลิปของคุณไม่ผ่าน</span>
                                             @else

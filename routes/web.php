@@ -58,5 +58,6 @@ Route::get('/delete-bank_name/{id}', [BankNameController::class, 'destroy']);
 Route::get('/add_point', [AddPointController::class, 'index']);
 Route::get('/create_point', [AddPointController::class, 'create']);
 Route::post('/add-point', [AddPointController::class, 'store']);
+Route::put('/update-point/{id}', [AddPointController::class, 'update']);
 
 Route::get('/money-customers', [MoneyCustomersController::class, 'index']);

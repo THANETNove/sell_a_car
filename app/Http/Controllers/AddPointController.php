@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
 use App\Models\AddPoint;
 use Illuminate\Support\Str;
 use DB;
@@ -90,7 +91,23 @@ class AddPointController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $member = AddPoint::find($id);
+        $member->status = $request['app_rej'];
+        $member->save();
+        
+        if ($request['app_rej'] == 'approved') {
+            $user = User::find($member->id_user);
+            $ponit =  $user->point + $request['add_point'];
+            $user->point =  $ponit;
+            $user->save();
+        }
+    
+        if ($request['app_rej'] == 'approved') {
+            $data = 'เติมเงินสำเร็จ';
+        }else{
+            $data = 'Reject สำเร็จ';
+        }
+        return redirect('money-customers')->with('message', $data );
     }
 
     /**

@@ -6,12 +6,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 beet">
-                        <h6 class="text-white text-capitalize ps-3">เติมเงินให้ลุกค้า</h6>
-                        <h6 class="text-white text-capitalize ps-3">
-                            <a href="{{ url('/create_point') }}" class="btn btn-outline-light">
-                                เติมเงิน
-                            </a>
-                        </h6>
+                        <h6 class="text-white text-capitalize ps-3">ตรวจเช็คสลิก เเละเติมเงิน</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -75,16 +70,42 @@
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if ($data->status == 1)
-                                                <span
-                                                    class="badge badge-sm bg-gradient-success">เติมเงินเข้าสู่ระบบเรียบร้อย</span>
-                                            @elseif($data->status == 2)
-                                                <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-danger">สลิปของคุณไม่ผ่าน</span>
-                                            @else
-                                                <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-secondary">รอการตรวจสอบ</span>
-                                            @endif
+                                            <div style="padding-left: 100px">
+                                                <div class="row col-10">
+                                                    <div class="col-6">
+                                                        <form role="form" class="text-start" method="POST"
+                                                            action="{{ url('update-point', $data->id) }}">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="mb-3 my-3" style="display:none">
+                                                                <input type="text" class="form-control" name="add_point"
+                                                                    value="{{ $data->point }}"
+                                                                    id="exampleFormControlInput1">
+                                                                <input type="text" class="form-control" name="app_rej"
+                                                                    value="approved" id="exampleFormControlInput1">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-success">เติมเงิน</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <form role="form" class="text-start" method="POST"
+                                                            action="{{ url('update-point', $data->id) }}">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="mb-3 my-3" style="display:none">
+                                                                <input type="text" class="form-control" name="car_name"
+                                                                    value="{{ $data->point }}"
+                                                                    id="exampleFormControlInput1">
+                                                                <input type="text" class="form-control" name="app_rej"
+                                                                    value="reject" id="exampleFormControlInput1">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-danger">ปฏิเสธ</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{--  --}}
+
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
