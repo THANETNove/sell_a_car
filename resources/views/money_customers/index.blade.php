@@ -72,7 +72,7 @@
                                         <td class="align-middle text-center">
                                             <div style="padding-left: 100px">
                                                 <div class="row col-10">
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-md-6">
                                                         <form role="form" class="text-start" method="POST"
                                                             action="{{ url('update-point', $data->id) }}">
                                                             @csrf
@@ -87,7 +87,7 @@
                                                             <button type="submit" class="btn btn-success">เติมเงิน</button>
                                                         </form>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-md-6">
                                                         <form role="form" class="text-start" method="POST"
                                                             action="{{ url('update-point', $data->id) }}">
                                                             @csrf
