@@ -19,15 +19,15 @@
                     <a class="nav-link text-white " href="../pages/virtual-reality.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 
-                            <i class="material-icons opacity-10">money </i>
+                            <i class="material-icons opacity-10">add_circle </i>
                         </div>
-
+                        <span class="nav-link-text ms-1">เพิ่ม point Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/money-customers') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">notifications</i>
+                            <i class="material-icons opacity-10">account_balance_wallet</i>
                             @if (DB::table('add_points')->where('status', 'null')->count() > 0)
                                 <span class="number-circle">
                                     {{ DB::table('add_points')->where('status', 'null')->count() }}
@@ -35,16 +35,13 @@
                             @endif
 
                         </div>
-                        <span class="nav-link-text ms-1">เพิ่ม point Users
-
-                        </span>
-
+                        <span class="nav-link-text ms-1">เติมเงิน</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/car_brand') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">money</i>
+                            <i class="material-icons opacity-10">time_to_leave</i>
                         </div>
                         <span class="nav-link-text ms-1">ยี่ห้อ รถยนต์</span>
                     </a>
@@ -52,7 +49,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/car_model') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">money</i>
+                            <i class="material-icons opacity-10">toys</i>
                         </div>
                         <span class="nav-link-text ms-1">รุ่น รถยนต์</span>
                     </a>
@@ -60,7 +57,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/bank_name') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">money</i>
+                            <i class="material-icons opacity-10">account_balance</i>
                         </div>
                         <span class="nav-link-text ms-1">เพิ่ม ธนาคาร</span>
                     </a>
@@ -72,7 +69,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white active bg-gradient-primary" href="../pages/dashboard.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">dashboard</i>
+                            <i class="material-icons opacity-10">store</i>
                         </div>
                         <span class="nav-link-text ms-1">รายการขาย</span>
                     </a>
@@ -80,7 +77,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/add_point') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                            <i class="material-icons opacity-10">account_balance_wallet</i>
                         </div>
                         <span class="nav-link-text ms-1">เติมเงิน</span>
                     </a>
@@ -88,25 +85,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/address') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">receipt_long</i>
+                            <i class="material-icons opacity-10">pin_drop</i>
                         </div>
                         <span class="nav-link-text ms-1">ที่อยู่</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/virtual-reality.html">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Virtual Reality</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/rtl.html">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-                        </div>
-                        <span class="nav-link-text ms-1">RTL</span>
                     </a>
                 </li>
                 <li class="nav-item">
