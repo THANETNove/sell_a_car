@@ -18,17 +18,27 @@
                 <li class="nav-item">
                     <a class="nav-link text-white " href="../pages/virtual-reality.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">money</i>
+
+                            <i class="material-icons opacity-10">money </i>
                         </div>
-                        <span class="nav-link-text ms-1">กำหนด point ขั้นต่ำ </span>
+
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{ url('/money-customers') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
+                            <i class="material-icons opacity-10">notifications</i>
+                            @if (DB::table('add_points')->where('status', 'null')->count() > 0)
+                                <span class="number-circle">
+                                    {{ DB::table('add_points')->where('status', 'null')->count() }}
+                                </span>
+                            @endif
+
                         </div>
-                        <span class="nav-link-text ms-1">เพิ่ม point Users</span>
+                        <span class="nav-link-text ms-1">เพิ่ม point Users
+
+                        </span>
+
                     </a>
                 </li>
                 <li class="nav-item">

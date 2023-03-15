@@ -10,7 +10,19 @@
 
 .error-input1 {
     margin-top: -10px !important;
-    color: #d63384 !important;
+    color: #a2125a !important;
     font-size: 12px;
     margin-bottom: 0px !important;
+}
+
+.number-circle {
+    border-radius: 50%;
+    padding-right: 3px;
+    font-size: 10px;
+    padding-left: 3px;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 15px;
+    background-color: rgb(255 52 0);
+    border: solid 1px rgb(255, 255, 255);
 }
