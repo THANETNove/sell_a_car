@@ -21,7 +21,7 @@
 
                             <i class="material-icons opacity-10">add_circle </i>
                         </div>
-                        <span class="nav-link-text ms-1">เพิ่ม point Users</span>
+                        <span class="nav-link-text ms-1">point ขั้นต่ำ</span>
                     </a>
                 </li>
                 <li class="nav-item">
