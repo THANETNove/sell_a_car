@@ -16,7 +16,7 @@
             {{-- !  ส่วนของ admin  --}}
             @if (Auth::user()->status === 'admin')
                 <li class="nav-item">
-                    <a id="storeUser" class="nav-link text-white " href="{{ url('/point-loweste') }}">
+                    <a id="pointloweste" class="nav-link text-white " href="{{ url('/point-loweste') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 
                             <i class="material-icons opacity-10">add_circle </i>
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/money-customers') }}">
+                    <a id="money-customers" class="nav-link text-white " href="{{ url('/money-customers') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">account_balance_wallet</i>
                             @if (DB::table('add_points')->where('status', 'null')->count() > 0)

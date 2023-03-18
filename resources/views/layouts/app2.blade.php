@@ -29,30 +29,50 @@
             ]; // เมนู รายการขาย user
             const pagesAdd_point = ['add_point', 'create_point']; // เมนู เติมเงิน  user
             const pagesAddress = ['address']; // เมนู address  user
+            const pagesPointLoweste = ['point-loweste']; // เมนู address  user money-customers
+            const pagesMoneyCustomers = ['home', 'money-customers'];
 
+            if (pagesStore.includes(desiredPart) || pagesAdd_point.includes(desiredPart) || pagesAddress.includes(
+                    desiredPart)) {
+                if (pagesStore.includes(desiredPart)) {
+                    var element = document.getElementById("storeUser");
+                    element.classList.add("active", "bg-gradient-primary");
+                    /*                 var element = document.getElementById("money-customers");
+                                    element.classList.add("active", "bg-gradient-primary"); */
+                } else {
+                    var element = document.getElementById("storeUser");
+                    element.classList.remove("active", "bg-gradient-primary");
+                    /*  var element = document.getElementById("money-customers");
+                     element.classList.add("active", "bg-gradient-primary"); */
+                }
 
-            if (pagesStore.includes(desiredPart)) {
-                var element = document.getElementById("storeUser");
-                element.classList.add("active", "bg-gradient-primary");
-            } else {
-                var element = document.getElementById("storeUser");
-                element.classList.remove("active", "bg-gradient-primary");
+                if (pagesAdd_point.includes(desiredPart)) {
+                    var element = document.getElementById("add-point");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("add-point");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+                if (pagesAddress.includes(desiredPart)) {
+                    var element = document.getElementById("address");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("address");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
             }
 
-            if (pagesAdd_point.includes(desiredPart)) {
-                var element = document.getElementById("add-point");
-                element.classList.add("active", "bg-gradient-primary");
-            } else {
-                var element = document.getElementById("add-point");
-                element.classList.remove("active", "bg-gradient-primary");
-            }
-            if (pagesAddress.includes(desiredPart)) {
-                var element = document.getElementById("address");
-                element.classList.add("active", "bg-gradient-primary");
-            } else {
-                var element = document.getElementById("address");
-                element.classList.remove("active", "bg-gradient-primary");
-            }
+
+            console.log("pathname", pathname);
+            /*  if (pagesMoneyCustomers.includes(desiredPart)) {
+                 if (pagesMoneyCustomers.includes(desiredPart)) {
+                     var element = document.getElementById("money-customers");
+                     element.classList.add("active", "bg-gradient-primary");
+                 } else {
+                     var element = document.getElementById("money-customers");
+                     element.classList.remove("active", "bg-gradient-primary");
+                 }
+             } */
 
         });
     </script>

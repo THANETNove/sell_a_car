@@ -33,7 +33,8 @@ class HomeController extends Controller
             ->paginate(50);
             return view('post_products.index',['dataAll' =>  $dataAll]);
         }else{
-            dd("asd");
+            $data = DB::table('add_points')->where('status', 'null')->get();
+            return view('money_customers.index',['data' => $data]);
         }
       
     }
