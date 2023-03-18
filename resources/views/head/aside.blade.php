@@ -16,7 +16,7 @@
             {{-- !  ส่วนของ admin  --}}
             @if (Auth::user()->status === 'admin')
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/point-loweste') }}">
+                    <a id="point-loweste" class="nav-link text-white " href="{{ url('/point-loweste') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 
                             <i class="material-icons opacity-10">add_circle </i>
@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/car_brand') }}">
+                    <a id="car_brand" class="nav-link text-white " href="{{ url('/car_brand') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">time_to_leave</i>
                         </div>
@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/car_model') }}">
+                    <a id="car_model" class="nav-link text-white " href="{{ url('/car_model') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">toys</i>
                         </div>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/bank_name') }}">
+                    <a id="bank_name" class="nav-link text-white " href="{{ url('/bank_name') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">account_balance</i>
                         </div>

@@ -32,6 +32,10 @@
             const pagesAddress = ['address']; // เมนู address  user
             const pagesPointLoweste = ['point-loweste']; // เมนู address  user money-customers
             const pagesMoneyCustomers = ['home', 'money-customers'];
+            const pagesCar_brand = ['car_brand', 'add-car_brand', 'edit-car_brand'];
+            const pagesCar_model = ['car_model', 'add-model_car', 'edit-model_name'];
+            const pagesBank_name = ['bank_name', 'create_bank_name'];
+
 
             if (status !== "admin") {
                 if (pagesStore.includes(desiredPart)) {
@@ -70,6 +74,34 @@
                     element.classList.add("active", "bg-gradient-primary");
                 } else {
                     var element = document.getElementById("money-customers");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+                if (pagesPointLoweste.includes(desiredPart)) {
+                    var element = document.getElementById("point-loweste");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("point-loweste");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+                if (pagesCar_brand.includes(desiredPart)) {
+                    var element = document.getElementById("car_brand");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("car_brand");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+                if (pagesCar_model.includes(desiredPart)) {
+                    var element = document.getElementById("car_model");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("car_model");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+                if (pagesBank_name.includes(desiredPart)) {
+                    var element = document.getElementById("bank_name");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("bank_name");
                     element.classList.remove("active", "bg-gradient-primary");
                 }
             }
