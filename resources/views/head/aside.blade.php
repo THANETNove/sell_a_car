@@ -16,7 +16,7 @@
             {{-- !  ส่วนของ admin  --}}
             @if (Auth::user()->status === 'admin')
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/point-loweste') }}">
+                    <a id="storeUser" class="nav-link text-white " href="{{ url('/point-loweste') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 
                             <i class="material-icons opacity-10">add_circle </i>
@@ -66,7 +66,7 @@
             {{-- !**  user ทั่วไป  --}}
             @if (Auth::user()->status !== 'admin')
                 <li class="nav-item">
-                    <a class="nav-link text-white active bg-gradient-primary" href="{{ url('post_products') }}">
+                    <a id="storeUser" class="nav-link text-white" href="{{ url('post_products') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">store</i>
                         </div>
@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{ url('/add_point') }}">
+                    <a id="add-point" class="nav-link text-white " href="{{ url('/add_point') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">account_balance_wallet</i>
                         </div>
