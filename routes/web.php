@@ -71,3 +71,5 @@ Route::put('/update-point_loweste/{id}', [PointLowestController::class, 'update'
 
 Route::get('/post_products', [PostProductsController::class, 'index']);
 Route::get('/create-post_products', [PostProductsController::class, 'create']);
+Route::post('/add-post_products', [PostProductsController::class, 'store']);
+Route::put('/destroy-post_products/{id}', [PostProductsController::class, 'destroy']);

@@ -23,16 +23,16 @@
                                         ลำดับ
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                        จำนวนเงิน</th>
+                                        ชื่อสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ว/ด/ป สลิป</th>
+                                        รายละเอียดสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ธนาคาร</th>
+                                        ราคาสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ช่องทางชำระอื่นๆ
+                                        Hon Zone
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -42,48 +42,86 @@
                                         สถานะ</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        date</th>
+                                    </th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    </th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        updated_at</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
                                     $i = 1;
                                 @endphp
-                                {{--   @foreach ($data as $data)
+                                @foreach ($data as $data)
                                     <tr>
                                         <td>
                                             <p>{{ $i++ }}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $data->point }}</p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $data->date }}</span>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->name_products }}</p>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->point_bank_name }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_details }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $data->other }}</span>
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_price }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <img id="myImg{{ $data->id }}"
-                                                src="{{ URL::asset('/img/slip/' . '' . $data->images) }}"
-                                                onclick="showImage(this,{{ $data->id }})" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal" height="90px" width="80px" alt="...">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->hot_zone_price }}</span>
+                                        </td>
+                                        @php
+                                            $img = json_decode($data->image);
+                                            $idimg = 0;
+                                        @endphp
+                                        <td class="align-middle text-center">
+                                            @foreach ($img as $imgUrl)
+                                                <img src="{{ URL::asset('/img/product/' . '' . $imgUrl) }}"
+                                                    {{--  onclick="showImage( $imgUrl)"  --}} onclick="myFunction(`{{ $imgUrl }}`)"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal" height="50px"
+                                                    width="50px" alt="...">
+                                            @endforeach
+
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if ($data->status == 'approved')
+                                            @if ($data->status == 'expired')
+                                                <span class="badge badge-sm bg-gradient-danger">หมดอายุเเล้ว</span>
+                                            @elseif($data->status == 'cancelSale')
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">เติมเงินเข้าสู่ระบบเรียบร้อย</span>
-                                            @elseif($data->status == 'reject')
-                                                <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-danger">สลิปของคุณไม่ผ่าน</span>
+                                                    class="badge badge-sm badge badge badge-sm bg-gradient-secondary">ยกเลิกการขาย</span>
                                             @else
                                                 <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-secondary">รอการตรวจสอบ</span>
+                                                    class="badge badge-sm badge badge badge-sm bg-gradient-success">กำลังขาย</span>
+                                            @endif
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            @if ($data->status != 'cancelSale')
+                                                <form role="form" class="text-start" method="POST"
+                                                    action="{{ url('destroy-post_products', $data->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="mb-3 my-3" style="display:none">
+                                                        <input type="text" class="form-control" name="exp_cas"
+                                                            value="cancelSale" id="exampleFormControlInput1">
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-warning">ยกเลิกการขาย</button>
+                                                </form>
+                                            @endif
+                                        </td>
+                                        <td class="align-middle">
+                                            @if ($data->status != 'cancelSale')
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                    Edit
+                                                </a>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
@@ -92,7 +130,7 @@
                                         </td>
 
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -110,11 +148,10 @@
         </div>
     </div>
     <script>
-        function showImage(element, i) {
-            var modal = document.getElementById('myModal');
-            var img = document.getElementById('myImg' + i).src;
-            console.log("img", img);
-            document.getElementById('img1').src = img;
+        function myFunction(image) {
+            const imgSrc = "{{ URL::asset('img/product/') }}/" + image;
+            document.getElementById('img1').src = imgSrc;
+            console.log("element", imgSrc);
         }
     </script>
 @endsection

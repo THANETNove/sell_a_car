@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use App\Models\PostProducts;
+use App\Models\User;
+use Illuminate\Support\Str;
 use DB;
 use Auth;
 
@@ -15,7 +17,9 @@ class PostProductsController extends Controller
      */
     public function index()
     {
-        return view('post_products.index');
+
+        $data = DB::table('post_products')->where('id_user', Auth::user()->id)->orderBy('id','DESC')->get();
+        return view('post_products.index',['data' =>  $data]);
     }
 
     /**
@@ -23,7 +27,8 @@ class PostProductsController extends Controller
      */
     public function create()
     {
-        return view('post_products.create');
+        $data = DB::table('point_lowests')->get();
+        return view('post_products.create',['data' => $data]);
     }
 
     /**
@@ -31,6 +36,12 @@ class PostProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg'],
+            /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
+        ]);
+
+        $dateText = Str::random(12);
         $member = new PostProducts;
         $member->id_user = Auth::user()->id;
         $member->name_products = $request['name_products'];
@@ -38,7 +49,7 @@ class PostProductsController extends Controller
         $member->product_price = $request['product_price'];
         $member->hot_zone_price = $request['hot_zone_price'];
         $member->status = 'null';
-        $member->save();
+     
 
         $dateImg = [];
         if($request->hasFile('image')){
@@ -48,8 +59,23 @@ class PostProductsController extends Controller
               $dateImg[] =  $dateText."".$image->getClientOriginalName();
             }
         }
-/*     dd($dateImg); */
     $member->image = json_encode($dateImg);
+   
+    if ($request['hot_zone_price'] !== null) {
+        $user = User::find(Auth::user()->id);
+        $zone_price = $request['hot_zone_price'];
+       $point =  $user->point;
+        if( $zone_price <= $point) {
+            $ponit =  $user->point - $request['hot_zone_price'];
+            $user->point =  $ponit;
+            $user->save();
+        }else{
+            return redirect('create-post_products')->with('error', "point ของคุณไม่พอกรุณาเติม point" );
+        }
+    }
+
+    $member->save();
+
 
         return redirect('post_products')->with('message', "บันทึกสำเร็จ" );
         
@@ -89,8 +115,16 @@ class PostProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string  $id)
     {
-        //
+      
+
+        $member = PostProducts::find($id);
+        $member->status = $request['exp_cas'];
+        $member->save();
+
+        return redirect('post_products')->with('message', "ยกเลิกการขายเรียบร้อย" );
+        
+        
     }
 }

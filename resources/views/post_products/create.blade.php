@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
-                                <form role="form" class="text-start" method="POST" action="{{ 'add-address' }}"
+                                <form role="form" class="text-start" method="POST" action="{{ 'add-post_products' }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
@@ -25,20 +25,28 @@
 
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        {{--                                         <label class="form-label">รายละเอียดสินค้า</label> --}}
+                                        {{-- <label class="form-label">รายละเอียดสินค้า</label> --}}
                                         <textarea class="form-control" id="exampleFormControlTextarea1" name="product_details" rows="3"
                                             placeholder="รายละเอียดสินค้า"></textarea>
-
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">ราคาสินค้า *</label>
-                                        <input type="number" class="form-control " name="product_price" required>
+                                        <input type="number" class="form-control" name="product_price" required>
                                     </div>
-                                    <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">จ่าย point เพื่อให้สินค้า อยู่ Hot
-                                            Zoneเพื่อให้คนอื่นเห็นสินค้าคุณก่อนใคร</label>
-                                        <input type="number" class="form-control " name="hot_zone_price">
-                                    </div>
+                                    @foreach ($data as $data)
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">จ่าย point เพื่อให้สินค้า อยู่ Hot
+                                                Zone ใช้ point ขั้นต่ำ
+                                                {{ $data->point_lowest }} point</label>
+                                            <input type="number" class="form-control" min="{{ $data->point_lowest }}"
+                                                name="hot_zone_price">
+                                        </div>
+                                        @if (session('error'))
+                                            <h6 class="error-input1">
+                                                {{ session('error') }}
+                                            </h6>
+                                        @endif
+                                    @endforeach
                                     <div class="input-group input-group-outline my-3">
                                         <input class="form-control @error('image.*') is-invalid @enderror" type="file"
                                             id="formFile" name="image[]" multiple required>
