@@ -18,6 +18,8 @@
 <!-- CSS Files -->
 <link id="pagestyle" href="{{ URL::asset('assets/css/material-dashboard.css?v=3.0.4') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 
 
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
