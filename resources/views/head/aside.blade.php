@@ -16,7 +16,7 @@
             {{-- !  ส่วนของ admin  --}}
             @if (Auth::user()->status === 'admin')
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="../pages/virtual-reality.html">
+                    <a class="nav-link text-white " href="{{ url('/point-loweste') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 
                             <i class="material-icons opacity-10">add_circle </i>
@@ -33,7 +33,6 @@
                                     {{ DB::table('add_points')->where('status', 'null')->count() }}
                                 </span>
                             @endif
-
                         </div>
                         <span class="nav-link-text ms-1">เติมเงิน</span>
                     </a>
@@ -67,7 +66,7 @@
             {{-- !**  user ทั่วไป  --}}
             @if (Auth::user()->status !== 'admin')
                 <li class="nav-item">
-                    <a class="nav-link text-white active bg-gradient-primary" href="../pages/dashboard.html">
+                    <a class="nav-link text-white active bg-gradient-primary" href="{{ url('post_products') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">store</i>
                         </div>

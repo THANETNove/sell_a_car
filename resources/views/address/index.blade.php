@@ -19,7 +19,7 @@
                                 <form role="form" class="text-start" method="POST" action="{{ 'add-address' }}">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">ชื่อ</label>
+                                        <label class="form-label">ชื่อ *</label>
                                         <input type="text" class="form-control  @error('fname') is-invalid @enderror"
                                             name="fname" required>
                                         @error('fname')
@@ -29,7 +29,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">นามสกุล</label>
+                                        <label class="form-label">นามสกุล *</label>
                                         <input type="text" class="form-control  @error('lname') is-invalid @enderror"
                                             name="lname" required>
                                         @error('lname')
@@ -39,7 +39,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">เบอร์โทรติดต่อ</label>
+                                        <label class="form-label">เบอร์โทรติดต่อ *</label>
                                         <input type="text" class="form-control @error('tel') is-invalid @enderror"
                                             name="tel" required>
                                         @error('tel')
@@ -49,17 +49,12 @@
                                         @enderror
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">ที่อยู่</label>
-                                        <input type="text" class="form-control  @error('address') is-invalid @enderror"
-                                            name="address" required>
-                                        @error('address')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        {{--  <label class="form-label">ที่อยู่ *</label> --}}
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="address" placeholder="ที่อยู่ *" rows="3"
+                                            required></textarea>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">แขวง/ตําบล</label>
+                                        <label class="form-label">แขวง/ตําบล *</label>
                                         <input type="text"
                                             class="form-control  @error('subDistrict') is-invalid @enderror"
                                             name="subDistrict" required>
@@ -70,7 +65,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">เขต/อําเภอ</label>
+                                        <label class="form-label">เขต/อําเภอ *</label>
                                         <input type="text" class="form-control @error('district') is-invalid @enderror"
                                             name="district" required>
                                         @error('district')
@@ -81,7 +76,7 @@
 
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">จังหวัด</label>
+                                        <label class="form-label">จังหวัด *</label>
                                         <input type="text" class="form-control @error('province') is-invalid @enderror"
                                             name="province" required>
                                         @error('province')
@@ -91,7 +86,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">รหัสไปรษณีย์</label>
+                                        <label class="form-label">รหัสไปรษณีย์ *</label>
                                         <input type="text" class="form-control @error('zipCode') is-invalid @enderror"
                                             name="zipCode" required>
                                         @error('zipCode')

@@ -22,63 +22,62 @@
                                         action="{{ url('update-address', $data->id) }}">
                                         @csrf
                                         @method('PUT')
-                                        <div class="{{-- input-group input-group-outline --}} my-3">
-                                            <label class="form-label">ชื่อ</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{--   <label class="form-label">ชื่อ</label> --}}
                                             <input type="text" class="form-control  @error('fname') is-invalid @enderror"
-                                                name="fname" value="{{ $data->fname }}" autofocus required>
+                                                name="fname" value="{{ $data->fname }}" placeholder="ชื่อ" autofocus
+                                                required>
                                             @error('fname')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="{{-- input-group input-group-outline --}}">
-                                            <label class="form-label">นามสกุล</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{-- <label class="form-label">นามสกุล</label> --}}
                                             <input type="text" class="form-control  @error('lname') is-invalid @enderror"
-                                                name="lname" value="{{ $data->lname }}" required>
-                                            @error('lname')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                                name="lname" value="{{ $data->lname }}" placeholder="นามสกุล" required>
+
                                         </div>
-                                        <div class="{{-- input-group input-group-outline --}} ">
-                                            <label class="form-label">เบอร์โทรติดต่อ</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{-- <label class="form-label">เบอร์โทรติดต่อ</label> --}}
                                             <input type="text" class="form-control @error('tel') is-invalid @enderror"
-                                                value="{{ $data->tel }}" name="tel" required>
+                                                value="{{ $data->tel }}" name="tel" placeholder="เบอร์โทรติดต่อ"
+                                                required>
                                             @error('tel')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="{{-- input-group input-group-outline --}}">
-                                            <label class="form-label">ที่อยู่</label>
+                                        <div class="input-group input-group-outline  my-3">
+                                            {{-- <label class="form-label">ที่อยู่</label> --}}
                                             <input type="text"
-                                                class="form-control  @error('address') is-invalid @enderror" name="address"
-                                                value="{{ $data->address }}" required>
+                                                class="form-control  @error('address') is-invalid @enderror"
+                                                placeholder="ที่อยู่" name="address" value="{{ $data->address }}" required>
                                             @error('address')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="{{-- input-group input-group-outline --}} ">
-                                            <label class="form-label">แขวง/ตําบล</label>
+                                        <div class="input-group input-group-outline  my-3">
+                                            {{-- <label class="form-label">แขวง/ตําบล</label> --}}
                                             <input type="text"
                                                 class="form-control  @error('subDistrict') is-invalid @enderror"
-                                                name="subDistrict" value="{{ $data->subDistrict }}" required>
+                                                name="subDistrict" value="{{ $data->subDistrict }}" placeholder="แขวง/ตําบล"
+                                                required>
                                             @error('subDistrict')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">เขต/อําเภอ</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{-- <label class="form-label">เขต/อําเภอ</label> --}}
                                             <input type="text"
                                                 class="form-control @error('district') is-invalid @enderror" name="district"
-                                                value="{{ $data->district }}" required>
+                                                value="{{ $data->district }}" placeholder="เขต/อําเภอ" required>
                                             @error('district')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -86,47 +85,47 @@
                                             @enderror
 
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">จังหวัด</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{--    <label class="form-label">จังหวัด</label> --}}
                                             <input type="text"
                                                 class="form-control @error('province') is-invalid @enderror" name="province"
-                                                value="{{ $data->province }}" required>
+                                                value="{{ $data->province }}" placeholder="จังหวัด" required>
                                             @error('province')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">รหัสไปรษณีย์</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{--   <label class="form-label">รหัสไปรษณีย์</label> --}}
                                             <input type="text"
-                                                class="form-control @error('zipCode') is-invalid @enderror" name="zipCode"
-                                                value="{{ $data->zipCode }}" required>
+                                                class="form-control @error('zipCode') is-invalid  @enderror" name="zipCode"
+                                                value="{{ $data->zipCode }}" placeholder="รหัสไปรษณีย์" required>
                                             @error('zipCode')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">Url facebook</label>
+                                        <div class="input-group input-group-outline my-3">
+                                            {{-- <label class="form-label">Url facebook</label> --}}
                                             <input type="text" class="form-control" value="{{ $data->facebook }}"
-                                                name="facebook">
+                                                name="facebook" placeholder="Url facebook">
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">Url Line</label>
-                                            <input type="text" class="form-control" value="{{ $data->line }}"
-                                                name="line">
+                                        <div class="input-group input-group-outline my-3">
+                                            {{-- <label class="form-label">Url Line</label> --}}
+                                            <input type="text" class="form-control" placeholder="Url Line"
+                                                value="{{ $data->line }}" name="line">
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">Url instagram</label>
-                                            <input type="text" class="form-control" value="{{ $data->instagram }}"
-                                                name="instagram">
+                                        <div class="input-group input-group-outline my-3">
+                                            {{--  <label class="form-label">Url instagram</label> --}}
+                                            <input type="text" class="form-control" placeholder="Url instagram"
+                                                value="{{ $data->instagram }}" name="instagram">
                                         </div>
-                                        <div class="{{-- input-group input-group-outline my-3 --}}">
-                                            <label class="form-label">Url twitter</label>
-                                            <input type="text" class="form-control" value="{{ $data->twitter }}"
-                                                name="twitter">
+                                        <div class="input-group input-group-outline my-3">
+                                            {{-- <label class="form-label">Url twitter</label> --}}
+                                            <input type="text" class="form-control"
+                                                placeholder="Url twitter"value="{{ $data->twitter }}" name="twitter">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit"

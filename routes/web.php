@@ -8,6 +8,8 @@ use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\BankNameController;
 use App\Http\Controllers\AddPointController;
 use App\Http\Controllers\MoneyCustomersController;
+use App\Http\Controllers\PointLowestController;
+use App\Http\Controllers\PostProductsController;
 
 
 /*
@@ -61,3 +63,11 @@ Route::post('/add-point', [AddPointController::class, 'store']);
 Route::put('/update-point/{id}', [AddPointController::class, 'update']);
 
 Route::get('/money-customers', [MoneyCustomersController::class, 'index']);
+
+Route::get('/point-loweste', [PointLowestController::class, 'index']);
+Route::post('/add-point_loweste', [PointLowestController::class, 'store']);
+Route::put('/update-point_loweste/{id}', [PointLowestController::class, 'update']);
+
+
+Route::get('/post_products', [PostProductsController::class, 'index']);
+Route::get('/create-post_products', [PostProductsController::class, 'create']);

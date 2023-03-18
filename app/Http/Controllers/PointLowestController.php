@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PointLowest;
+use DB;
+use Auth;
 
 class PointLowestController extends Controller
 {
@@ -11,7 +14,18 @@ class PointLowestController extends Controller
      */
     public function index()
     {
-        //
+
+        $menus = DB::table('point_lowests')->count();
+       
+        if ($menus) {
+            $data = DB::table('point_lowests')->get();
+         /*    $data = Address::find(Auth::user()->id); */
+            return view('point_loweste.edit', ['data' => $data]);
+
+        }else{
+            return view('point_loweste.index');
+        }
+
     }
 
     /**
@@ -27,7 +41,16 @@ class PointLowestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        
+
+        $member = new PointLowest;
+        $member->point_lowest = $request['point_loweste'];
+   
+        $member->save();
+
+        return redirect('point-loweste')->with('message', "บันทึกสำเร็จ" );
+
     }
 
     /**
@@ -51,7 +74,12 @@ class PointLowestController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $member =  PointLowest::find($id);
+        $member->point_lowest = $request['point_loweste'];
+   
+        $member->save();
+
+        return redirect('point-loweste')->with('message', "บันทึกสำเร็จ" );
     }
 
     /**
