@@ -26,3 +26,25 @@
     background-color: rgb(255 52 0);
     border: solid 1px rgb(255, 255, 255);
 }
+
+.page-item .page-link,
+.page-item span :hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255 52 0);
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50% !important;
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+}
+
+.page-link.active,
+.active>.page-link {
+    z-index: 3;
+    color: rgb(255, 255, 255);
+    background-color: var(--bs-pagination-active-bg);
+    border-color: var(--bs-pagination-active-border-color);
+}

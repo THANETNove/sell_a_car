@@ -73,3 +73,7 @@ Route::get('/post_products', [PostProductsController::class, 'index']);
 Route::get('/create-post_products', [PostProductsController::class, 'create']);
 Route::post('/add-post_products', [PostProductsController::class, 'store']);
 Route::put('/destroy-post_products/{id}', [PostProductsController::class, 'destroy']);
+Route::get('/edit-post_products/{id}', [PostProductsController::class, 'edit']);
+Route::put('/update-post_products/{id}', [PostProductsController::class, 'update']);
+Route::get('/renew-post_products/{id}', [PostProductsController::class, 'renew']);
+Route::put('/update-renew/{id}', [PostProductsController::class, 'updateRenew']);

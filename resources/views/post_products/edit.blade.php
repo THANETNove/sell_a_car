@@ -6,7 +6,7 @@
             <div class="card z-index-0 fadeIn3 fadeInBottom">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                        <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">ที่อยู่</h4>
+                        <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">เเก้ไข รายละเอียดสินค้า </h4>
                     </div>
                 </div>
                 <div class="container text-center">
@@ -16,31 +16,41 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
-                                <form role="form" class="text-start" method="POST" action="{{ 'add-post_products' }}"
+                                <form role="form" class="text-start" method="POST"
+                                    action="{{ url('update-post_products', $dataProduct->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">ชื่อสินค้า *</label>
-                                        <input type="text" class="form-control" name="name_products" required>
+                                        {{-- <label class="form-label">ชื่อสินค้า *</label> --}}
+                                        <input type="text" class="form-control" value="{{ $dataProduct->name_products }}"
+                                            name="name_products" placeholder="ชื่อสินค้า *" required>
 
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         {{-- <label class="form-label">รายละเอียดสินค้า</label> --}}
                                         <textarea class="form-control" id="exampleFormControlTextarea1" name="product_details" rows="3"
-                                            placeholder="รายละเอียดสินค้า"></textarea>
+                                            placeholder="รายละเอียดสินค้า" value="{{ $dataProduct->product_details }}">{{ $dataProduct->product_details }}</textarea>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">ราคาสินค้า *</label>
-                                        <input type="number" class="form-control" name="product_price" required>
+                                        {{-- <label class="form-label">ราคาสินค้า *</label> --}}
+                                        <input type="number" class="form-control" value="{{ $dataProduct->product_price }}"
+                                            placeholder="ราคาสินค้า *" name="product_price" required>
                                     </div>
                                     @foreach ($data as $data)
                                         <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">จ่าย point เพื่อให้สินค้า อยู่ Hot
+                                            {{--  <label class="form-label">จ่าย point เพื่อให้สินค้า อยู่ Hot
                                                 Zone ใช้ point ขั้นต่ำ
-                                                {{ $data->point_lowest }} point</label>
+                                                {{ $data->point_lowest }} point</label> --}}
                                             <input type="number" class="form-control" min="{{ $data->point_lowest }}"
-                                                name="hot_zone_price">
+                                                value="{{ $dataProduct->hot_zone_price }}" name="hot_zone_price"
+                                                placeholder="จ่าย point เพื่อให้สินค้า อยู่ Hot Zone ใช้ point ขั้นต่ำ {{ $data->point_lowest }} point">
                                         </div>
+                                        @if (session('error'))
+                                            <h6 class="error-input1">
+                                                {{ session('error') }}
+                                            </h6>
+                                        @endif
                                     @endforeach
                                     <div class="input-group input-group-outline my-3">
                                         <input class="form-control @error('image.*') is-invalid @enderror" type="file"

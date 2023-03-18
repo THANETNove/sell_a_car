@@ -18,8 +18,11 @@ class PostProductsController extends Controller
     public function index()
     {
 
-        $data = DB::table('post_products')->where('id_user', Auth::user()->id)->orderBy('id','DESC')->get();
-        return view('post_products.index',['data' =>  $data]);
+        $dataAll = DB::table('post_products')
+        ->where('id_user', Auth::user()->id)
+        ->orderBy('id','DESC')
+        ->paginate(50);
+        return view('post_products.index',['dataAll' =>  $dataAll]);
     }
 
     /**
@@ -79,13 +82,6 @@ class PostProductsController extends Controller
 
         return redirect('post_products')->with('message', "บันทึกสำเร็จ" );
         
-       /*  'id_user',
-        'name_products',
-        'product_details',
-        'product_price',
-        'hot_zone_price',
-        'image',
-        'status' */
     }
 
     /**
@@ -101,7 +97,15 @@ class PostProductsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = DB::table('point_lowests')->get();
+        $dataProduct = PostProducts::find($id);
+        return view('post_products.edit',['data' =>  $data,'dataProduct'=> $dataProduct]);
+    }
+    public function renew(string $id)
+    {
+        $data = DB::table('point_lowests')->get();
+        $dataProduct = PostProducts::find($id);
+        return view('post_products.renew',['data' =>  $data,'dataProduct'=> $dataProduct]);
     }
 
     /**
@@ -109,9 +113,72 @@ class PostProductsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        $dateText = Str::random(12);
+        $member =  PostProducts::find($id);;
+        $member->name_products = $request['name_products'];
+        $member->product_details = $request['product_details'];
+        $member->product_price = $request['product_price'];
+        $member->hot_zone_price = $request['hot_zone_price'];
+     
+        $dateImg = [];
+        if($request->hasFile('image')){
+            $img = json_decode($member->image);
+    
+            foreach( $img as $image) {
+                $image_path = public_path().'/img/product/'.$image; 
+                unlink($image_path);
+            }
+            $imagefile = $request->file('image');
+           /*  $image->move(public_path().'/images/product',$dateText."".$image->getClientOriginalName()); */
+            foreach ($imagefile as $image) {
+              $data =   $image->move(public_path().'/img/product',$dateText."".$image->getClientOriginalName());
+              $dateImg[] =  $dateText."".$image->getClientOriginalName();
+            }
+            $member->image = json_encode($dateImg);
+        }
+       
+        $member->save();
 
+            if ($request['hot_zone_price'] !== null) {
+                $user = User::find(Auth::user()->id);
+                $zone_price = $request['hot_zone_price'];
+            $point =  $user->point;
+                if( $zone_price <= $point) {
+                    $ponit =  $user->point - $request['hot_zone_price'];
+                    $user->point =  $ponit;
+                    $user->save();
+                }else{
+                    return back()->with('error', "point ของคุณไม่พอกรุณาเติม point" );
+                }
+            }
+
+
+        return redirect('post_products')->with('message', "บันทึกสำเร็จ" );
+    }
+public  function updateRenew(Request $request, string $id)
+{
+   
+    $member =  PostProducts::find($id);
+    $member->name_products = $member->name_products;
+    $member->product_details = $member->product_details;
+    $member->product_price =  $member->product_price;
+    $member->hot_zone_price =  $member->hot_zone_price;
+    $member->status = 'null';
+    $member->save();
+    if ($request['hot_zone_price'] !== null) {
+        $user = User::find(Auth::user()->id);
+        $zone_price = $request['hot_zone_price'];
+        $point =  $user->point;
+        if( $zone_price <= $point) {
+            $ponit =  $user->point - $request['hot_zone_price'];
+            $user->point =  $ponit;
+            $user->save();
+        }else{
+            return back()->with('error', "point ของคุณไม่พอกรุณาเติม point" );
+        }
+    }
+    return redirect('post_products')->with('message', "ต่ออายุสำเร็จ" );
+}
     /**
      * Remove the specified resource from storage.
      */

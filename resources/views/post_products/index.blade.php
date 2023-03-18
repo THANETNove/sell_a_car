@@ -56,7 +56,7 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($data as $data)
+                                @foreach ($dataAll as $data)
                                     <tr>
                                         <td>
                                             <p>{{ $i++ }}</p>
@@ -102,7 +102,7 @@
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if ($data->status != 'cancelSale')
+                                            @if ($data->status == 'null')
                                                 <form role="form" class="text-start" method="POST"
                                                     action="{{ url('destroy-post_products', $data->id) }}">
                                                     @csrf
@@ -115,11 +115,19 @@
                                                     <button type="submit" class="btn btn-warning">ยกเลิกการขาย</button>
                                                 </form>
                                             @endif
+                                            @if ($data->status == 'expired')
+                                                <a href="{{ url('renew-post_products', $data->id) }}"
+                                                    class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    ต่ออายุ
+                                                </a>
+                                            @endif
                                         </td>
                                         <td class="align-middle">
                                             @if ($data->status != 'cancelSale')
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="{{ url('edit-post_products', $data->id) }}"
+                                                    class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
                                                     Edit
                                                 </a>
                                             @endif
@@ -131,8 +139,14 @@
 
                                     </tr>
                                 @endforeach
+                                {{--   {{ $data->links() }} --}}
                             </tbody>
                         </table>
+                        <div style="margin-left: 1%">
+                            <samp class="links-css">
+                                {!! $dataAll->links() !!}
+                            </samp>
+                        </div>
                     </div>
                 </div>
             </div>

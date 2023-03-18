@@ -26,7 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-         return view('home');
+        if ( Auth::user()->status != 'admin') {
+            $dataAll = DB::table('post_products')
+            ->where('id_user', Auth::user()->id)
+            ->orderBy('id','DESC')
+            ->paginate(50);
+            return view('post_products.index',['dataAll' =>  $dataAll]);
+        }else{
+            dd("asd");
+        }
+      
     }
 }
