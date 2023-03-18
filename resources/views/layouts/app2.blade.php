@@ -20,7 +20,8 @@
     {{--  active --}}
     <script>
         $(window).load(function() {
-
+            var status = document.getElementById("status-auth").value;
+            console.log("status", status);
             const pathname = window.location.pathname;
             const pathParts = pathname.split('/'); // แยกส่วน path ของ URL ด้วยเครื่องหมาย /
             const desiredPart = pathParts[4];
@@ -32,8 +33,7 @@
             const pagesPointLoweste = ['point-loweste']; // เมนู address  user money-customers
             const pagesMoneyCustomers = ['home', 'money-customers'];
 
-            if (pagesStore.includes(desiredPart) || pagesAdd_point.includes(desiredPart) || pagesAddress.includes(
-                    desiredPart)) {
+            if (status !== "admin") {
                 if (pagesStore.includes(desiredPart)) {
                     var element = document.getElementById("storeUser");
                     element.classList.add("active", "bg-gradient-primary");
@@ -63,16 +63,16 @@
             }
 
 
-            console.log("pathname", pathname);
-            /*  if (pagesMoneyCustomers.includes(desiredPart)) {
-                 if (pagesMoneyCustomers.includes(desiredPart)) {
-                     var element = document.getElementById("money-customers");
-                     element.classList.add("active", "bg-gradient-primary");
-                 } else {
-                     var element = document.getElementById("money-customers");
-                     element.classList.remove("active", "bg-gradient-primary");
-                 }
-             } */
+
+            if (status === "admin") {
+                if (pagesMoneyCustomers.includes(desiredPart)) {
+                    var element = document.getElementById("money-customers");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("money-customers");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+            }
 
         });
     </script>

@@ -24,6 +24,10 @@
                         <i class="fa fa-user me-sm-1"></i>
                         <span class="d-sm-inline d-none"> {{ Auth::user()->username }}</span>
                     </a>
+                    <input type="text" id='status-auth' name="users" value="{{ Auth::user()->status }}"
+                        style="display:none;">
+
+                    {{--     <p id='status-auth' style="display:none">{{ Auth::user()->status }}</p> --}}
                 </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
