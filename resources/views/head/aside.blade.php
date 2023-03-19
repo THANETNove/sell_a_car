@@ -14,7 +14,7 @@
     <div class="" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             {{-- !  ส่วนของ admin  --}}
-            @if (Auth::user()->status === 'admin')
+            @if (Auth::user() && Auth::user()->status == 'admin')
                 <li class="nav-item">
                     <a id="point-loweste" class="nav-link text-white " href="{{ url('/point-loweste') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -72,7 +72,7 @@
             @endif
 
             {{-- !**  user ทั่วไป  --}}
-            @if (Auth::user()->status !== 'admin')
+            @if (Auth::user() && Auth::user()->status !== 'admin')
                 <li class="nav-item">
                     <a id="storeUser" class="nav-link text-white" href="{{ url('post_products') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

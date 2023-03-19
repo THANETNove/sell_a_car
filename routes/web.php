@@ -28,9 +28,30 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
 
     $dataHomZone = DB::table('post_products')
-    ->whereNotNull('hot_zone_price')->get();
-    dd($dataHomZone);
-    return view('welcome',["dataHomZone" => $dataHomZone]);
+    ->whereNotNull('hot_zone_price')
+    ->orderBy('hot_zone_price','DESC')
+    ->get();
+    $dataZone = DB::table('post_products')
+    ->orderBy('hot_zone_price','DESC')
+    ->whereNotNull('hot_zone_price')
+    ->paginate(50);
+    $data = DB::table('post_products')
+    ->orderBy('id','DESC')
+    ->whereNull('hot_zone_price')
+    ->get();
+    $dataPag = DB::table('post_products')
+    ->orderBy('id','DESC')
+    ->whereNull('hot_zone_price')
+    ->paginate(50);
+ 
+
+    $carBrands = DB::table('car_brands')->get();
+    $carModels = DB::table('car_models')->get();
+    
+
+
+    return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
+    'carBrands'=>$carBrands,'carModels'=> $carModels]);
 });
 
 Auth::routes();

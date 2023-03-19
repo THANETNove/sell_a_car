@@ -5,15 +5,15 @@
                 <h3>ยี่ห้อ รถยนต์</h3>
             </div>
             <div class="widgets_inner">
+
+
                 <ul class="list">
-                    <li>
-                        <a href="#">Frozen Fish</a>
-                        <span>(250)</span>
-                    </li>
-                    <li>
-                        <a href="#">Meat</a>
-                        <span>(250)</span>
-                    </li>
+
+                    @foreach ($carBrands as $dataCar)
+                        <li>
+                            <a href="#">{{ $dataCar->car_brands_name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </aside>
@@ -24,17 +24,12 @@
             </div>
             <div class="widgets_inner">
                 <ul class="list">
-                    <li>
-                        <a href="#">Apple</a>
-                    </li>
-                    <li>
-                        <a href="#">Asus</a>
-                    </li>
 
-
-                    <li>
-                        <a href="#">Samsung</a>
-                    </li>
+                    @foreach ($carModels as $modelCar)
+                        <li>
+                            <a href="#">{{ $modelCar->model_name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </aside>

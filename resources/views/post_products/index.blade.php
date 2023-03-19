@@ -113,8 +113,8 @@
                                                         <input type="text" class="form-control" name="exp_cas"
                                                             value="cancelSale" id="exampleFormControlInput1">
                                                     </div>
-
-                                                    <button type="submit" class="btn btn-warning">ยกเลิกการขาย</button>
+                                                    <br>
+                                                    <button type="submit" class="btn btn-sm">ยกเลิก</button>
                                                 </form>
                                             @endif
                                             @if ($data->status == 'expired')

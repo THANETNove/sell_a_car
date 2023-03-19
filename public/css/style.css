@@ -8039,4 +8039,37 @@ h6 {
   line-height: 1.25 !important;
 }
 
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #ff333f;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #ff333f;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #ff333f;
+  border-color: #ff333f;
+}
+
+.text-span {
+  color: #ff3368;
+}
+
 /*# sourceMappingURL=style.css.map */
