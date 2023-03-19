@@ -72,7 +72,7 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_price }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ number_format($data->product_price) }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span

@@ -43,15 +43,46 @@ Route::get('/', function () {
     ->orderBy('id','DESC')
     ->whereNull('hot_zone_price')
     ->paginate(50);
- 
-
     $carBrands = DB::table('car_brands')->get();
     $carModels = DB::table('car_models')->get();
     
-
-
     return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
     'carBrands'=>$carBrands,'carModels'=> $carModels]);
+});
+Route::get('/search/{name}', function ($name) {
+
+        $dataHomZone = DB::table('post_products')
+        ->whereNotNull('hot_zone_price')
+        ->where('name_products', 'like', "$name%")
+        ->orWhere('product_details', 'like', "$name%")
+        ->orderBy('hot_zone_price','DESC')
+        ->get();
+        $dataZone = DB::table('post_products')
+        ->whereNotNull('hot_zone_price')
+        ->where('name_products', 'like', "$name%")
+        ->orWhere('product_details', 'like', "$name%")
+        ->orderBy('hot_zone_price','DESC')
+        ->paginate(50);
+        $data = DB::table('post_products')
+        ->whereNull('hot_zone_price')
+        ->where('name_products', 'like', "$name%")
+        ->orWhere('product_details', 'like', "$name%")
+        ->orderBy('id','DESC')
+      
+        ->get();
+        $dataPag = DB::table('post_products')
+        ->whereNull('hot_zone_price')
+        ->where('name_products', 'like', "$name%")
+        ->orWhere('product_details', 'like', "$name%")
+        ->orderBy('id','DESC')
+        ->paginate(50);
+        $carBrands = DB::table('car_brands')->get();
+        $carModels = DB::table('car_models')->get();
+        
+        return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
+        'carBrands'=>$carBrands,'carModels'=> $carModels]);
+    
+
 });
 
 Auth::routes();

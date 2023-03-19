@@ -3,7 +3,8 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="{{ url('/') }}"> <img src="img/favicon.png" alt="logo"> </a>
+                    <a class="navbar-brand" href="{{ url('/') }}"> <img src="{{ URL::asset('/img/favicon.png') }}"
+                            alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +21,10 @@
                                     ยี่ห้อรถ
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                    <a class="dropdown-item" href="category.html"> shop category</a>
-                                    <a class="dropdown-item" href="single-product.html">product details</a>
-
+                                    @foreach ($carBrands as $dataCar)
+                                        <a class="dropdown-item"
+                                            href="{{ url('/search', $dataCar->car_brands_name) }}">{{ $dataCar->car_brands_name }}</a>
+                                    @endforeach
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -51,33 +53,35 @@
                         </ul>
                     </div>
                     <div class="hearer_icon d-flex">
-                        <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
+                        {{--  <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
                         <a href=""><i class="fab fa-facebook-f"></i></a>
                         <a href=""><i class="fab fa-twitter"></i></a>
-                        <div class="dropdown cart">
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-line"></i></a>
+                        {{--   <div class="dropdown cart">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cart-plus"></i>
                             </a>
-                            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <div class="single_product">
 
                                 </div>
-                            </div> -->
+                            </div>
 
-                        </div>
+                        </div> --}}
                     </div>
                 </nav>
             </div>
         </div>
     </div>
-    <div class="search_input" id="search_input_box">
+    {{--     <div class="search_input" id="search_input_box">
         <div class="container ">
             <form class="d-flex justify-content-between search-inner">
                 <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                <button type="submit" class="btn"></button>
+                <button type="submit" class="btn">ค้นหา</button>
                 <span class="ti-close" id="close_search" title="Close Search"></span>
             </form>
         </div>
-    </div>
+    </div> --}}
 </header>

@@ -91,26 +91,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <!-- <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Cloth $ Wood Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">buy now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="img/banner_img.png" alt="">
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="slider-counter"></div>
                 </div>
@@ -153,7 +133,8 @@
                                                 {{--     <img src="img/product/product_1.png" alt=""> --}}
                                                 <div class="single_product_text">
                                                     <h4>{{ $data_zone->name_products }}</h4>
-                                                    <h3>{{ number_format($data_zone->product_price) }} บาท</h3>
+                                                    <h3 class="text-span">{{ number_format($data_zone->product_price) }}
+                                                        บาท</h3>
                                                     <a href="#" class="add_cart">+ add to cart<i
                                                             class="ti-heart"></i></a>
                                                 </div>
