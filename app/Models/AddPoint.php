@@ -10,6 +10,7 @@ class AddPoint extends Model
     use HasFactory;
     protected $fillable = [
         'id_user',
+        'bank_name',
         'point',
         'date',
         'point_bank_name',

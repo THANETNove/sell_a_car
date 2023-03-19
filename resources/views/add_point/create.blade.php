@@ -21,7 +21,7 @@
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">ชื่อบัญชี</label>
-                                        <input type="number" class="form-control " name="bank_name" required>
+                                        <input type="text" class="form-control " name="bank_name" required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">จำนวนเงิน</label>

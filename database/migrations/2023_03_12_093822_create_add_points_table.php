@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('add_points', function (Blueprint $table) {
             $table->id();
             $table->string('id_user')->nullable();
+            $table->string('bank_name')->nullable();
             $table->string('point')->nullable();
             $table->string('date')->nullable();
             $table->string('point_bank_name')->nullable();

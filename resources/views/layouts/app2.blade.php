@@ -23,10 +23,10 @@
 
 
             var status = document.getElementById("status-auth").value;
-            console.log("status", status);
             const pathname = window.location.pathname;
             const pathParts = pathname.split('/'); // แยกส่วน path ของ URL ด้วยเครื่องหมาย /
             const desiredPart = pathParts[4];
+            console.log("desiredPart", desiredPart);
             const pagesStore = ['post_products', 'edit-post_products',
                 'renew-post_products', 'home'
             ]; // เมนู รายการขาย user
@@ -37,7 +37,7 @@
             const pagesCar_brand = ['car_brand', 'add-car_brand', 'edit-car_brand'];
             const pagesCar_model = ['car_model', 'add-model_car', 'edit-model_name'];
             const pagesBank_name = ['bank_name', 'create_bank_name'];
-            const pagesAllProducts = ['all-products'];
+            /*        const pagesAllProducts = ['all-products']; */
 
 
             if (status !== "admin") {
@@ -107,13 +107,13 @@
                     var element = document.getElementById("bank_name");
                     element.classList.remove("active", "bg-gradient-primary");
                 }
-                if (pagesAllProducts.includes(desiredPart)) {
-                    var element = document.getElementById("all-products");
-                    element.classList.add("active", "bg-gradient-primary");
-                } else {
-                    var element = document.getElementById("all-products");
-                    element.classList.remove("active", "bg-gradient-primary");
-                }
+                /*   if (pagesAllProducts.includes(desiredPart)) {
+                      var element = document.getElementById("all-products");
+                      element.classList.add("active", "bg-gradient-primary");
+                  } else {
+                      var element = document.getElementById("all-products");
+                      element.classList.remove("active", "bg-gradient-primary");
+                  } */
             }
 
         });

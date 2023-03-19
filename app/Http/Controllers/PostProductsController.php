@@ -15,14 +15,28 @@ class PostProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $dataAll = DB::table('post_products');
+        $search = $request['search'];
+        if ($search !== null) {
+            
+            $dataAll =  $dataAll
+            ->where('id_user', Auth::user()->id)
+            ->where('name_products', 'like', "$search%")
+            ->orWhere('product_price', 'like', "$search%")
+            ->orderBy('id','DESC')
+            ->paginate(100);
+            return view('post_products.index',['dataAll' =>  $dataAll]);
+        }else {
+            $dataAll =  $dataAll
+            ->where('id_user', Auth::user()->id)
+            ->orderBy('id','DESC')
+            ->paginate(50);
+            return view('post_products.index',['dataAll' =>  $dataAll]);
+        }
 
-        $dataAll = DB::table('post_products')
-        ->where('id_user', Auth::user()->id)
-        ->orderBy('id','DESC')
-        ->paginate(50);
-        return view('post_products.index',['dataAll' =>  $dataAll]);
+       
     }
 
     /**

@@ -18,6 +18,8 @@
                                         ลำดับ
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+                                        ชื่อบัญชี</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
                                         จำนวนเงิน</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -48,6 +50,9 @@
                                     <tr>
                                         <td>
                                             <p>{{ $i++ }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->bank_name }}</p>
                                         </td>
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0">{{ $data->point }}</p>

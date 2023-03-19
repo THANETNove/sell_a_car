@@ -27,12 +27,24 @@ class MoneyCustomersController extends Controller
     {
         //
     }
-    public function products()
+    public function products(Request $request)
     {
-        $dataAll = DB::table('post_products')
-        ->orderBy('id','DESC')
-        ->paginate(50);
-        return view('post_all_products.index',['dataAll' =>  $dataAll]);
+        $dataAll = DB::table('post_products');
+        $search = $request['search'];
+        if ($search != null) {
+            $dataAll =  $dataAll
+            ->where('name_products', 'like', "$search%")
+            ->orWhere('product_price', 'like', "$search%")
+            ->orderBy('id','DESC')
+            ->paginate(100);
+            return view('post_products.index',['dataAll' =>  $dataAll]);
+        }else{
+            $dataAll =  $dataAll
+            ->orderBy('id','DESC')
+            ->paginate(50);
+            return view('post_all_products.index',['dataAll' =>  $dataAll]);
+        }
+
     }
 
     /**

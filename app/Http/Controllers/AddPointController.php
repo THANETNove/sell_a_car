@@ -50,6 +50,7 @@ class AddPointController extends Controller
 
         $member = new AddPoint;
         $member->id_user =Auth::user()->id;
+        $member->bank_name = $request['bank_name'];
         $member->point = $request['point'];
         $member->date = $request['date'];
         $member->status = 'null';
