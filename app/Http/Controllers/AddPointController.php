@@ -19,7 +19,7 @@ class AddPointController extends Controller
      */
     public function index()
     {
-        $data = DB::table('add_points')->where('id_user', Auth::user()->id)->get();
+        $data = DB::table('add_points')->where('id_user', Auth::user()->id)->paginate(50);
         return view('add_point.index',['data' => $data]);
     }
 

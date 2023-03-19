@@ -6,10 +6,10 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 beet">
-                        <h6 class="text-white text-capitalize ps-3">ประวัติการเติมเงิน</h6>
+                        <h6 class="text-white text-capitalize ps-3">รายการสิค้าที่ขาย</h6>
                         <h6 class="text-white text-capitalize ps-3">
-                            <a href="{{ url('/create_point') }}" class="btn btn-outline-light">
-                                เติมเงิน
+                            <a href="{{ url('/create-post_products') }}" class="btn btn-outline-light">
+                                post สินค้า
                             </a>
                         </h6>
                     </div>
@@ -23,16 +23,16 @@
                                         ลำดับ
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                        จำนวนเงิน</th>
+                                        ชื่อสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ว/ด/ป สลิป</th>
+                                        รายละเอียดสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ธนาคาร</th>
+                                        ราคาสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ช่องทางชำระอื่นๆ
+                                        Hon Zone
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -42,62 +42,81 @@
                                         สถานะ</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        date</th>
+                                        created_at
+                                    </th>
+
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        updated_at</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($data as $val)
+                                @foreach ($dataAll as $data)
                                     <tr>
                                         <td>
                                             <p>{{ $i++ }}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $val->point }}</p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $val->date }}</span>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->name_products }}</p>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $val->point_bank_name }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_details }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $val->other }}</span>
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_price }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <img id="myImg{{ $val->id }}"
-                                                src="{{ URL::asset('/img/slip/' . '' . $val->images) }}"
-                                                onclick="showImage(this,{{ $val->id }})" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal" height="90px" width="80px" alt="...">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->hot_zone_price }}</span>
+                                        </td>
+                                        @php
+                                            $img = json_decode($data->image);
+                                            $idimg = 0;
+                                        @endphp
+                                        <td class="align-middle text-center">
+                                            @foreach ($img as $imgUrl)
+                                                <img src="{{ URL::asset('/img/product/' . '' . $imgUrl) }}"
+                                                    {{--  onclick="showImage( $imgUrl)"  --}} onclick="myFunction(`{{ $imgUrl }}`)"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal" height="50px"
+                                                    width="50px" alt="...">
+                                            @endforeach
+
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if ($val->status == 'approved')
+                                            @if ($data->status == 'expired')
+                                                <span class="badge badge-sm bg-gradient-danger">หมดอายุเเล้ว</span>
+                                            @elseif($data->status == 'cancelSale')
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">เติมเงินเข้าสู่ระบบเรียบร้อย</span>
-                                            @elseif($val->status == 'reject')
-                                                <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-danger">สลิปของคุณไม่ผ่าน</span>
+                                                    class="badge badge-sm badge badge badge-sm bg-gradient-secondary">ยกเลิกการขาย</span>
                                             @else
                                                 <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-secondary">รอการตรวจสอบ</span>
+                                                    class="badge badge-sm badge badge badge-sm bg-gradient-success">กำลังขาย</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $val->created_at }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->created_at }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->updated_at }}</span>
                                         </td>
 
                                     </tr>
                                 @endforeach
+                                {{--   {{ $data->links() }} --}}
                             </tbody>
                         </table>
                         <div style="margin-left: 1%">
                             <samp class="links-css">
-                                {!! $data->links() !!}
+                                {!! $dataAll->links() !!}
                             </samp>
                         </div>
                     </div>
@@ -115,11 +134,10 @@
         </div>
     </div>
     <script>
-        function showImage(element, i) {
-            var modal = document.getElementById('myModal');
-            var img = document.getElementById('myImg' + i).src;
-            console.log("img", img);
-            document.getElementById('img1').src = img;
+        function myFunction(image) {
+            const imgSrc = "{{ URL::asset('img/product/') }}/" + image;
+            document.getElementById('img1').src = imgSrc;
+            console.log("element", imgSrc);
         }
     </script>
 @endsection

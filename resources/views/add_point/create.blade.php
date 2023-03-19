@@ -20,14 +20,18 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
+                                        <label class="form-label">ชื่อบัญชี</label>
+                                        <input type="number" class="form-control " name="bank_name" required>
+                                    </div>
+                                    <div class="input-group input-group-outline my-3">
                                         <label class="form-label">จำนวนเงิน</label>
                                         <input type="number" class="form-control  @error('point') is-invalid @enderror"
                                             name="point" required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">ว/ด/ป/เวลา สลิป</label>
-                                        <input type="text" class="form-control  @error('car_name') is-invalid @enderror"
-                                            name="date" required>
+                                        <label class="form-label">ว/ด/ป/เวลา สลิป (ตัวอย่าง 8 ม.ค 66 11:54)</label>
+                                        <input type="text" class="form-control" {{-- placeholder="8 ม.ค 66 11:54" --}} name="date"
+                                            required>
                                     </div>
                                     <div class="input-group input-group-outline my-3">
                                         <select class="form-select" name="point_bank_name"

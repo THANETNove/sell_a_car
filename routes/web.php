@@ -63,6 +63,7 @@ Route::post('/add-point', [AddPointController::class, 'store']);
 Route::put('/update-point/{id}', [AddPointController::class, 'update']);
 
 Route::get('/money-customers', [MoneyCustomersController::class, 'index']);
+Route::get('/all-products', [MoneyCustomersController::class, 'products']);
 
 Route::get('/point-loweste', [PointLowestController::class, 'index']);
 Route::post('/add-point_loweste', [PointLowestController::class, 'store']);

@@ -21,9 +21,18 @@ class MoneyCustomersController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+
     public function create()
     {
         //
+    }
+    public function products()
+    {
+        $dataAll = DB::table('post_products')
+        ->orderBy('id','DESC')
+        ->paginate(50);
+        return view('post_all_products.index',['dataAll' =>  $dataAll]);
     }
 
     /**

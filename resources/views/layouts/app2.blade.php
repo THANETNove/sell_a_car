@@ -20,6 +20,8 @@
     {{--  active --}}
     <script>
         $(window).load(function() {
+
+
             var status = document.getElementById("status-auth").value;
             console.log("status", status);
             const pathname = window.location.pathname;
@@ -28,26 +30,27 @@
             const pagesStore = ['post_products', 'edit-post_products',
                 'renew-post_products', 'home'
             ]; // เมนู รายการขาย user
-            const pagesAdd_point = ['add_point', 'create_point']; // เมนู เติมเงิน  user
-            const pagesAddress = ['address']; // เมนู address  user
-            const pagesPointLoweste = ['point-loweste']; // เมนู address  user money-customers
+            const pagesAdd_point = ['add_point', 'create_point']; // เมนู เติมเงิน user
+            const pagesAddress = ['address']; // เมนู address user
+            const pagesPointLoweste = ['point-loweste']; // เมนู address user money-customers
             const pagesMoneyCustomers = ['home', 'money-customers'];
             const pagesCar_brand = ['car_brand', 'add-car_brand', 'edit-car_brand'];
             const pagesCar_model = ['car_model', 'add-model_car', 'edit-model_name'];
             const pagesBank_name = ['bank_name', 'create_bank_name'];
+            const pagesAllProducts = ['all-products'];
 
 
             if (status !== "admin") {
                 if (pagesStore.includes(desiredPart)) {
                     var element = document.getElementById("storeUser");
                     element.classList.add("active", "bg-gradient-primary");
-                    /*                 var element = document.getElementById("money-customers");
-                                    element.classList.add("active", "bg-gradient-primary"); */
+                    /* var element = document.getElementById("money-customers");
+                    element.classList.add("active", "bg-gradient-primary"); */
                 } else {
                     var element = document.getElementById("storeUser");
                     element.classList.remove("active", "bg-gradient-primary");
-                    /*  var element = document.getElementById("money-customers");
-                     element.classList.add("active", "bg-gradient-primary"); */
+                    /* var element = document.getElementById("money-customers");
+                    element.classList.add("active", "bg-gradient-primary"); */
                 }
 
                 if (pagesAdd_point.includes(desiredPart)) {
@@ -102,6 +105,13 @@
                     element.classList.add("active", "bg-gradient-primary");
                 } else {
                     var element = document.getElementById("bank_name");
+                    element.classList.remove("active", "bg-gradient-primary");
+                }
+                if (pagesAllProducts.includes(desiredPart)) {
+                    var element = document.getElementById("all-products");
+                    element.classList.add("active", "bg-gradient-primary");
+                } else {
+                    var element = document.getElementById("all-products");
                     element.classList.remove("active", "bg-gradient-primary");
                 }
             }
