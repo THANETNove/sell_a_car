@@ -1,4 +1,8 @@
 <div class="col-lg-3">
+    @php
+        $carBrands = DB::table('car_brands')->get();
+        $carModels = DB::table('car_models')->get();
+    @endphp
     <div class="left_sidebar_area">
         <aside class="left_widgets p_filter_widgets">
             <div class="l_w_title">
@@ -11,6 +15,7 @@
                     <li>
                         <a href="{{ url('/') }}">รถยนต์ทั้งหมด</a>
                     </li>
+
                     @foreach ($carBrands as $dataCar)
                         <li>
                             <a href="{{ url('/search', $dataCar->car_brands_name) }}">{{ $dataCar->car_brands_name }}</a>

@@ -11,92 +11,9 @@
     <!-- Header part end-->
 
     <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-11">
-                    <div class="banner_slider owl-carousel">
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="text-car">
-                                    <div class="col-lg-5 col-md-8">
-                                        <div class="banner_text">
-                                            <div class="banner_text_iner">
-                                                <h1>Car & 2nd hand car</h1>
-                                                <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                    suspendisse ultrices gravida. Risus commodo viverra</p>
-                                                <a href="#" class="btn_2">buy now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="car-imag">
-                                    <div class="banner_img  d-lg-block">
-                                        <img src="{{ URL::asset('img/car1.png') }}" alt="">
-                                        <div class="buy-now">
-                                            <br>
-                                            <a href="#" class="btn_2">buy now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="text-car">
-                                    <div class="col-lg-5 col-md-8">
-                                        <div class="banner_text">
-                                            <div class="banner_text_iner">
-                                                <h1>Car & 2nd hand car</h1>
-                                                <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                    suspendisse ultrices gravida. Risus commodo viverra</p>
-                                                <a href="#" class="btn_2">buy now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="car-imag">
-                                    <div class="banner_img  d-lg-block">
-                                        <img src="{{ URL::asset('img/car2.png') }}" alt="">
-                                        <div class="buy-now">
-                                            <br>
-                                            <a href="#" class="btn_2">buy now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="text-car">
-                                    <div class="col-lg-5 col-md-8">
-                                        <div class="banner_text">
-                                            <div class="banner_text_iner">
-                                                <h1>Car & 2nd hand car</h1>
-                                                <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                    suspendisse ultrices gravida. Risus commodo viverra</p>
-                                                <a href="#" class="btn_2">buy now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="car-imag">
-                                    <div class="banner_img  d-lg-block">
-                                        <img src="{{ URL::asset('img/car4.png') }}" alt="">
-                                        <div class="buy-now">
-                                            <br>
-                                            <a href="#" class="btn_2">buy now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-counter"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+    @include('./head/head_slide')
+
     <!-- banner part start-->
 
     <!-- feature_part start-->
@@ -126,16 +43,19 @@
                                         @endphp
                                         <div class="col-lg-3 col-sm-6">
                                             <div class="single_product_item">
+                                                <a href="{{ url('select-car', $data_zone->id) }}">
+                                                    <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}"
+                                                        height="180px" width="200px" alt="...">
+                                                </a>
 
-                                                <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}"
-                                                    height="180px" width="200px" alt="...">
 
                                                 {{--     <img src="img/product/product_1.png" alt=""> --}}
                                                 <div class="single_product_text">
                                                     <h4>{{ $data_zone->name_products }}</h4>
                                                     <h3 class="text-span">{{ number_format($data_zone->product_price) }}
                                                         บาท</h3>
-                                                    <a href="#" class="add_cart">+ add to cart<i
+                                                    <a href="{{ url('select-car', $data_zone->id) }}"
+                                                        class="add_cart">ดูรายละเอียดเพิ่มเติม<i
                                                             class="ti-heart"></i></a>
                                                 </div>
                                             </div>
@@ -179,12 +99,16 @@
                             @endphp
                             <div class="col-lg-4 col-sm-6">
                                 <div class="single_product_item">
-                                    <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
-                                        width="100%" alt="...">
+                                    <a href="{{ url('select-car', $datazone->id) }}">
+                                        <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
+                                            width="100%" alt="...">
+                                    </a>
+
                                     <div class="single_product_text">
                                         <h4>{{ $datazone->name_products }}</h4>
                                         <h3 class="text-span">{{ number_format($datazone->product_price) }} บาท</h3>
-                                        <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                        <a href="{{ url('select-car', $datazone->id) }}"
+                                            class="add_cart">ดูรายละเอียดเพิ่มเติม<i class="ti-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -241,13 +165,15 @@
                                 
                             @endphp
                             <div class="single_product_item">
-                                <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
-                                    width="200px" alt="...">
+                                <a href="{{ url('select-car', $dataone->id) }}"><img
+                                        src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
+                                        width="200px" alt="..."></a>
                                 <div class="single_product_text">
                                     <h4>{{ $dataone->name_products }}</h4>
                                     <h3 class="text-span">{{ number_format($dataone->product_price) }} บาท
                                     </h3>
-
+                                    <a href="{{ url('select-car', $dataone->id) }}"
+                                        class="add_cart">ดูรายละเอียดเพิ่มเติม<i class="ti-heart"></i></a>
                                 </div>
                             </div>
                         @endforeach
@@ -269,20 +195,7 @@
                         <div class="col-lg-12">
                             <div class="product_top_bar d-flex justify-content-between align-items-center">
                                 <div class="single_product_menu">
-
                                     <p>สินค้าทั้งหมด <span>{{ $dataPag->count() }} รายการ </span></p>
-                                </div>
-
-
-                                <div class="single_product_menu d-flex">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="search"
-                                            aria-describedby="inputGroupPrepend">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroupPrepend"><i
-                                                    class="ti-search"></i></span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -297,13 +210,14 @@
 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="single_product_item">
-                                    <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}" height="180px"
-                                        width="200px" alt="...">
+                                    <a href="{{ url('select-car', $dataone->id) }}">
+                                        <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}" height="180px"
+                                            width="100%" alt="..."> </a>
                                     <div class="single_product_text">
                                         <h4>{{ $dataone->name_products }}</h4>
                                         <h3 class="text-span">{{ number_format($dataone->product_price) }} บาท
-                                            <a href="#" class="add_cart">+ add to cart<i
-                                                    class="ti-heart"></i></a>
+                                            <a href="{{ url('select-car', $dataone->id) }}" class="add_cart">
+                                                ดูรายละเอียดเพิ่มเติม<i class="ti-heart"></i></a>
                                     </div>
                                 </div>
                             </div>

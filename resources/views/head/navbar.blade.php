@@ -20,6 +20,10 @@
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ยี่ห้อรถ
                                 </a>
+                                @php
+                                    $carBrands = DB::table('car_brands')->get();
+                                    
+                                @endphp
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                                     @foreach ($carBrands as $dataCar)
                                         <a class="dropdown-item"
@@ -28,7 +32,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">สินค้าทั้งหมด</a>
+                                <a class="nav-link" href="{{ url('/all-car') }}">สินค้าทั้งหมด</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
@@ -55,9 +59,9 @@
                     <div class="hearer_icon d-flex">
                         {{--  <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
                         <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-twitter"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
                         <a href=""><i class="fab fa-line"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-twitter"></i></a>
                         {{--   <div class="dropdown cart">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

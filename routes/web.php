@@ -10,6 +10,7 @@ use App\Http\Controllers\AddPointController;
 use App\Http\Controllers\MoneyCustomersController;
 use App\Http\Controllers\PointLowestController;
 use App\Http\Controllers\PostProductsController;
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\DB;
 
 
@@ -76,11 +77,9 @@ Route::get('/search/{name}', function ($name) {
         ->orWhere('product_details', 'like', "$name%")
         ->orderBy('id','DESC')
         ->paginate(50);
-        $carBrands = DB::table('car_brands')->get();
-        $carModels = DB::table('car_models')->get();
+       
         
-        return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
-        'carBrands'=>$carBrands,'carModels'=> $carModels]);
+        return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag]);
     
 
 });
@@ -138,3 +137,5 @@ Route::get('/edit-post_products/{id}', [PostProductsController::class, 'edit']);
 Route::put('/update-post_products/{id}', [PostProductsController::class, 'update']);
 Route::get('/renew-post_products/{id}', [PostProductsController::class, 'renew']);
 Route::put('/update-renew/{id}', [PostProductsController::class, 'updateRenew']);
+Route::get('/all-car', [CarController::class, 'index']);
+Route::get('/select-car/{id}', [CarController::class, 'show']);
