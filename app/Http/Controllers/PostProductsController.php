@@ -78,9 +78,10 @@ class PostProductsController extends Controller
         }
     $member->image = json_encode($dateImg);
    
-    if ($request['hot_zone_price'] !== null) {
+    if ($request['hot_zone_price'] != "null") {
         $user = User::find(Auth::user()->id);
         $zone_price = $request['hot_zone_price'];
+
        $point =  $user->point;
         if( $zone_price <= $point) {
             $ponit =  $user->point - $request['hot_zone_price'];

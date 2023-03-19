@@ -10,6 +10,8 @@ use App\Http\Controllers\AddPointController;
 use App\Http\Controllers\MoneyCustomersController;
 use App\Http\Controllers\PointLowestController;
 use App\Http\Controllers\PostProductsController;
+use Illuminate\Support\Facades\DB;
+
 
 
 /*
@@ -24,7 +26,11 @@ use App\Http\Controllers\PostProductsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $dataHomZone = DB::table('post_products')
+    ->whereNotNull('hot_zone_price')->get();
+    dd($dataHomZone);
+    return view('welcome',["dataHomZone" => $dataHomZone]);
 });
 
 Auth::routes();

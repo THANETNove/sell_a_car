@@ -17,15 +17,17 @@
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0 text-center ">
+
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1 ">
+                                    <th
+                                        class="ext-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         ลำดับ
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                        ชื่อสินค้า</th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="ext-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        ชื่อสินค้า</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         รายละเอียดสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -64,9 +66,9 @@
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0">{{ $data->name_products }}</p>
                                         </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_details }}</span>
+                                        <td class="col-first">
+
+                                            <samp class="text-xs font-weight-bold mb-0">{{ $data->product_details }}</samp>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
@@ -83,9 +85,9 @@
                                         <td class="align-middle text-center">
                                             @foreach ($img as $imgUrl)
                                                 <img src="{{ URL::asset('/img/product/' . '' . $imgUrl) }}"
-                                                    {{--  onclick="showImage( $imgUrl)"  --}} onclick="myFunction(`{{ $imgUrl }}`)"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal" height="50px"
-                                                    width="50px" alt="...">
+                                                    onclick="myFunction(`{{ $imgUrl }}`)" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal" height="50px" width="50px"
+                                                    alt="...">
                                             @endforeach
 
 
@@ -139,7 +141,6 @@
 
                                     </tr>
                                 @endforeach
-                                {{--   {{ $data->links() }} --}}
                             </tbody>
                         </table>
                         <div style="margin-left: 1%">

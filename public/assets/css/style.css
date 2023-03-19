@@ -48,3 +48,16 @@
     background-color: var(--bs-pagination-active-bg);
     border-color: var(--bs-pagination-active-border-color);
 }
+
+.col-first samp {
+    word-wrap: break-word !important;
+
+    /*  width: 300px !important;
+    height: auto; */
+    /* กำหนดความกว้าง 100px */
+}
+
+.table td,
+.table th {
+    white-space: normal !important;
+}
