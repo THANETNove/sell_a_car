@@ -10,15 +10,14 @@
         </nav>
         <?php
         $pathname = $_SERVER['REQUEST_URI'];
-        $pathParts = explode('/', $pathname);
-        $desiredPart = $pathParts[4];
+        $ex = explode('/', $pathname);
+        $desiredPart = $ex[3];
+        
         ?>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             @if ($desiredPart == 'post_products' || $desiredPart == 'all-products' || $desiredPart == 'home')
                 <div class="ms-md-auto pe-md-4 d-flex align-items-center">
                     <div class="input-group input-group-outline">
-                        {{--  <label class="form-label">Search</label>
-                    <input type="text" class="form-control"> --}}
                         <form
                             @if ($desiredPart == 'post_products') action="{{ url('/post_products') }}"
                              @elseif($desiredPart == 'all-products')  action="{{ url('/all-products') }}"
@@ -55,8 +54,6 @@
                     </a>
                     <input type="text" id='status-auth' name="users" value="{{ Auth::user()->status }}"
                         style="display:none;">
-
-                    {{--     <p id='status-auth' style="display:none">{{ Auth::user()->status }}</p> --}}
                 </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">

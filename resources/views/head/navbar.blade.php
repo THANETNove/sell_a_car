@@ -1,8 +1,9 @@
-<header class="main_menu home_menu">
-    <div class="container">
+<header class="">
+    <div class="">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
+
+                {{--  <nav class="navbar fixed-top navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="{{ url('/') }}"> <img src="{{ URL::asset('/img/favicon.png') }}"
                             alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -57,25 +58,38 @@
                         </ul>
                     </div>
                     <div class="hearer_icon d-flex">
-                        {{--  <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> --}}
+                        <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                         <a href=""><i class="fab fa-facebook-f"></i></a>
                         <a href=""><i class="fab fa-line"></i></a>
                         <a href=""><i class="fab fa-instagram"></i></a>
                         <a href=""><i class="fab fa-twitter"></i></a>
-                        {{--   <div class="dropdown cart">
+                        <div class="dropdown cart">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cart-plus"></i>
                             </a>
-                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <div class="single_product">
 
                                 </div>
                             </div>
 
-                        </div> --}}
+                        </div>
                     </div>
-                </nav>
+                </nav> --}}
+                <div class="bg-lg">
+                    <nav class="navbar bg-primary fixed-top" data-bs-theme="dark">
+                        <div class="container-fluid">
+                            <a class="navbar-brand">Navbar</a>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+
             </div>
         </div>
     </div>

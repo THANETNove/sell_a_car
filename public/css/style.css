@@ -8072,4 +8072,37 @@ h6 {
   color: #ff3368;
 }
 
+.bg-lg {
+  margin-top: 50px !important;
+}
+
+.bg-lg .bg-primary {
+  background-image: linear-gradient(to right, #ff3368, #ff6d00);
+
+}
+
+.bg-lg .btn-outline-success {
+  margin-left: 20px;
+  color: #f0e9ff;
+  border-color: #ffc107;
+  background-color: #150d0d;
+
+}
+
+.bg-lg .btn-outline-success:hover {
+  margin-left: 20px;
+  color: #f0e9ff;
+  border-color: #ffc107;
+  background-color: #4e454bc4;
+
+}
+
+.bg-lg .btn-outline-success:active {
+  margin-left: 20px;
+  color: #f0e9ff;
+  border-color: #ffc107;
+  background-color: #4e454bc4;
+
+}
+
 /*# sourceMappingURL=style.css.map */
