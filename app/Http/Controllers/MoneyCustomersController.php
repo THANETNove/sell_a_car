@@ -8,25 +8,38 @@ use Auth;
 
 class MoneyCustomersController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $search = $request['search'];
-        if ($search != null) {
-        $data = DB::table('add_points')->where('add_points.status', 'null')
-        ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
-        ->select('add_points.*', 'users.username')
-        ->where('users.username', 'like', "$search%")->paginate(1);
-        
-        return view('money_customers.index',['data' => $data]);
-        }else {
-            $data = DB::table('add_points')->where('add_points.status', 'null')
-            ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
-            ->select('add_points.*', 'users.username')
-            ->paginate(100);
-            return view('money_customers.index',['data' => $data]);
+        if (Auth::user()->status == "admin") {
+            $search = $request['search'];
+            if ($search != null) {
+                $data = DB::table('add_points')->where('add_points.status', 'null')
+                ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+                ->select('add_points.*', 'users.username')
+                ->where('users.username', 'like', "$search%")->paginate(1);
+                return view('money_customers.index',['data' => $data]);
+            }else {
+                $data = DB::table('add_points')->where('add_points.status', 'null')
+                ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+                ->select('add_points.*', 'users.username')
+                ->paginate(100);
+                return view('money_customers.index',['data' => $data]);
+            }
+        }else{
+            return view('home');
         }
     }
 
@@ -41,20 +54,24 @@ class MoneyCustomersController extends Controller
     }
     public function products(Request $request)
     {
-        $dataAll = DB::table('post_products');
-        $search = $request['search'];
-        if ($search != null) {
-            $dataAll =  $dataAll
-            ->where('name_products', 'like', "$search%")
-            ->orWhere('product_price', 'like', "$search%")
-            ->orderBy('id','DESC')
-            ->paginate(100);
-            return view('post_products.index',['dataAll' =>  $dataAll]);
-        }else{
-            $dataAll =  $dataAll
-            ->orderBy('id','DESC')
-            ->paginate(50);
-            return view('post_all_products.index',['dataAll' =>  $dataAll]);
+        if (Auth::user()->status == "admin") { 
+            $dataAll = DB::table('post_products');
+            $search = $request['search'];
+            if ($search != null) {
+                $dataAll =  $dataAll
+                ->where('name_products', 'like', "$search%")
+                ->orWhere('product_price', 'like', "$search%")
+                ->orderBy('id','DESC')
+                ->paginate(100);
+                return view('post_products.index',['dataAll' =>  $dataAll]);
+            }else{
+                $dataAll =  $dataAll
+                ->orderBy('id','DESC')
+                ->paginate(50);
+                return view('post_all_products.index',['dataAll' =>  $dataAll]);
+            }
+        }else {
+            return view('home');
         }
 
     }
