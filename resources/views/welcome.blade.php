@@ -22,17 +22,11 @@
 
                     <div class="best_product_slider owl-carousel">
                         @foreach ($data as $dataone)
-                            @php
-                                $img = json_decode($dataone->image);
-                                
-                            @endphp
                             <div class="single_product_item">
-                                <a href="{{ url('select-car', $dataone->id) }}"><img
-                                        src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
+                                <a><img src="{{ URL::asset('/img/advert/' . '' . $dataone->image) }}" height="180px"
                                         width="200px" alt="..."></a>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>
@@ -40,7 +34,7 @@
     </section>
 
 
-    <section class="">
+    <section class="lg-ht">
         <div class="container">
             <div class="row">
                 @include('./head/manu')
@@ -57,8 +51,12 @@
                         </div>
                     </div>
 
+
                     <div class="row align-items-center latest_product_inner">
                         @foreach ($dataZone as $datazone)
+                            {{--   @php
+                                dd($datazone->name_products);
+                            @endphp --}}
                             @php
                                 $img = json_decode($datazone->image);
                                 
@@ -121,13 +119,13 @@
 
                             <div class="col-lg-4 col-sm-6 col-6">
                                 <div class="single_product_item">
-                                    <a href="{{ url('select-car', $dataone->id) }}">
+                                    <a href="{{ url('select-car', $data_pag->id) }}">
                                         <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}" height="180px"
                                             width="100%" alt="..."> </a>
                                     <div class="single_product_text">
-                                        <h4>{{ $dataone->name_products }}</h4>
-                                        <h3 class="text-span">{{ number_format($dataone->product_price) }} บาท
-                                            <a href="{{ url('select-car', $dataone->id) }}" class="add_cart">
+                                        <h4>{{ $data_pag->name_products }}</h4>
+                                        <h3 class="text-span">{{ number_format($data_pag->product_price) }} บาท
+                                            <a href="{{ url('select-car', $data_pag->id) }}" class="add_cart">
                                                 ดูรายละเอียดเพิ่มเติม<i class="ti-heart"></i></a>
                                     </div>
                                 </div>

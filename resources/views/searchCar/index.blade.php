@@ -12,7 +12,7 @@
     <!-- Header part end-->
 
     <!-- banner part start-->
-    @include('./head/head_slide')
+    {{--     @include('./head/head_slide') --}}
 
 
 

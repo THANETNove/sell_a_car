@@ -69,6 +69,14 @@
                         <span class="nav-link-text ms-1">รายการขาย</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a id="all-products" class="nav-link text-white " href="{{ url('/advert') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">dashboard</i>
+                        </div>
+                        <span class="nav-link-text ms-1">โฆษณา</span>
+                    </a>
+                </li>
             @endif
 
             {{-- !**  user ทั่วไป  --}}

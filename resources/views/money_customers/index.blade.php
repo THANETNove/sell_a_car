@@ -34,10 +34,10 @@
                                         ช่องทางชำระอื่นๆ
                                     </th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder  opacity-7">
                                         รูปภาพ</th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder  opacity-7">
                                         สถานะ</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -80,8 +80,8 @@
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            <div style="padding-left: 100px">
-                                                <div class="row col-10">
+                                            <div>
+                                                <div class="row col-12">
                                                     <div class="col-12 col-md-6">
                                                         <form role="form" class="text-start" method="POST"
                                                             action="{{ url('update-point', $data1->id) }}">

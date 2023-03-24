@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AddressController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\MoneyCustomersController;
 use App\Http\Controllers\PointLowestController;
 use App\Http\Controllers\PostProductsController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\AdvertController;
 use Illuminate\Support\Facades\DB;
 
 
@@ -28,59 +30,74 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
 
-    $dataHomZone = DB::table('post_products')
-    ->whereNotNull('hot_zone_price')
-    ->orderBy('hot_zone_price','DESC')
-    ->get();
+
+        $dataZone = DB::table('post_products')
+        ->orderBy('hot_zone_price','DESC')
+        ->whereNotNull('hot_zone_price')
+        ->paginate(50);
+    
+        $dataPag = DB::table('post_products')
+        ->orderBy('id','DESC')
+        ->whereNull('hot_zone_price')
+        ->paginate(50);
+    
+    $carBrands = DB::table('car_brands')->get();
+    $carModels = DB::table('car_models')->get();
+    $data = DB::table('adverts')->get();
+    return view('welcome',['dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
+    'carBrands'=>$carBrands,'carModels'=> $carModels]);
+});
+
+Route::post('/search', function (Request $request) {
+    $name = $request['search'];
+        
     $dataZone = DB::table('post_products')
     ->orderBy('hot_zone_price','DESC')
     ->whereNotNull('hot_zone_price')
+    ->where('name_products', 'like', "$name%")
+    ->orWhere('product_details', 'like', "$name%")
     ->paginate(50);
-    $data = DB::table('post_products')
-    ->orderBy('id','DESC')
-    ->whereNull('hot_zone_price')
-    ->get();
+
     $dataPag = DB::table('post_products')
     ->orderBy('id','DESC')
     ->whereNull('hot_zone_price')
+    ->where('name_products', 'like', "$name%")
+    ->orWhere('product_details', 'like', "$name%")
     ->paginate(50);
+
+    
     $carBrands = DB::table('car_brands')->get();
     $carModels = DB::table('car_models')->get();
-    
-    return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
+    $data = DB::table('adverts')->get();
+    return view('welcome',['dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
     'carBrands'=>$carBrands,'carModels'=> $carModels]);
 });
+
+
 Route::get('/search/{name}', function ($name) {
 
-        $dataHomZone = DB::table('post_products')
-        ->whereNotNull('hot_zone_price')
-        ->where('name_products', 'like', "$name%")
-        ->orWhere('product_details', 'like', "$name%")
-        ->orderBy('hot_zone_price','DESC')
-        ->get();
+   
         $dataZone = DB::table('post_products')
         ->whereNotNull('hot_zone_price')
         ->where('name_products', 'like', "$name%")
         ->orWhere('product_details', 'like', "$name%")
         ->orderBy('hot_zone_price','DESC')
         ->paginate(50);
-        $data = DB::table('post_products')
-        ->whereNull('hot_zone_price')
-        ->where('name_products', 'like', "$name%")
-        ->orWhere('product_details', 'like', "$name%")
-        ->orderBy('id','DESC')
-      
-        ->get();
         $dataPag = DB::table('post_products')
         ->whereNull('hot_zone_price')
         ->where('name_products', 'like', "$name%")
         ->orWhere('product_details', 'like', "$name%")
         ->orderBy('id','DESC')
         ->paginate(50);
-       
+
+
+    $carBrands = DB::table('car_brands')->get();
+    $carModels = DB::table('car_models')->get();
+    $data = DB::table('adverts')->get();
+    return view('welcome',['dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
+    'carBrands'=>$carBrands,'carModels'=> $carModels]);
         
-        return view('welcome',["dataHomZone" => $dataHomZone,'dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag]);
-    
+ 
 
 });
 
@@ -140,3 +157,12 @@ Route::get('/renew-post_products/{id}', [PostProductsController::class, 'renew']
 Route::put('/update-renew/{id}', [PostProductsController::class, 'updateRenew']);
 Route::get('/all-car', [CarController::class, 'index']);
 Route::get('/select-car/{id}', [CarController::class, 'show']);
+
+
+Route::get('/advert', [AdvertController::class, 'index']);
+Route::get('/create-advert', [AdvertController::class, 'create']);
+Route::get('/edit-advert/{id}', [AdvertController::class, 'edit']);
+Route::post('/add-advert', [AdvertController::class, 'store']);
+Route::put('/update-advert/{id}', [AdvertController::class, 'update']);
+Route::put('/update-advert/{id}', [AdvertController::class, 'update']);
+Route::get('/delete-advert/{id}', [AdvertController::class, 'destroy']);

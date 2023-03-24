@@ -129,7 +129,7 @@ class PostProductsController extends Controller
     public function update(Request $request, string $id)
     {
         $dateText = Str::random(12);
-        $member =  PostProducts::find($id);;
+        $member =  PostProducts::find($id);
         $member->name_products = $request['name_products'];
         $member->product_details = $request['product_details'];
         $member->product_price = $request['product_price'];
@@ -170,6 +170,7 @@ class PostProductsController extends Controller
 
         return redirect('post_products')->with('message', "บันทึกสำเร็จ" );
     }
+
 public  function updateRenew(Request $request, string $id)
 {
    
