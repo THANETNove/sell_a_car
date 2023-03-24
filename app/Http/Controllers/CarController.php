@@ -12,12 +12,27 @@ class CarController extends Controller
     /**
      * Display a listing of the resource.
      */
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index()
     {
-        $dataZone = DB::table('post_products')
-        ->orderBy('hot_zone_price','DESC')
-        ->paginate(50);
-        return view('searchCar.all_car',['dataZone' => $dataZone ]);
+        if (Auth::user()->status == "admin") {
+            $dataZone = DB::table('post_products')
+            ->orderBy('hot_zone_price','DESC')
+            ->paginate(50);
+            return view('searchCar.all_car',['dataZone' => $dataZone ]);
+        }else{
+            return view('home');
+        }
     }
 
     /**

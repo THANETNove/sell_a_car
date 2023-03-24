@@ -13,14 +13,28 @@ class CarBrandController extends Controller
     /**
      * Display a listing of the resource.
      */
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index()
     {
-        $data = DB::table('car_brands')
-        ->orderBy('id','DESC')
-        ->get();
-       
-
-        return view('car_brand.index',['data' => $data]);
+        if (Auth::user()->status == "admin") {
+            $data = DB::table('car_brands')
+            ->orderBy('id','DESC')
+            ->get();
+        
+            return view('car_brand.index',['data' => $data]);
+        }else {
+            return view('home');
+        }
     }
 
     /**

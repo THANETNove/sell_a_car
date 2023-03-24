@@ -12,6 +12,17 @@ class AddressController extends Controller
     /**
      * Display a listing of the resource.
      */
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index()
     {
         $menus = DB::table('addresses')->where('user_id', Auth::user()->id)->count();

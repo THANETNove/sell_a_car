@@ -9,24 +9,41 @@ use Auth;
 
 class PointLowestController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
 
-        $menus = DB::table('point_lowests')->count();
-       
-        if ($menus) {
-            $data = DB::table('point_lowests')->get();
-         /*    $data = Address::find(Auth::user()->id); */
-            return view('point_loweste.edit', ['data' => $data]);
+        if (Auth::user()->status == "admin") {
+            $menus = DB::table('point_lowests')->count();
+            if ($menus) {
+                    $data = DB::table('point_lowests')->get();
+                /*    $data = Address::find(Auth::user()->id); */
+                    return view('point_loweste.edit', ['data' => $data]);
 
-        }else{
-            return view('point_loweste.index');
+                }else{
+                    return view('point_loweste.index');
+                }
+            }else {
+                return view('home');
+            }
         }
+    
+     
 
-    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -13,10 +13,25 @@ class AdvertController extends Controller
     /**
      * Display a listing of the resource.
      */
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index()
     {
-        $data = DB::table('adverts')->get();
-        return view('advert.index',['data' => $data]);
+        if (Auth::user()->status == "admin") { 
+            $data = DB::table('adverts')->get();
+            return view('advert.index',['data' => $data]);
+        }else {
+            return view('home');
+        }
     }
 
     /**

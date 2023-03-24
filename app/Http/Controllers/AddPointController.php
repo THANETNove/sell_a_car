@@ -17,6 +17,17 @@ class AddPointController extends Controller
     /**
      * Display a listing of the resource.
      */
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index()
     {
         $data = DB::table('add_points')->where('id_user', Auth::user()->id)->paginate(50);
