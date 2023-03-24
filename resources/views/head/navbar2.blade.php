@@ -11,16 +11,21 @@
         <?php
         $pathname = $_SERVER['REQUEST_URI'];
         $ex = explode('/', $pathname);
-        $desiredPart = $ex[3];
+        $desiredPart = $ex[4];
         
         ?>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            @if ($desiredPart == 'post_products' || $desiredPart == 'all-products' || $desiredPart == 'home')
+            @if (
+                $desiredPart == 'post_products' ||
+                    $desiredPart == 'all-products' ||
+                    $desiredPart == 'home' ||
+                    $desiredPart == 'money-customers')
                 <div class="ms-md-auto pe-md-4 d-flex align-items-center">
                     <div class="input-group input-group-outline">
                         <form
                             @if ($desiredPart == 'post_products') action="{{ url('/post_products') }}"
                              @elseif($desiredPart == 'all-products')  action="{{ url('/all-products') }}"
+                             @elseif($desiredPart == 'money-customers')  action="{{ url('/money-customers') }}"
                              @elseif($desiredPart == 'home')  action="{{ url('/home') }}" @endif
                             method="post">
                             @csrf

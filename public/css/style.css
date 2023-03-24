@@ -2423,19 +2423,26 @@ ul {
 
   /* line 240, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .dropdown .dropdown-item:hover {
+    color: #ffffff !important;
+  }
+
+  .bg-lg ul li a {
     color: #ff3368 !important;
   }
 
   /* line 245, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .navbar-brand img {
     max-width: 100px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-left: 10px;
+    margin-top: 5px;
     position: absolute;
     left: 0;
     right: 0;
     display: inline-block;
     top: 0;
   }
+
 
   /* line 255, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .navbar-light .navbar-toggler {
@@ -8017,6 +8024,11 @@ h6 {
 }
 
 
+
+.bg-lg .navbar-brand {
+  margin-left: -50px;
+}
+
 .container2 {
   margin-top: 80px !important;
 }
@@ -8104,5 +8116,19 @@ h6 {
   background-color: #4e454bc4;
 
 }
+
+.bg-lg .navbar-brand {
+  margin-left: 20px;
+  color: #f0e9ff;
+  border-color: #ffc107;
+
+
+}
+
+.bg-lg ul li a {
+  color: #fff;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */

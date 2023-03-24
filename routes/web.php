@@ -120,6 +120,7 @@ Route::post('/add-point', [AddPointController::class, 'store']);
 Route::put('/update-point/{id}', [AddPointController::class, 'update']);
 
 Route::get('/money-customers', [MoneyCustomersController::class, 'index']);
+Route::post('/money-customers', [MoneyCustomersController::class, 'index']);
 Route::get('/all-products', [MoneyCustomersController::class, 'products']);
 Route::post('/all-products', [MoneyCustomersController::class, 'products']);
 

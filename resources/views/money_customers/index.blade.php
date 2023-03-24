@@ -18,6 +18,8 @@
                                         ลำดับ
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+                                        UserName</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
                                         ชื่อบัญชี</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
                                         จำนวนเงิน</th>
@@ -46,31 +48,34 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($data as $data)
+                                @foreach ($data as $data1)
                                     <tr>
                                         <td>
                                             <p>{{ $i++ }}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $data->bank_name }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data1->username }}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $data->point }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data1->bank_name }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data1->point }}</p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $data->date }}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{ $data1->date }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->point_bank_name }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data1->point_bank_name }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $data->other }}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{ $data1->other }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <img id="myImg{{ $data->id }}"
-                                                src="{{ URL::asset('/img/slip/' . '' . $data->images) }}"
-                                                onclick="showImage(this,{{ $data->id }})" data-bs-toggle="modal"
+                                            <img id="myImg{{ $data1->id }}"
+                                                src="{{ URL::asset('/img/slip/' . '' . $data1->images) }}"
+                                                onclick="showImage(this,{{ $data1->id }})" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal" height="90px" width="80px" alt="...">
 
                                         </td>
@@ -79,12 +84,12 @@
                                                 <div class="row col-10">
                                                     <div class="col-12 col-md-6">
                                                         <form role="form" class="text-start" method="POST"
-                                                            action="{{ url('update-point', $data->id) }}">
+                                                            action="{{ url('update-point', $data1->id) }}">
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="mb-3 my-3" style="display:none">
                                                                 <input type="text" class="form-control" name="add_point"
-                                                                    value="{{ $data->point }}"
+                                                                    value="{{ $data1->point }}"
                                                                     id="exampleFormControlInput1">
                                                                 <input type="text" class="form-control" name="app_rej"
                                                                     value="approved" id="exampleFormControlInput1">
@@ -94,12 +99,12 @@
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <form role="form" class="text-start" method="POST"
-                                                            action="{{ url('update-point', $data->id) }}">
+                                                            action="{{ url('update-point', $data1->id) }}">
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="mb-3 my-3" style="display:none">
                                                                 <input type="text" class="form-control" name="car_name"
-                                                                    value="{{ $data->point }}"
+                                                                    value="{{ $data1->point }}"
                                                                     id="exampleFormControlInput1">
                                                                 <input type="text" class="form-control" name="app_rej"
                                                                     value="reject" id="exampleFormControlInput1">
@@ -109,18 +114,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{--  --}}
-
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->created_at }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data1->created_at }}</span>
                                         </td>
 
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        {!! $data->links() !!}
                     </div>
                 </div>
             </div>

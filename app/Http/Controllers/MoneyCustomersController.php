@@ -11,11 +11,23 @@ class MoneyCustomersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'];
+        if ($search != null) {
+        $data = DB::table('add_points')->where('add_points.status', 'null')
+        ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+        ->select('add_points.*', 'users.username')
+        ->where('users.username', 'like', "$search%")->paginate(1);
         
-        $data = DB::table('add_points')->where('status', 'null')->get();
         return view('money_customers.index',['data' => $data]);
+        }else {
+            $data = DB::table('add_points')->where('add_points.status', 'null')
+            ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+            ->select('add_points.*', 'users.username')
+            ->paginate(100);
+            return view('money_customers.index',['data' => $data]);
+        }
     }
 
     /**

@@ -11,7 +11,7 @@
         @include('./head/navbar2')
         <div class="container-fluid py-4">
             @yield('content')
-            @include('./head/footer2')
+
         </div>
     </main>
 

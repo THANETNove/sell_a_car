@@ -30,13 +30,6 @@
                                 <a href="{{ url('select-car', $dataone->id) }}"><img
                                         src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
                                         width="200px" alt="..."></a>
-                                <div class="single_product_text">
-                                    <h4>{{ $dataone->name_products }}</h4>
-                                    <h3 class="text-span">{{ number_format($dataone->product_price) }} บาท
-                                    </h3>
-                                    <a href="{{ url('select-car', $dataone->id) }}"
-                                        class="add_cart">ดูรายละเอียดเพิ่มเติม<i class="ti-heart"></i></a>
-                                </div>
                             </div>
                         @endforeach
 
@@ -51,8 +44,6 @@
         <div class="container">
             <div class="row">
                 @include('./head/manu')
-
-
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-lg-12">
@@ -72,7 +63,7 @@
                                 $img = json_decode($datazone->image);
                                 
                             @endphp
-                            <div class="col-lg-4 col-sm-6">
+                            <div class="col-lg-4 col-sm-6 col-6">
                                 <div class="single_product_item">
                                     <a href="{{ url('select-car', $datazone->id) }}">
                                         <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
@@ -88,8 +79,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
                         <div class="col-lg-12">
                             {!! $dataZone->links() !!}
                         </div>
@@ -130,7 +119,7 @@
                                 
                             @endphp
 
-                            <div class="col-lg-4 col-sm-6">
+                            <div class="col-lg-4 col-sm-6 col-6">
                                 <div class="single_product_item">
                                     <a href="{{ url('select-car', $dataone->id) }}">
                                         <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}" height="180px"

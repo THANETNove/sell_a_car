@@ -1,4 +1,4 @@
-<div class="col-lg-3">
+<div class="col-lg-3 car-imag2">
     @php
         $carBrands = DB::table('car_brands')->get();
         $carModels = DB::table('car_models')->get();
