@@ -33,7 +33,9 @@ class HomeController extends Controller
             ->paginate(50);
             return view('post_products.index',['dataAll' =>  $dataAll]);
         }else{
-            $data = DB::table('add_points')->where('status', 'null')->get();
+            $data = DB::table('add_points')->where('add_points.status', 'null')
+            ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+            ->select('add_points.*', 'users.username')->paginate(100);
             return view('money_customers.index',['data' => $data]);
         }
       

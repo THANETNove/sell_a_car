@@ -36,70 +36,11 @@ Route::get('/', function () {
         ->whereNotNull('hot_zone_price')
         ->paginate(50);
     
-        $dataPag = DB::table('post_products')
-        ->orderBy('id','DESC')
-        ->whereNull('hot_zone_price')
-        ->paginate(50);
-    
-    $carBrands = DB::table('car_brands')->get();
-    $carModels = DB::table('car_models')->get();
-    $data = DB::table('adverts')->get();
-    return view('welcome',['dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
-    'carBrands'=>$carBrands,'carModels'=> $carModels]);
-});
-
-Route::post('/search', function (Request $request) {
-    $name = $request['search'];
-        
-    $dataZone = DB::table('post_products')
-    ->orderBy('hot_zone_price','DESC')
-    ->whereNotNull('hot_zone_price')
-    ->where('name_products', 'like', "$name%")
-    ->orWhere('product_details', 'like', "$name%")
-    ->paginate(50);
-
-    $dataPag = DB::table('post_products')
-    ->orderBy('id','DESC')
-    ->whereNull('hot_zone_price')
-    ->where('name_products', 'like', "$name%")
-    ->orWhere('product_details', 'like', "$name%")
-    ->paginate(50);
-
-    
-    $carBrands = DB::table('car_brands')->get();
-    $carModels = DB::table('car_models')->get();
-    $data = DB::table('adverts')->get();
-    return view('welcome',['dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
-    'carBrands'=>$carBrands,'carModels'=> $carModels]);
+    return view('welcome',['dataZone' => $dataZone]);
 });
 
 
-Route::get('/search/{name}', function ($name) {
 
-   
-        $dataZone = DB::table('post_products')
-        ->whereNotNull('hot_zone_price')
-        ->where('name_products', 'like', "$name%")
-        ->orWhere('product_details', 'like', "$name%")
-        ->orderBy('hot_zone_price','DESC')
-        ->paginate(50);
-        $dataPag = DB::table('post_products')
-        ->whereNull('hot_zone_price')
-        ->where('name_products', 'like', "$name%")
-        ->orWhere('product_details', 'like', "$name%")
-        ->orderBy('id','DESC')
-        ->paginate(50);
-
-
-    $carBrands = DB::table('car_brands')->get();
-    $carModels = DB::table('car_models')->get();
-    $data = DB::table('adverts')->get();
-    return view('welcome',['dataZone' => $dataZone,'data' => $data,'dataPag' => $dataPag,
-    'carBrands'=>$carBrands,'carModels'=> $carModels]);
-        
- 
-
-});
 
 Auth::routes();
 

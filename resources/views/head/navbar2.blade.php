@@ -11,7 +11,7 @@
         <?php
         $pathname = $_SERVER['REQUEST_URI'];
         $ex = explode('/', $pathname);
-        $desiredPart = $ex[4];
+        $desiredPart = $ex[3];
         
         ?>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">

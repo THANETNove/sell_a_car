@@ -2427,7 +2427,7 @@ ul {
   }
 
   .bg-lg ul li a {
-    color: #ff3368 !important;
+    color: #0719ed !important;
   }
 
   /* line 245, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
@@ -8089,8 +8089,21 @@ h6 {
 }
 
 .bg-lg .bg-primary {
-  background-image: linear-gradient(to right, #ff3368, #ff6d00);
+  background-color: #0693e3;
 
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+  font-size: 14px;
+  padding: 8px 20px !important;
+  color: #fff !important;
+  background-color: #0693e3;
+  text-transform: capitalize;
+}
+
+.dropdown .dropdown-menu {
+
+  background-color: #0693e3 !important;
 }
 
 .bg-lg .btn-outline-success {
@@ -8121,6 +8134,7 @@ h6 {
   margin-left: 20px;
   color: #f0e9ff;
   border-color: #ffc107;
+  margin-right: 30px;
 
 
 }
@@ -8129,6 +8143,83 @@ h6 {
   color: #fff;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: auto !important;
+  font-size: inherit;
+  line-height: inherit;
+}
 
+
+.navbar {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: inherit;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.container .box-image01-1 {
+  margin-top: 50px;
+}
+
+.box-manu01-1 {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #fff;
+  height: auto;
+}
+
+.text-Shop {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.text-hot {
+  margin-top: 20px;
+  font-size: 35px;
+}
+
+.text-hot-products {
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.text-name_products {
+  margin-top: 30px;
+}
+
+.box-img-home {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-category:hover {
+  color: #fcb900;
+}
+
+.image-car {
+  width: 150px;
+  height: 150px;
+}
+
+.image-car {
+  width: 150px;
+  height: 150px;
+}
+
+.image-car:hover {
+  transform: scale(1.1);
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
 
 /*# sourceMappingURL=style.css.map */

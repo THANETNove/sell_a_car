@@ -27,7 +27,7 @@
             const pathParts = pathname.split('/'); // แยกส่วน path ของ URL ด้วยเครื่องหมาย /
             console.log("pathname");
             console.log("pathParts", pathParts);
-            const desiredPart = pathParts[4];
+            const desiredPart = pathParts[3];
             const pagesStore = ['post_products', 'edit-post_products',
                 'renew-post_products', 'home'
             ]; // เมนู รายการขาย user
