@@ -92,7 +92,7 @@ class PostProductsController extends Controller
         $member->product_price = $request['product_price'];
         $member->categorie_name = $request['categorie_name'];
         $member->zom_name = $request['zom_name'];
-        $member->expiration_date = $request['expiration_date'];
+        $member->expiration_date = $future_date;
         $member->status = 'null';
      
 
@@ -201,12 +201,23 @@ class PostProductsController extends Controller
 
 public  function updateRenew(Request $request, string $id)
 {
-   
+    if ($request['zom_name'] == "null") {
+
+      /*   return redirect('renew-post_products')->with('errorZom', "กรุณาเลือกโซน" ); */
+      return back()->with('errorZom', "กรุณาเลือกโซน" );
+        }
+        dd('asdas');
+    $data = DB::table('point_lowests')->where('point_lowest',$request['zom_name'])->get();
+    $date_point = $data[0]->point_loweste_date;
+    $current_date = date('Y-m-d H:i:s');
+    $future_date = date('Y-m-d H:i:s', strtotime('+' . $date_point . ' days', strtotime($current_date)));
+
+
     $member =  PostProducts::find($id);
-    $member->name_products = $member->name_products;
-    $member->product_details = $member->product_details;
-    $member->product_price =  $member->product_price;
-    $member->hot_zone_price =  $member->hot_zone_price;
+    PostProducts::where('id', $id)
+    ->update(['status' => 'null'],['expiration_date' => 'null']);
+
+
     $member->status = 'null';
     $member->save();
     if ($request['hot_zone_price'] !== null) {

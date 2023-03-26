@@ -76,7 +76,7 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->hot_zone_price }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->zom_name }}</span>
                                         </td>
                                         @php
                                             $img = json_decode($data->image);
