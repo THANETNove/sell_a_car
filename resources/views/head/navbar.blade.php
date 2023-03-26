@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="bg-lg">
-                    <nav class="navbar fixed-top  bg-primary navbar-expand-lg  ">
+                    <nav class="navbar fixed-top  bg-primary navbar-expand-lg ">
                         <a class="navbar-brand car-imag2" href="{{ url('/') }}"> <img
                                 src="{{ URL::asset('/img/favicon.png') }}" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -51,18 +51,16 @@
 
                             </ul>
                         </div>
+                        <div class="hearer_icon d-flex">
 
-
-                        <form class="d-flex" role="search" action="{{ url('/search') }}" method="post">
-                            @csrf
-                            <input class="form-control me-2" type="search" name="search" placeholder="Search"
-                                aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-
+                            <form class="d-flex" role="search" action="{{ url('/search') }}" method="post">
+                                @csrf
+                                <input class="form-control me-2" type="search" name="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
                     </nav>
-
-
 
                     {{--   <nav class="navbar bg-primary fixed-top" data-bs-theme="dark">
                         <div class="container-fluid">

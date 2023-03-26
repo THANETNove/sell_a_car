@@ -59,8 +59,13 @@ class CarController extends Controller
         ->select('post_products.*',  'addresses.user_id','addresses.facebook', 'addresses.line', 'addresses.instagram', 'addresses.twitter')
         ->where('post_products.id',$id)
         ->get();
-   
+
+
+        $search1 = $dataZone[0]->name_products;
+        $search2 =  $dataZone[0]->product_details;
         $dataAll = DB::table('post_products')
+        ->where('name_products', 'like', "$search1%")
+        ->orWhere('product_details', 'like', "$search2%")
         ->orderBy('hot_zone_price','DESC')
         ->get();
 

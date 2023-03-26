@@ -139,8 +139,10 @@
                                         
                                     @endphp
                                     <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                        <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}"
-                                            class="image-car" height="150" width="150" alt="...">
+                                        <a href="{{ url('select-car', $data_pag->id) }}">
+                                            <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}"
+                                                class="image-car" height="150" width="150" alt="...">
+                                        </a>
                                         <h6 class="text-name_products">{{ $data_pag->name_products }}</h6>
                                         <p>{{ number_format($data_pag->product_price) }}</p>
                                     </div>
