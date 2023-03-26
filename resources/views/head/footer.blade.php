@@ -49,7 +49,7 @@
         </div>
     </div> --}}
 
-    <div class="copyright_part">
+    {{--     <div class="copyright_part">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </footer>
 <!--::footer_part end::-->
 
