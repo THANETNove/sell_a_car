@@ -34,7 +34,15 @@
                                         ราคาสินค้า</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Hon Zone
+                                        วันหมดอายุ
+                                    </th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        หมวดหมู่
+                                    </th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        โซน
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -76,7 +84,20 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->zom_name }}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->expiration_date }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data->categorie_name }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                @if ($data->zom_name == '0')
+                                                    โซน HOT
+                                                @else
+                                                    โซน ทั่วไป
+                                                @endif
+                                            </span>
                                         </td>
                                         @php
                                             $img = json_decode($data->image);

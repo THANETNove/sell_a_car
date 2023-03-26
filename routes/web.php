@@ -118,6 +118,7 @@ Route::get('/all-car', [CarController::class, 'index']);
 Route::get('/select-car/{id}', [CarController::class, 'show']);
 Route::post('/searchCar', [CarController::class, 'selectCar']);
 Route::get('/category-manu/{name}', [CarController::class, 'category']);
+Route::get('/searchPo-ma/{name}', [CarController::class, 'searchPoma']);
 
 
 Route::get('/advert', [AdvertController::class, 'index']);

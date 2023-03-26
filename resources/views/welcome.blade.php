@@ -36,10 +36,9 @@
                             <div class="row">
                                 @foreach ($manu as $manu)
                                     <div class="col-md-2 col-sm-6 col-6 box-img-home">
-
                                         <img src="{{ URL::asset('/img/icon/' . '' . $manu->image) }}" height="40"
                                             width="40" alt="...">
-                                        <a href="{{ url('/') }}">
+                                        <a href="{{ url('/searchPo-ma', $manu->categorie_name) }}">
                                             <p class="text-category">{{ $manu->categorie_name }}</p>
                                         </a>
                                     </div>

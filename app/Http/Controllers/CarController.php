@@ -23,6 +23,7 @@ class CarController extends Controller
     {
   
             $dataZone = DB::table('post_products')
+            ->where('status','!=' ,"expired")
             ->orderBy('zom_name','DESC')
             ->paginate(50);
             return view('searchCar.all_car',['dataZone' => $dataZone ]);
@@ -56,6 +57,32 @@ class CarController extends Controller
 
         return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
     }
+
+
+    public function searchPoma($name)
+    {
+
+
+        $dataZone = DB::table('post_products')
+        ->where('zom_name','!=',"0")
+        ->where('status','!=' ,"expired")
+        ->where('categorie_name', 'like', "$name%")
+        ->orderBy('id','ASC')
+        ->paginate(50);
+
+        
+        $dataGree = DB::table('post_products')
+        ->where('zom_name','=',"0")
+        ->where('status','!=' ,"expired")
+        ->where('categorie_name', 'like', "$name%")
+        ->orderBy('id','ASC')
+        ->paginate(50);
+
+
+        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
+    }
+
+
     public function category(Request $request,$name)
     {
 
