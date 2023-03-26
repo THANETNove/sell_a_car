@@ -40,8 +40,10 @@ Route::get('/', function () {
 
         $dataImage = DB::table('adverts')
         ->get();
+        $manu = DB::table('categories')
+        ->get();
     
-    return view('welcome',['dataZone' => $dataZone,'dataImage'=> $dataImage]);
+    return view('welcome',['dataZone' => $dataZone,'dataImage'=> $dataImage,'manu' => $manu]);
 });
 
 

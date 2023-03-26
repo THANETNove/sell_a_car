@@ -34,89 +34,16 @@
                         <div class="col-md-12 col-sm-12">
                             <p class="text-Shop">Shop by category</p>
                             <div class="row">
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
+                                @foreach ($manu as $manu)
+                                    <div class="col-md-2 col-sm-6 col-6 box-img-home">
 
-                                    <img src="{{ URL::asset('/img/icon/car.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <a href="{{ url('/') }}">
-                                        <p class="text-category">รถยนต์ มือสอง</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-2 col-sm-6  col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/motorbike.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">รถมอเตอร์ไซค์ มือสอง</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/smartphone.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">โทรศัพท์ มือถือ</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/camera.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">กล้องถ่ายรูป</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/desktop-computer.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">คอมพิวเตอ์</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/electric-appliance.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">เครื่องใช้ไฟฟ้า</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/clothes-hanger.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">>เสื้อผ้า เครื่องแต่งกาย</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/balls-sports.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">อุปกรณ์กีฬา</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/playtime.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">แม่และเด็ก</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/guitar.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">อุปกรณ์ดนตรี</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/game-console.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">เกมส์</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/bike.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">จักรยาน</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/smart-tv.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">โทรทัศน์ TV</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/chihuahua.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">>สัตว์เลี้ยง</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/wrist-watch.png') }}" height="40"
-                                        width="40" alt="...">
-                                    <p class="text-category">นาฬิกา</p>
-                                </div>
-                                <div class="col-md-2 col-sm-6 col-6 box-img-home">
-                                    <img src="{{ URL::asset('/img/icon/all.png') }}" height="40" width="40"
-                                        alt="...">
-                                    <p class="text-category">สินค้าอื่นๆ</p>
-                                </div>
+                                        <img src="{{ URL::asset('/img/icon/' . '' . $manu->image) }}" height="40"
+                                            width="40" alt="...">
+                                        <a href="{{ url('/') }}">
+                                            <p class="text-category">{{ $manu->categorie_name }}</p>
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
 
