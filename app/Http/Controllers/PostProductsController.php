@@ -68,14 +68,14 @@ class PostProductsController extends Controller
             'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg,webp'],
             /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
         ]);
-        if ($request['errorCategorie'] == "null") {
+        if ($request['categorie_name'] == "null") {
 
-            return redirect('create_point')->with('error', "กรุณาเลือกหมวดหมู่" );
+            return redirect('create-post_products')->with('errorCategorie', "กรุณาเลือกหมวดหมู่" );
 
        }
        if ($request['zom_name'] == "null") {
 
-        return redirect('create_point')->with('error', "กรุณาเลือกโซน" );
+        return redirect('create-post_products')->with('errorZom', "กรุณาเลือกโซน" );
         }
 
 
