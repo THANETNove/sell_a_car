@@ -15,6 +15,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\DB;
+use App\Models\PostProducts;
 
 
 
@@ -30,9 +31,17 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
+    $current_date = date('Y-m-d H:i:s');
+    $data = DB::table('post_products')
+    ->where('expiration_date','<' ,$current_date)
+    ->get();
 
-
-        $dataZone = DB::table('post_products')
+    foreach ($data as $items) {
+        PostProducts::where('id', $items->id)
+        ->update(['status' => 'expired']);
+    }
+  
+    $dataZone = DB::table('post_products')
         ->where('status','!=' ,"expired")
         ->whereNotNull('zom_name')
         ->orderBy('id','DESC')
