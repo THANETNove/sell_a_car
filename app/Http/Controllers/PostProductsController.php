@@ -157,12 +157,39 @@ class PostProductsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $data = DB::table('point_lowests')->where('point_lowest',$request['zom_name'])->get();
+        $date_point = $data[0]->point_loweste_date;
+
+        $current_date = date('Y-m-d H:i:s');
+        $future_date = date('Y-m-d H:i:s', strtotime('+' . $date_point . ' days', strtotime($current_date)));
+
+
         $dateText = Str::random(12);
         $member =  PostProducts::find($id);
+
+            if ($request['zom_name'] != "0" && $request['zom_name'] > $member->zom_name) {
+
+                $user = User::find(Auth::user()->id);
+                $zone_price = $request['zom_name'];
+            $point =  $user->point;
+                if( $zone_price <= $point) {
+                    $ponit =  $user->point - $request['zom_name'];
+                    $user->point =  $ponit;
+                    $user->save();
+                }else{
+                    return back()->with('error', "point ของคุณไม่พอกรุณาเติม point" );
+                }
+            }
+
+
+
         $member->name_products = $request['name_products'];
         $member->product_details = $request['product_details'];
         $member->product_price = $request['product_price'];
-        $member->hot_zone_price = $request['hot_zone_price'];
+        $member->categorie_name = $request['categorie_name'];
+        $member->zom_name = $request['zom_name'];
+        $member->expiration_date = $future_date;
      
         $dateImg = [];
         if($request->hasFile('image')){
@@ -180,22 +207,9 @@ class PostProductsController extends Controller
             }
             $member->image = json_encode($dateImg);
         }
-       
+
         $member->save();
-
-            if ($request['hot_zone_price'] !== null) {
-                $user = User::find(Auth::user()->id);
-                $zone_price = $request['hot_zone_price'];
-            $point =  $user->point;
-                if( $zone_price <= $point) {
-                    $ponit =  $user->point - $request['hot_zone_price'];
-                    $user->point =  $ponit;
-                    $user->save();
-                }else{
-                    return back()->with('error', "point ของคุณไม่พอกรุณาเติม point" );
-                }
-            }
-
+ 
 
         return redirect('post_products')->with('message', "บันทึกสำเร็จ" );
     }
