@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name_products')->nullable();
             $table->string('product_details')->nullable();
             $table->integer('product_price')->nullable();
-            $table->integer('categorie_name')->nullable();
-            $table->integer('zom_name')->nullable();
-            $table->integer('expiration_date')->nullable();
+            $table->string('categorie_name')->nullable();
+            $table->string('zom_name')->nullable();
+            $table->string('expiration_date')->nullable();
             $table->JSON('image')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

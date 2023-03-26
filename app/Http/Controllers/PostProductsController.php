@@ -85,9 +85,9 @@ class PostProductsController extends Controller
         $member->name_products = $request['name_products'];
         $member->product_details = $request['product_details'];
         $member->product_price = $request['product_price'];
-        $member->hot_zone_price = $request['categorie_name'];
-        $member->hot_zone_price = $request['zom_name'];
-        $member->hot_zone_price = $request['expiration_date'];
+        $member->categorie_name = $request['categorie_name'];
+        $member->zom_name = $request['zom_name'];
+        $member->expiration_date = $request['expiration_date'];
         $member->status = 'null';
      
 
