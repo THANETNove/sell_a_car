@@ -87,8 +87,10 @@ Route::get('/all-products', [MoneyCustomersController::class, 'products']);
 Route::post('/all-products', [MoneyCustomersController::class, 'products']);
 
 Route::get('/point-loweste', [PointLowestController::class, 'index']);
+Route::get('/create-point_loweste', [PointLowestController::class, 'create']);
 Route::post('/add-point_loweste', [PointLowestController::class, 'store']);
 Route::put('/update-point_loweste/{id}', [PointLowestController::class, 'update']);
+Route::get('/delete-point_lowest/{id}', [PointLowestController::class, 'destroy']);
 
 
 Route::get('/post_products', [PostProductsController::class, 'index']);

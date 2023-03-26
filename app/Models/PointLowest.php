@@ -9,6 +9,8 @@ class PointLowest extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'point_lowest'
+        'point_lowest',
+        'point_loweste_date',
+        'zom_name'
     ];
 }

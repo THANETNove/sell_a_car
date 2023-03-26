@@ -2,38 +2,81 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12 col-md-6 col-12 mx-auto">
-            <div class="card z-index-0 fadeIn3 fadeInBottom">
+        <div class="col-12">
+            <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                        <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">ที่อยู่</h4>
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 beet">
+                        <h6 class="text-white text-capitalize ps-3">ราคาในโซน HOT</h6>
+                        <h6 class="text-white text-capitalize ps-3">
+                            <a href="{{ url('/create-point_loweste') }}" class="btn btn-outline-light">
+                                เพิ่ม ราคา
+                            </a>
+                        </h6>
                     </div>
                 </div>
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col">
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0 text-center ">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1 ">
+                                        ลำดับ
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+                                        จำนวนพ้อย</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
+                                        จำนวนวันในการขาย</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        โซน</th>
+                                    <th class="text-secondary opacity-7">
+                                        delete
+                                    </th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    </th>
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <form role="form" class="text-start" method="POST" action="{{ 'add-point_loweste' }}">
-                                    @csrf
-                                    <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">กำหนด point ขึ้นตำในการ ในการขาย </label>
-                                        <input type="number" class="form-control" name="point_loweste" required>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit"
-                                            class="btn bg-gradient-primary w-100 my-4 mb-2">บันทึก</button>
-                                    </div>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($data as $data1)
+                                    <tr>
+                                        <td>
+                                            <p>{{ $i++ }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data1->point_lowest }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data1->point_loweste_date }} วัน
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data1->zom_name }}</p>
+                                        </td>
 
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col">
 
-                        </div>
+                                        <td class="align-middle">
+                                            <a onClick="javascript:return confirm('ข้อมูล  {{ $data1->point_lowest }} ทั้งหมด จะถูกลบ คุณต้องการลบข้อมูลใช่หรือไม่ ! ');"
+                                                href="{{ url('/delete-point_lowest', $data1->id) }}"
+                                                class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                data-original-title="delete user">
+                                                delete
+                                            </a>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ $data1->created_at }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
             </div>
         </div>

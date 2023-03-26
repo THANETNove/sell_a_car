@@ -26,20 +26,16 @@ class PointLowestController extends Controller
     public function index()
     {
 
-        if (Auth::user()->status == "admin") {
-            $menus = DB::table('point_lowests')->count();
-            if ($menus) {
-                    $data = DB::table('point_lowests')->get();
-                /*    $data = Address::find(Auth::user()->id); */
-                    return view('point_loweste.edit', ['data' => $data]);
-
-                }else{
-                    return view('point_loweste.index');
-                }
+            if (Auth::user()->status == "admin") {
+                $data = DB::table('point_lowests')
+                ->orderBy('point_lowest','ASC')
+                ->get();
+                return view('point_loweste.index',['data' => $data]);
             }else {
                 return view('home');
             }
-        }
+    }
+    
     
      
 
@@ -50,7 +46,12 @@ class PointLowestController extends Controller
      */
     public function create()
     {
-        //
+        
+        if (Auth::user()->status == "admin") {
+            return view('point_loweste.create');
+        }else {
+            return view('home');
+        }
     }
 
     /**
@@ -63,6 +64,8 @@ class PointLowestController extends Controller
 
         $member = new PointLowest;
         $member->point_lowest = $request['point_loweste'];
+        $member->point_loweste_date = $request['point_loweste_date'];
+        $member->zom_name = $request['zom_name'];
    
         $member->save();
 
@@ -104,6 +107,9 @@ class PointLowestController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $flight = PointLowest::find($id);
+
+        $flight->delete();
+        return redirect('point-loweste')->with('message', "ลบเมนูสำเร็จ" );
     }
 }

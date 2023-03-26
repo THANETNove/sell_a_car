@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('point_lowests', function (Blueprint $table) {
             $table->id();
             $table->integer('point_lowest');
+            $table->string('point_loweste_date');
+            $table->string('zom_name');
             $table->timestamps();
         });
     }
