@@ -77,6 +77,11 @@ class PostProductsController extends Controller
 
         return redirect('create-post_products')->with('errorZom', "กรุณาเลือกโซน" );
         }
+        $data = DB::table('point_lowests')->where('point_lowest',$request['zom_name'])->get();
+        $date_point = $data[0]->point_loweste_date;
+
+        $current_date = date('Y-m-d H:i:s');
+        $future_date = date('Y-m-d H:i:s', strtotime('+' . $date_point . ' days', strtotime($current_date)));
 
 
         $dateText = Str::random(12);
@@ -101,13 +106,13 @@ class PostProductsController extends Controller
         }
     $member->image = json_encode($dateImg);
    
-    if ($request['hot_zone_price'] != "null") {
+    if ($request['zom_name'] != "0") {
         $user = User::find(Auth::user()->id);
-        $zone_price = $request['hot_zone_price'];
+        $zone_price = $request['zom_name'];
 
        $point =  $user->point;
         if( $zone_price <= $point) {
-            $ponit =  $user->point - $request['hot_zone_price'];
+            $ponit =  $user->point - $request['zom_name'];
             $user->point =  $ponit;
             $user->save();
         }else{
