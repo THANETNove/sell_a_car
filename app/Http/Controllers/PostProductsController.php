@@ -206,26 +206,23 @@ public  function updateRenew(Request $request, string $id)
       /*   return redirect('renew-post_products')->with('errorZom', "กรุณาเลือกโซน" ); */
       return back()->with('errorZom', "กรุณาเลือกโซน" );
         }
-        dd('asdas');
+      
     $data = DB::table('point_lowests')->where('point_lowest',$request['zom_name'])->get();
     $date_point = $data[0]->point_loweste_date;
     $current_date = date('Y-m-d H:i:s');
     $future_date = date('Y-m-d H:i:s', strtotime('+' . $date_point . ' days', strtotime($current_date)));
 
 
-    $member =  PostProducts::find($id);
     PostProducts::where('id', $id)
-    ->update(['status' => 'null'],['expiration_date' => 'null']);
+    ->update(['status' => 'null','expiration_date' => $future_date]);
 
 
-    $member->status = 'null';
-    $member->save();
-    if ($request['hot_zone_price'] !== null) {
+    if ($request['zom_name'] !== null) {
         $user = User::find(Auth::user()->id);
-        $zone_price = $request['hot_zone_price'];
+        $zone_price = $request['zom_name'];
         $point =  $user->point;
         if( $zone_price <= $point) {
-            $ponit =  $user->point - $request['hot_zone_price'];
+            $ponit =  $user->point - $request['zom_name'];
             $user->point =  $ponit;
             $user->save();
         }else{
