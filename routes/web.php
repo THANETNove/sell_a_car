@@ -33,8 +33,8 @@ Route::get('/', function () {
 
 
         $dataZone = DB::table('post_products')
-        ->orderBy('hot_zone_price','DESC')
-        ->whereNotNull('hot_zone_price')
+        ->orderBy('id','DESC')
+        ->whereNotNull('zom_name')
         ->paginate(50);
 
         $dataImage = DB::table('adverts')

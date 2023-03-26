@@ -13,7 +13,9 @@ class PostProducts extends Model
         'name_products',
         'product_details',
         'product_price',
-        'hot_zone_price',
+        'categorie_name',
+        'zom_name',
+        'expiration_date',
         'image',
         'status'
     ];

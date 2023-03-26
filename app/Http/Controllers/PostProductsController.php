@@ -55,7 +55,8 @@ class PostProductsController extends Controller
     public function create()
     {
         $data = DB::table('point_lowests')->get();
-        return view('post_products.create',['data' => $data]);
+        $manu = DB::table('categories')->get();
+        return view('post_products.create',['data' => $data , 'manu' => $manu]);
     }
 
     /**
@@ -67,6 +68,16 @@ class PostProductsController extends Controller
             'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg,webp'],
             /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
         ]);
+        if ($request['errorCategorie'] == "null") {
+
+            return redirect('create_point')->with('error', "กรุณาเลือกหมวดหมู่" );
+
+       }
+       if ($request['zom_name'] == "null") {
+
+        return redirect('create_point')->with('error', "กรุณาเลือกโซน" );
+        }
+
 
         $dateText = Str::random(12);
         $member = new PostProducts;
@@ -74,7 +85,9 @@ class PostProductsController extends Controller
         $member->name_products = $request['name_products'];
         $member->product_details = $request['product_details'];
         $member->product_price = $request['product_price'];
-        $member->hot_zone_price = $request['hot_zone_price'];
+        $member->hot_zone_price = $request['categorie_name'];
+        $member->hot_zone_price = $request['zom_name'];
+        $member->hot_zone_price = $request['expiration_date'];
         $member->status = 'null';
      
 
