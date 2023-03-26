@@ -13,6 +13,7 @@ use App\Http\Controllers\PointLowestController;
 use App\Http\Controllers\PostProductsController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdvertController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\DB;
 
 
@@ -35,8 +36,11 @@ Route::get('/', function () {
         ->orderBy('hot_zone_price','DESC')
         ->whereNotNull('hot_zone_price')
         ->paginate(50);
+
+        $dataImage = DB::table('adverts')
+        ->get();
     
-    return view('welcome',['dataZone' => $dataZone]);
+    return view('welcome',['dataZone' => $dataZone,'dataImage'=> $dataImage]);
 });
 
 
@@ -98,6 +102,8 @@ Route::get('/renew-post_products/{id}', [PostProductsController::class, 'renew']
 Route::put('/update-renew/{id}', [PostProductsController::class, 'updateRenew']);
 Route::get('/all-car', [CarController::class, 'index']);
 Route::get('/select-car/{id}', [CarController::class, 'show']);
+Route::post('/searchCar', [CarController::class, 'selectCar']);
+Route::get('/category-manu/{name}', [CarController::class, 'category']);
 
 
 Route::get('/advert', [AdvertController::class, 'index']);
@@ -107,3 +113,11 @@ Route::post('/add-advert', [AdvertController::class, 'store']);
 Route::put('/update-advert/{id}', [AdvertController::class, 'update']);
 Route::put('/update-advert/{id}', [AdvertController::class, 'update']);
 Route::get('/delete-advert/{id}', [AdvertController::class, 'destroy']);
+
+
+Route::get('/manu', [CategoryController::class, 'index']);
+Route::get('/create_manu', [CategoryController::class, 'create']);
+Route::post('/add-manu', [CategoryController::class, 'store']);
+Route::get('/edit-manu/{id}', [CategoryController::class, 'edit']);
+Route::put('/update-manu/{id}', [CategoryController::class, 'update']);
+Route::get('/delete-manu/{id}', [CategoryController::class, 'destroy']);

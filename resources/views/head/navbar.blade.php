@@ -16,7 +16,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/') }}">หน้าเเรก</a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                {{--           <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
                                         role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
@@ -32,28 +32,21 @@
                                                 href="{{ url('/search', $dataCar->car_brands_name) }}">{{ $dataCar->car_brands_name }}</a>
                                         @endforeach
                                     </div>
-                                </li>
+                                </li> --}}
                                 {{--   <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/all-car') }}">สินค้าทั้งหมด</a>
                                 </li> --}}
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        บริการ
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="{{ url('/login') }}">เข้าสู่ระบบ</a>
-                                        <a class="dropdown-item" href="{{ url('/register') }}">สมัครสามชิก</a>
-                                    </div>
-
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/login') }}">เข้าสู่ระบบ</a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/register') }}">สมัครสามชิก</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex">
 
-                            <form class="d-flex" role="search" action="{{ url('/search') }}" method="post">
+                            <form class="d-flex" role="search" action="{{ url('searchCar') }}" method="post">
                                 @csrf
                                 <input class="form-control me-2" type="search" name="search" placeholder="Search"
                                     aria-label="Search">

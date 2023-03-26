@@ -3,32 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Advert;
-use Illuminate\Support\Str;
 use DB;
 use Auth;
+use Illuminate\Support\Str;
+use App\Models\Category;
 
-class AdvertController extends Controller
+
+class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        if (Auth::user()->status == "admin") { 
-            $data = DB::table('adverts')->get();
-            return view('advert.index',['data' => $data]);
+        if (Auth::user()->status == "admin") {
+            $data = DB::table('categories')
+            ->orderBy('id','ASC')
+            ->paginate(50);
+            return view('category_manu.index',['data' => $data]);
         }else {
             return view('home');
         }
@@ -39,7 +36,11 @@ class AdvertController extends Controller
      */
     public function create()
     {
-        return view('advert.create');
+        if (Auth::user()->status == "admin") {
+            return view('category_manu.create');
+        }else {
+            return view('home');
+        }
     }
 
     /**
@@ -47,30 +48,26 @@ class AdvertController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validated = $request->validate([
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg,webp'],
-            /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
         ]);
 
 
         $dateText = Str::random(12);
-        $member = new Advert;
-   
+        $member = new Category;
+        $member->categorie_name = $request['manu_name'];
 
        
         if($request->hasFile('image')){
             $imagefile = $request->file('image');
-            $data =   $imagefile->move(public_path().'/img/advert',$dateText."".$imagefile->getClientOriginalName());
+            $data =   $imagefile->move(public_path().'/img/icon',$dateText."".$imagefile->getClientOriginalName());
             $dateImg =  $dateText."".$imagefile->getClientOriginalName();
             $member->image =  $dateImg;
-            $member->save();
+            
         }
-  
-
-
-        return redirect('advert')->with('message', "บันทึกสำเร็จ" );
-        
-
+        $member->save();
+        return redirect('manu')->with('message', "บันทึกสำเร็จ" );
     }
 
     /**
@@ -86,8 +83,8 @@ class AdvertController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Advert::find($id);
-        return view('advert.edit',['data' => $data]);
+        $data = Category::find($id);
+        return view('category_manu.edit',['data' => $data]);
     }
 
     /**
@@ -95,35 +92,28 @@ class AdvertController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        $validated = $request->validate([
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg,webp'],
-            /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
-        ]);
+     
 
 
         $dateText = Str::random(12);
+        $member =  Category::find($id);
+        $member->categorie_name = $request['manu_name'];
 
-        $member =  Advert::find($id);
         $unimg =  $member->image;
         if ($unimg) {
-            $image_path = public_path().'/img/advert/'.$unimg; 
+            $image_path = public_path().'/img/icon/'.$unimg; 
             unlink($image_path);
         }
        
         if($request->hasFile('image')){
             $imagefile = $request->file('image');
-            $data =   $imagefile->move(public_path().'/img/advert',$dateText."".$imagefile->getClientOriginalName());
+            $data =   $imagefile->move(public_path().'/img/icon',$dateText."".$imagefile->getClientOriginalName());
             $dateImg =  $dateText."".$imagefile->getClientOriginalName();
             $member->image =  $dateImg;
-            $member->save();
+            
         }
-  
-
-
-        return redirect('advert')->with('message', "บันทึกสำเร็จ" );
-
-  
+        $member->save();
+        return redirect('manu')->with('message', "บันทึกสำเร็จ" );
     }
 
     /**
@@ -131,15 +121,13 @@ class AdvertController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-
-        $flight = Advert::find($id);
+        $flight = Category::find($id);
         $unimg =  $flight->image;
         if ($unimg) {
-            $image_path = public_path().'/img/advert/'.$unimg; 
+            $image_path = public_path().'/img/icon/'.$unimg; 
             unlink($image_path);
         }
         $flight->delete();
-        return redirect('advert')->with('message', "ลบโมษณาสำเร็จ" );
+        return redirect('manu')->with('message', "ลบเมนูสำเร็จ" );
     }
 }

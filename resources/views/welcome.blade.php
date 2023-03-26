@@ -18,8 +18,10 @@
     <div class="container">
         <div class="row">
             <div class="box-image01-1">
-                <img src="{{ URL::asset('/img/banner2.webp') }}" height="100%" width="100%" alt="...">
-
+                @foreach ($dataImage as $data_pag)
+                    <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}" height="100%" width="100%"
+                        alt="...">
+                @endforeach
             </div>
         </div>
     </div>
@@ -36,7 +38,7 @@
 
                                     <img src="{{ URL::asset('/img/icon/car.png') }}" height="40" width="40"
                                         alt="...">
-                                    <a href="http://">
+                                    <a href="{{ url('/') }}">
                                         <p class="text-category">รถยนต์ มือสอง</p>
                                     </a>
                                 </div>

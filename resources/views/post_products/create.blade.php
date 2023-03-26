@@ -52,7 +52,7 @@
                                             id="formFile" name="image[]" multiple required>
                                         @error('image.*')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }} (PNG,JPEG,JPG)</strong>
+                                                <strong>{{ $message }} (PNG,JPEG,JPG,WEBP)</strong>
                                             </span>
                                         @enderror
                                     </div>

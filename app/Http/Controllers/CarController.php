@@ -34,10 +34,46 @@ class CarController extends Controller
      */
 
      
-    public function selectCar()
+    public function selectCar(Request $request)
     {
+
+        $search = $request['search'];
+
+        $dataZone = DB::table('post_products')
+        ->whereNotNull('hot_zone_price')
+        ->where('name_products', 'like', "$search%")
+        ->orderBy('id','ASC')
+        ->paginate(50);
+
         
+        $dataGree = DB::table('post_products')
+        ->whereNull('hot_zone_price')
+        ->where('name_products', 'like', "$search%")
+        ->orderBy('id','ASC')
+        ->paginate(50);
+
+        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
     }
+    public function category(Request $request,$name)
+    {
+
+        $search = $name;
+        $dataZone = DB::table('post_products')
+        ->whereNotNull('hot_zone_price')
+        ->where('name_products', 'like', "$search%")
+        ->orderBy('id','ASC')
+        ->paginate(50);
+
+        
+        $dataGree = DB::table('post_products')
+        ->whereNull('hot_zone_price')
+        ->where('name_products', 'like', "$search%")
+        ->orderBy('id','ASC')
+        ->paginate(50);
+
+        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
+    }
+
 
     /**
      * Store a newly created resource in storage.

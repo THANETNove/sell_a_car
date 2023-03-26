@@ -36,7 +36,7 @@
                         <span class="nav-link-text ms-1">เติมเงิน</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{--    <li class="nav-item">
                     <a id="car_brand" class="nav-link text-white " href="{{ url('/car_brand') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">time_to_leave</i>
@@ -50,6 +50,14 @@
                             <i class="material-icons opacity-10">toys</i>
                         </div>
                         <span class="nav-link-text ms-1">รุ่น รถยนต์</span>
+                    </a>
+                </li> --}}
+                <li class="nav-item">
+                    <a id="bank_name" class="nav-link text-white " href="{{ url('/manu') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">add_circle</i>
+                        </div>
+                        <span class="nav-link-text ms-1">เพิ่ม เมนู</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -71,7 +79,7 @@
                 <li class="nav-item">
                     <a id="all-products" class="nav-link text-white " href="{{ url('/advert') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">dashboard</i>
+                            <i class="material-icons opacity-10">add_to_queue</i>
                         </div>
                         <span class="nav-link-text ms-1">โฆษณา</span>
                     </a>

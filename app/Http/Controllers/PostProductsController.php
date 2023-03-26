@@ -64,7 +64,7 @@ class PostProductsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg'],
+            'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg,webp'],
             /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
         ]);
 
