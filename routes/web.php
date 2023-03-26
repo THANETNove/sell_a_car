@@ -33,8 +33,9 @@ Route::get('/', function () {
 
 
         $dataZone = DB::table('post_products')
-        ->orderBy('id','DESC')
+        ->where('status','!=' ,"expired")
         ->whereNotNull('zom_name')
+        ->orderBy('id','DESC')
         ->paginate(50);
 
         $dataImage = DB::table('adverts')

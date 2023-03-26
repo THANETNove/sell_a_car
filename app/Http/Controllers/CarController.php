@@ -23,7 +23,7 @@ class CarController extends Controller
     {
   
             $dataZone = DB::table('post_products')
-            ->orderBy('hot_zone_price','DESC')
+            ->orderBy('zom_name','DESC')
             ->paginate(50);
             return view('searchCar.all_car',['dataZone' => $dataZone ]);
   
@@ -40,14 +40,16 @@ class CarController extends Controller
         $search = $request['search'];
 
         $dataZone = DB::table('post_products')
-        ->whereNotNull('hot_zone_price')
+        ->where('zom_name','!=',"0")
+        ->where('status','!=' ,"expired")
         ->where('name_products', 'like', "$search%")
         ->orderBy('id','ASC')
         ->paginate(50);
 
         
         $dataGree = DB::table('post_products')
-        ->whereNull('hot_zone_price')
+        ->where('zom_name','==',"0")
+        ->where('status','!=' ,"expired")
         ->where('name_products', 'like', "$search%")
         ->orderBy('id','ASC')
         ->paginate(50);
@@ -59,14 +61,16 @@ class CarController extends Controller
 
         $search = $name;
         $dataZone = DB::table('post_products')
-        ->whereNotNull('hot_zone_price')
+        ->where('zom_name','!=',"0")
+        ->where('status','!=' ,"expired")
         ->where('name_products', 'like', "$search%")
         ->orderBy('id','ASC')
         ->paginate(50);
 
         
         $dataGree = DB::table('post_products')
-        ->whereNull('hot_zone_price')
+        ->where('zom_name','==',"0")
+        ->where('status','!=' ,"expired")
         ->where('name_products', 'like', "$search%")
         ->orderBy('id','ASC')
         ->paginate(50);
@@ -100,9 +104,10 @@ class CarController extends Controller
         $search1 = $dataZone[0]->name_products;
         $search2 =  $dataZone[0]->product_details;
         $dataAll = DB::table('post_products')
+        ->where('status','!=' ,"expired")
         ->where('name_products', 'like', "$search1%")
         ->orWhere('product_details', 'like', "$search2%")
-        ->orderBy('hot_zone_price','DESC')
+        ->orderBy('zom_name','DESC')
         ->get();
 
 
