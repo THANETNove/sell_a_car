@@ -37,21 +37,66 @@
                                         <input type="number" class="form-control" value="{{ $dataProduct->product_price }}"
                                             placeholder="ราคาสินค้า *" name="product_price" required>
                                     </div>
-                                    @foreach ($data as $data)
-                                        <div class="input-group input-group-outline my-3">
-                                            {{--  <label class="form-label">จ่าย point เพื่อให้สินค้า อยู่ Hot
-                                                Zone ใช้ point ขั้นต่ำ
-                                                {{ $data->point_lowest }} point</label> --}}
-                                            <input type="number" class="form-control" min="{{ $data->point_lowest }}"
-                                                value="{{ $dataProduct->hot_zone_price }}" name="hot_zone_price"
-                                                placeholder="จ่าย point เพื่อให้สินค้า อยู่ Hot Zone ใช้ point ขั้นต่ำ {{ $data->point_lowest }} point">
-                                        </div>
-                                        @if (session('error'))
-                                            <h6 class="error-input1">
-                                                {{ session('error') }}
-                                            </h6>
-                                        @endif
-                                    @endforeach
+                                    <div class="my-3">
+                                        <select class="form-select" name="categorie_name"
+                                            aria-label="Default select example">
+                                            <option value="null" selected>&nbsp;หมวดหมู่สินค้า</option>
+                                            @foreach ($manu as $manu1)
+                                                @if ($manu1->categorie_name == $dataProduct->categorie_name)
+                                                    <option value="{{ $manu1->categorie_name }}" selected>
+                                                        {{ $manu1->categorie_name }}</option>
+                                                @else
+                                                    <option value="{{ $manu1->categorie_name }}">
+                                                        {{ $manu1->categorie_name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @if (session('errorCategorie'))
+                                        <h6 class="error-input1">
+                                            {{ session('errorCategorie') }}
+                                        </h6>
+                                    @endif
+                                    <div class="my-3">
+                                        <select class="form-select" name="zom_name" aria-label="Default select example">
+                                            <option value="null">&nbsp;เลือกโซน</option>
+                                            @foreach ($data as $data)
+                                                @if ($data->point_lowest == $dataProduct->zom_name)
+                                                    <option value="{{ $data->point_lowest }}" selected>
+                                                        @if ($data->point_lowest != 0)
+                                                            &nbsp; {{ $data->point_lowest }} &nbsp; พ้อน &nbsp;
+                                                            {{ $data->point_loweste_date }}
+                                                            วัน
+                                                            {{ $data->zom_name }}
+                                                        @else
+                                                            &nbsp; ไม่มีค่าใช้จ่าย &nbsp; {{ $data->point_loweste_date }}
+                                                            วัน
+                                                            {{ $data->zom_name }}
+                                                        @endif
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $data->point_lowest }}">
+                                                        @if ($data->point_lowest != 0)
+                                                            &nbsp; {{ $data->point_lowest }} &nbsp; พ้อน &nbsp;
+                                                            {{ $data->point_loweste_date }}
+                                                            วัน
+                                                            {{ $data->zom_name }}
+                                                        @else
+                                                            &nbsp; ไม่มีค่าใช้จ่าย &nbsp; {{ $data->point_loweste_date }}
+                                                            วัน
+                                                            {{ $data->zom_name }}
+                                                        @endif
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                    @if (session('errorZom'))
+                                        <h6 class="error-input1">
+                                            {{ session('errorZom') }}
+                                        </h6>
+                                    @endif
                                     <div class="input-group input-group-outline my-3">
                                         <input class="form-control @error('image.*') is-invalid @enderror" type="file"
                                             id="formFile" name="image[]" multiple>

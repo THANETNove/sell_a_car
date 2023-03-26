@@ -142,7 +142,8 @@ class PostProductsController extends Controller
     {
         $data = DB::table('point_lowests')->get();
         $dataProduct = PostProducts::find($id);
-        return view('post_products.edit',['data' =>  $data,'dataProduct'=> $dataProduct]);
+        $manu = DB::table('categories')->get();
+        return view('post_products.edit',['data' =>  $data,'dataProduct'=> $dataProduct,'manu'=> $manu]);
     }
     public function renew(string $id)
     {
