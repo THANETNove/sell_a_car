@@ -12,7 +12,7 @@
         $pathname = $_SERVER['REQUEST_URI'];
         $ex = explode('/', $pathname);
         
-        $desiredPart = $ex[1];
+        $desiredPart = $ex[3];
         
         ?>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -51,7 +51,8 @@
 
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                    <a class="btn btn-outline-primary btn-sm mb-0 me-3">{{ Auth::user()->point }} point</a>
+                    <a class="btn btn-outline-primary btn-sm mb-0 me-3">{{ number_format(Auth::user()->point) }}
+                        point</a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link text-body font-weight-bold px-0">

@@ -1,30 +1,71 @@
 <!doctype html>
-<html lang="en">
+<html lang="zxx">
 
 <head>
+    {{--  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>aranoz</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css"> --}}
     @include('./head/head')
 </head>
 
-<body style="background-color: #F7F7F7">
+<body>
     <!--::header part start::-->
     @include('./head/navbar')
     <!-- Header part end-->
 
     <!-- banner part start-->
-    {{-- 
-    @include('./head/head_slide') --}}
-
-
-    <div class="container">
-        <div class="row">
-            <div class="box-image01-1">
-                @foreach ($dataImage as $data_pag)
-                    <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}" height="100%" width="100%"
-                        alt="...">
-                @endforeach
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="banner_slider owl-carousel">
+                        @foreach ($dataImage as $data_pag)
+                            <div class="single_banner_slider">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        {{--   <div class="banner_text">
+                                            <div class="banner_text_iner">
+                                                <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                                    alt="">
+                                            </div>
+                                        </div> --}}
+                                        <div class="banner_text_iner">
+                                            <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                                alt="">
+                                        </div>
+                                    </div>
+                                    {{--   <div class="banner_img d-lg-block">
+                                        <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                            alt="">
+                                    </div> --}}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+    </section>
+
+
 
     <div class="container">
         <div class="row">
@@ -87,61 +128,92 @@
 
 
     <!-- product_list part start-->
-
-    <!-- product_list part end-->
-
-    <!--================Category Product Area =================-->
-    {{--     <section class="">
+    {{--     <section class="product_list best_seller section_padding">
         <div class="container">
-            <div class="row">
-                @include('./head/manu')
-                <div class="col-lg-9">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product_top_bar d-flex justify-content-between align-items-center">
-                                <div class="single_product_menu">
-                                    <p>สินค้าทั้งหมด <span>{{ $dataPag->count() }} รายการ </span></p>
-                                </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section_tittle text-center">
+                        <h2>Best Sellers <span>shop</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-12">
+                    <div class="best_product_slider owl-carousel">
+                        <div class="single_product_item">
+                            <img src="img/product/product_1.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row align-items-center latest_product_inner">
-                        @foreach ($dataPag as $data_pag)
-                            @php
-                                $imgp = json_decode($data_pag->image);
-                                
-                            @endphp
-
-                            <div class="col-lg-4 col-sm-6 col-6">
-                                <div class="single_product_item">
-                                    <a href="{{ url('select-car', $data_pag->id) }}">
-                                        <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}" height="180px"
-                                            width="100%" alt="..."> </a>
-                                    <div class="single_product_text">
-                                        <h4>{{ $data_pag->name_products }}</h4>
-                                        <h3 class="text-span">{{ number_format($data_pag->product_price) }} บาท
-                                            <a href="{{ url('select-car', $data_pag->id) }}" class="add_cart">
-                                                ดูรายละเอียดเพิ่มเติม<i class="ti-heart"></i></a>
-                                    </div>
-                                </div>
+                        <div class="single_product_item">
+                            <img src="img/product/product_2.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
                             </div>
-                        @endforeach
-
-
-                        <div class="col-lg-12">
-                            {!! $dataPag->links() !!}
+                        </div>
+                        <div class="single_product_item">
+                            <img src="img/product/product_3.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
+                            </div>
+                        </div>
+                        <div class="single_product_item">
+                            <img src="img/product/product_4.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
+                            </div>
+                        </div>
+                        <div class="single_product_item">
+                            <img src="img/product/product_5.png" alt="">
+                            <div class="single_product_text">
+                                <h4>Quartz Belt Watch</h4>
+                                <h3>$150.00</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <br>
-    <br>
- --}}
+    </section> --}}
+
+    <!--::subscribe_area part end::-->
 
 
+    <!--::footer_part end::-->
+
+    <!-- jquery plugins here-->
+    {{--     <script src="js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script> --}}
+
+    @include('./head/footer')
 </body>
 
 </html>
