@@ -38,6 +38,6 @@ class HomeController extends Controller
             ->select('add_points.*', 'users.username')->paginate(100);
             return view('money_customers.index',['data' => $data]);
         }
-      
+       /*  return view('home'); */
     }
 }

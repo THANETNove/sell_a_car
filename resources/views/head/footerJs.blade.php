@@ -1,11 +1,16 @@
-    <!--   Core JS Files   -->
-    <script src="{{ URL::asset('assets/js/core/popper.min.j') }}s"></script>
-    <script src="{{ URL::asset('assets/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/chartjs.min.js') }}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ URL::asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ URL::asset('assets/js/material-dashboard.min.js?v=3.0.4') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ URL::asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ URL::asset('assets/js/sb-admin-2.min.j') }}s"></script>
+
+<!-- Page level plugins -->
+<script src="{{ URL::asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ URL::asset('assets/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ URL::asset('assets/js/demo/chart-pie-demo.js') }}"></script>
