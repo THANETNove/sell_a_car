@@ -43,7 +43,7 @@ Route::get('/', function () {
   
     $dataZone = DB::table('post_products')
         ->where('status','!=' ,"expired")
-        ->whereNotNull('zom_name')
+        ->where('zom_name','!=', "0")
         ->orderBy('id','DESC')
         ->paginate(50);
 
