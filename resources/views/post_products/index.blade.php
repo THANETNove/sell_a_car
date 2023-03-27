@@ -196,7 +196,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">รายการขาย</h1>
         <p class="mb-4">
-            <a target="_blank" href="{{ url('/create-post_products') }}">เพิ่มรายการขาย</a>
+            <a href="{{ url('/create-post_products') }}">เพิ่มรายการขาย</a>
         </p>
 
         <!-- Content Row -->
