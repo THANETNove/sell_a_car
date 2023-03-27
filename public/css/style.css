@@ -8253,7 +8253,7 @@ textarea {
   margin-right: 50px !important;
 }
 
-.owl-carousel {
+.owl-carousel2 {
   display: none;
   width: 100%;
   z-index: 1;
@@ -8265,6 +8265,7 @@ textarea {
   background-color: #fff !important;
   overflow: hidden;
 }
+
 
 
 /*# sourceMappingURL=style.css.map */

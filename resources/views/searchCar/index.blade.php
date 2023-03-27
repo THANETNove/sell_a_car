@@ -131,6 +131,7 @@
     <br>
     <br>
 
+
     <!--::subscribe_area part end::-->
 
     @include('./head/footer')
