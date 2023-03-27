@@ -41,7 +41,7 @@
                         <div class="s_product_text">
                             <h5>previous <span>|</span> next</h5>
                             <h3>{{ $datazone->name_products }}</h3>
-                            <h2>{{ number_format($datazone->product_price) }}</h2>
+                            <h2>{{ number_format($datazone->product_price) }} บาท</h2>
                             <ul class="list">
                                 <li>
                                     <a class="active" href="#">
@@ -57,36 +57,20 @@
                             </p>
                             <div class="card_area d-flex justify-content-between align-items-center">
                                 @if ($datazone->facebook)
-                                    <a href="{{ $datazone->facebook }}" target='_blank' class="btn_3">ติดต่อเรา</a>
-                                    <a href="{{ $datazone->facebook }}" target='_blank' class="like_us"> <i
-                                            class="fab fa-facebook-f text-span" style="font-size: 20px"></i> </a>
+                                    <a href="{{ $datazone->facebook }}" target='_blank' class="btn_3">ติดต่อเรา
+                                        <i class="fab fa-facebook-f text-span" style="font-size: 20px "></i></a>
                                 @else
-                                    <a class="btn_3">ติดต่อเรา</a>
-                                    <a class="like_us"> <i class="fab fa-facebook-f text-span"
-                                            style="font-size: 20px"></i> </a>
+                                    <a href="#" class="btn_3">ติดต่อเรา
+                                        <i class="fab fa-facebook-f text-span" style="font-size: 20px "></i></a>
                                 @endif
                                 @if ($datazone->line)
-                                    <a href="{{ $datazone->line }}" target='_blank' class="like_us"> <i
-                                            class="fab fa-line text-span" style="font-size: 20px"></i> </a>
+                                    <a href="{{ $datazone->line }}" target='_blank' class="btn_3">ติดต่อเรา
+                                        <i class="fab fa-line text-span" style="font-size: 20px "></i></a>
                                 @else
-                                    <a class="like_us"> <i class="fab fa-line text-span" style="font-size: 20px"></i>
-                                    </a>
+                                    <a href="#" class="btn_3">ติดต่อเรา
+                                        <i class="fab fa-line text-span" style="font-size: 20px "></i></a>
                                 @endif
-                                @if ($datazone->instagram)
-                                    <a href="{{ $datazone->instagram }}" target='_blank' class="like_us"> <i
-                                            class="fab fa-instagram text-span" style="font-size: 20px"></i> </a>
-                                @else
-                                    <a class="like_us"> <i class="fab fa-instagram text-span"
-                                            style="font-size: 20px"></i>
-                                    </a>
-                                @endif
-                                @if ($datazone->twitter)
-                                    <a href="{{ $datazone->twitter }}" target='_blank' class="like_us"> <i
-                                            class="fab fa-twitter text-span" style="font-size: 20px"></i> </a>
-                                @else
-                                    <a class="like_us"> <i class="fab fa-twitter text-span" style="font-size: 20px"></i>
-                                    </a>
-                                @endif
+
                             </div>
                         </div>
                     </div>
