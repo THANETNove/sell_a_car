@@ -64,11 +64,11 @@
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">หมวดหมู่สินค้า
                                                     *</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="categorie_name"
-                                                        aria-label="Default select example">
+                                                    <select class="form-control" id="mySelect" name="categorie_name"
+                                                        onchange="myFunction()" aria-label="Default select example">
                                                         <option value="null" selected>หมวดหมู่สินค้า</option>
                                                         @foreach ($manu as $manu1)
-                                                            @if ($manu1->categorie_name == $dataProduct->categorie_name)
+                                                            @if ($manu1->categorie_name == $dataProduct->id)
                                                                 <option value="{{ $manu1->categorie_name }}" selected>
                                                                     {{ $manu1->categorie_name }}</option>
                                                             @else
@@ -82,6 +82,20 @@
                                                             {{ session('errorCategorie') }}
                                                         </h6>
                                                     @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
+                                                <label for="inputPassword"
+                                                    class="col-sm-3 col-form-label">หมวดหมู่สินค้าย่อย
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="sub_category" name="sub_category"
+                                                        aria-label="Default select example">
+
+
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,6 +149,29 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3 row">
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">จังหวัด
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" name="province_name"
+                                                        aria-label="Default select example">
+                                                        @foreach ($provinces as $province)
+                                                            <option value="{{ $province->province_name }}">
+
+                                                                {{ $province->province_name }}
+
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if (session('errorZom'))
+                                                        <h6 class="error-input1">
+                                                            {{ session('errorZom') }}
+                                                        </h6>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">รูปภาพ
                                                     *</label>
                                                 <div class="col-sm-9">
@@ -145,6 +182,26 @@
                                                             <strong>{{ $message }} (PNG,JPEG,JPG,WEBP)</strong>
                                                         </span>
                                                     @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">url facebook
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="url_facebook"
+                                                        placeholder="url facebook">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">url Line
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="url_Line"
+                                                        placeholder="url Line">
                                                 </div>
                                             </div>
                                         </div>
@@ -166,4 +223,44 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var id = document.getElementById("mySelect").value;
+            console.log(id);
+
+            $.ajax({
+                url: `get-api-model/${id}`,
+                type: 'GET',
+                success: function(res) {
+                    console.log("res", res);
+
+                    /*     if (res.length > 0) {
+
+                            let selectHTML =
+                                `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
+                            for (let i = 0; i < res.length; i++) {
+                                selectHTML +=
+                                    `<option value="${res[i].model_name}">${res[i].model_name}</option>`;
+                            }
+                            selectHTML += `</select>`;
+
+                            // Set the innerHTML of the output element to the generated HTML
+                            document.getElementById("sub_category").innerHTML = selectHTML;
+                        } else {
+                            let selectHTML =
+                                `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
+
+                            selectHTML +=
+                                `<option></option>`;
+
+                            selectHTML += `</select>`;
+
+                            // Set the innerHTML of the output element to the generated HTML
+                            document.getElementById("sub_category").innerHTML = selectHTML;
+                        } */
+                    //   document.getElementById("sub_category").innerHTML = "You selected: " + x;
+                }
+            });
+        }
+    </script>
 @endsection

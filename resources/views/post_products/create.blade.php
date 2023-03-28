@@ -121,11 +121,6 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                    @if (session('errorZom'))
-                                                        <h6 class="error-input1">
-                                                            {{ session('errorZom') }}
-                                                        </h6>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

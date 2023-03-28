@@ -15,6 +15,7 @@ class PostProducts extends Model
         'product_price',
         'categorie_name',
         'zom_name',
+        'sub_category',
         'province',
         'url_facebook',
         'url_Line',

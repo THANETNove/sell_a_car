@@ -33,16 +33,21 @@ class PostProductsController extends Controller
             
             $dataAll =  $dataAll
             ->where('id_user', Auth::user()->id)
+            ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+            ->select('post_products.*', 'categories.categorie_name')
             ->where('name_products', 'like', "$search%")
             ->orWhere('product_price', 'like', "$search%")
-            ->orderBy('id','DESC')
+            ->orderBy('post_products.id','DESC')
             ->paginate(50);
             return view('post_products.index',['dataAll' =>  $dataAll]);
         }else {
             $dataAll =  $dataAll
             ->where('id_user', Auth::user()->id)
-            ->orderBy('id','DESC')
+            ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+            ->select('post_products.*', 'categories.categorie_name')
+            ->orderBy('post_products.id','DESC')
             ->paginate(50);
+           
             return view('post_products.index',['dataAll' =>  $dataAll]);
         }
 
@@ -92,11 +97,14 @@ class PostProductsController extends Controller
         $member->product_details = $request['product_details'];
         $member->product_price = $request['product_price'];
         $member->categorie_name = $request['categorie_name'];
+        $member->sub_category = $request['sub_category'];
+        $member->province = $request['province'];
+        $member->url_facebook = $request['url_facebook'];
+        $member->url_Line = $request['url_Line'];
         $member->zom_name = $request['zom_name'];
         $member->expiration_date = $future_date;
         $member->status = 'null';
-     
-
+    
         $dateImg = [];
         if($request->hasFile('image')){
             $imagefile = $request->file('image');
@@ -144,7 +152,8 @@ class PostProductsController extends Controller
         $data = DB::table('point_lowests')->get();
         $dataProduct = PostProducts::find($id);
         $manu = DB::table('categories')->get();
-        return view('post_products.edit',['data' =>  $data,'dataProduct'=> $dataProduct,'manu'=> $manu]);
+        $provinces = DB::table('provinces')->get();
+        return view('post_products.edit',['data' =>  $data,'dataProduct'=> $dataProduct,'manu'=> $manu,'provinces' =>$provinces]);
     }
     public function renew(string $id)
     {

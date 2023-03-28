@@ -20,7 +20,6 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-
                                 </div>
                                 <div class="col-8">
                                     <form role="form" class="text-start" method="POST" action="{{ 'add-advert' }}"
