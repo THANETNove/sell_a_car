@@ -61,7 +61,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/address', [AddressController::class, 'index']);
 Route::post('/add-address',[ AddressController::class,'store']);

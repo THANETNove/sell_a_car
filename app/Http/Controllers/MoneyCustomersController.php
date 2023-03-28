@@ -59,14 +59,18 @@ class MoneyCustomersController extends Controller
             $search = $request['search'];
             if ($search != null) {
                 $dataAll =  $dataAll
-                ->where('name_products', 'like', "$search%")
-                ->orWhere('product_price', 'like', "$search%")
+                ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+                ->select('post_products.*', 'categories.categorie_name')
+                ->where('post_products.name_products', 'like', "$search%")
+                ->orWhere('post_products.product_price', 'like', "$search%")
                 ->orderBy('id','DESC')
                 ->paginate(100);
                 return view('post_products.index',['dataAll' =>  $dataAll]);
             }else{
                 $dataAll =  $dataAll
-                ->orderBy('id','DESC')
+                ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+                ->select('post_products.*', 'categories.categorie_name')
+                ->orderBy('post_products.id','DESC')
                 ->paginate(50);
                 return view('post_all_products.index',['dataAll' =>  $dataAll]);
             }
