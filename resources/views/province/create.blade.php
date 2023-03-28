@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">รายละเอียดธนาคาร</h1>
+        <h1 class="h3 mb-2 text-gray-800">ชื่อจังหวัด</h1>
 
         <!-- Content Row -->
         <div class="row">
@@ -14,7 +14,7 @@
                 <!-- Area Chart -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">รายละเอียดธนาคาร</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">ชื่อจังหวัด</h6>
                     </div>
                     <div class="card-body">
                         <div class="container">
@@ -23,16 +23,15 @@
 
                                 </div>
                                 <div class="col-8">
-                                    <form role="form" class="text-start" method="POST" action="{{ 'add-bank_name' }}">
+                                    <form role="form" class="text-start" method="POST" action="{{ 'add-province' }}">
                                         @csrf
                                         <div class="col-12">
                                             <div class="mb-3 row">
-                                                <label for="inputPassword" class="col-sm-3 col-form-label"> ชื่อ ธนาคาร เเละ
-                                                    เลขบัญชี
-                                                    *</label>
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">
+                                                    ชื่อจังหวัด</label>
                                                 <div class="col-sm-9">
-                                                    <input type="txet" class="form-control" name="bank_name"
-                                                        placeholder="กสิการ  xxx-x-x8821-x" required>
+                                                    <input type="txet" class="form-control" name="province_name"
+                                                        placeholder="กรุงเทพมหานคร" required>
                                                 </div>
                                             </div>
                                         </div>

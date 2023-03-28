@@ -14,6 +14,7 @@ use App\Http\Controllers\PostProductsController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProvinceController;
 use Illuminate\Support\Facades\DB;
 use App\Models\PostProducts;
 
@@ -136,3 +137,9 @@ Route::post('/add-manu', [CategoryController::class, 'store']);
 Route::get('/edit-manu/{id}', [CategoryController::class, 'edit']);
 Route::put('/update-manu/{id}', [CategoryController::class, 'update']);
 Route::get('/delete-manu/{id}', [CategoryController::class, 'destroy']);
+
+
+Route::get('/province', [ProvinceController::class, 'index']);
+Route::get('/create-province', [ProvinceController::class, 'create']);
+Route::post('/add-province', [ProvinceController::class, 'store']);
+Route::get('/delete-province/{id}', [ProvinceController::class, 'destroy']);

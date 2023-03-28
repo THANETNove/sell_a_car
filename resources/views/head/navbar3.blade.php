@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
+    <h6 class="font-weight-bolder mb-0">
+        @if (session('message'))
+            <p class="mess"> {{ session('message') }}</p>
+        @endif
+    </h6>
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
