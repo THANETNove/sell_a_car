@@ -206,12 +206,12 @@
                 <span class="nav-link-text ms-1">เติมเงิน</span>
             </a>
         </li>
-        <li class="nav-item">
+        {{--         <li class="nav-item">
             <a id="address" class="nav-link" href="{{ url('/address') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span class="nav-link-text ms-1">ที่อยู่</span>
             </a>
-        </li>
+        </li> --}}
     @endif
 
 

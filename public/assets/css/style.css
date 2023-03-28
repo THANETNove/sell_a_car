@@ -9,3 +9,8 @@
 .text-green-01 {
     color: #00b722;
 }
+
+.form-input-controls {
+    justify-content: center;
+    align-items: "center";
+}
