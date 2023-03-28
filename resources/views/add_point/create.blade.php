@@ -152,7 +152,7 @@
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="point_bank_name"
                                                         aria-label="Default select example">
-                                                        <option value="null" selected>&nbsp;&nbsp;เลือกธนาคารที่โอน
+                                                        <option value="null" selected>เลือกธนาคารที่โอน
                                                         </option>
                                                         @foreach ($data as $data)
                                                             <option value="{{ $data->bank_name }}">{{ $data->bank_name }}

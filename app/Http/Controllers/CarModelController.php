@@ -38,8 +38,8 @@ class CarModelController extends Controller
      */
     public function create()
     {
-        $data = DB::table('car_brands')
-        ->orderBy('id','DESC')
+        $data = DB::table('categories')
+        ->orderBy('categorie_name','ASC')
         ->get();
         return view('car_model.create',['data' => $data]);
     }

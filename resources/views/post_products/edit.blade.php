@@ -66,7 +66,7 @@
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="categorie_name"
                                                         aria-label="Default select example">
-                                                        <option value="null" selected>&nbsp;หมวดหมู่สินค้า</option>
+                                                        <option value="null" selected>หมวดหมู่สินค้า</option>
                                                         @foreach ($manu as $manu1)
                                                             @if ($manu1->categorie_name == $dataProduct->categorie_name)
                                                                 <option value="{{ $manu1->categorie_name }}" selected>
@@ -92,17 +92,17 @@
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="zom_name"
                                                         aria-label="Default select example">
-                                                        <option value="null" selected>&nbsp;เลือกโซน</option>
+                                                        <option value="null" selected>เลือกโซน</option>
                                                         @foreach ($data as $data)
                                                             @if ($data->point_lowest == $dataProduct->zom_name)
                                                                 <option value="{{ $data->point_lowest }}" selected>
                                                                     @if ($data->point_lowest != 0)
-                                                                        &nbsp; {{ $data->point_lowest }} &nbsp; พ้อน &nbsp;
+                                                                        {{ $data->point_lowest }} &nbsp; พ้อน &nbsp;
                                                                         {{ $data->point_loweste_date }}
                                                                         วัน
                                                                         {{ $data->zom_name }}
                                                                     @else
-                                                                        &nbsp; ไม่มีค่าใช้จ่าย &nbsp;
+                                                                        ไม่มีค่าใช้จ่าย &nbsp;
                                                                         {{ $data->point_loweste_date }}
                                                                         วัน
                                                                         {{ $data->zom_name }}
