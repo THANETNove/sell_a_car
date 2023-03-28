@@ -100,12 +100,13 @@ class CategoryController extends Controller
         $member->categorie_name = $request['manu_name'];
 
         $unimg =  $member->image;
-        if ($unimg) {
-            $image_path = public_path().'/img/icon/'.$unimg; 
-            unlink($image_path);
-        }
+
        
         if($request->hasFile('image')){
+            if ($unimg) {
+                $image_path = public_path().'/img/icon/'.$unimg; 
+                unlink($image_path);
+            }
             $imagefile = $request->file('image');
             $data =   $imagefile->move(public_path().'/img/icon',$dateText."".$imagefile->getClientOriginalName());
             $dateImg =  $dateText."".$imagefile->getClientOriginalName();
