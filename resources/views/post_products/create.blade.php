@@ -207,7 +207,7 @@
             console.log(id);
 
             $.ajax({
-                url: `get-api-model/${id}`,
+                url: `{{ url('get-api-model/${id}') }}`,
                 type: 'GET',
                 success: function(res) {
 

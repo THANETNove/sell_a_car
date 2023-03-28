@@ -68,11 +68,11 @@
                                                         onchange="myFunction()" aria-label="Default select example">
                                                         <option value="null" selected>หมวดหมู่สินค้า</option>
                                                         @foreach ($manu as $manu1)
-                                                            @if ($manu1->categorie_name == $dataProduct->id)
-                                                                <option value="{{ $manu1->categorie_name }}" selected>
+                                                            @if ($manu1->id == $dataProduct->categorie_name_id)
+                                                                <option value="{{ $manu1->id }}" selected>
                                                                     {{ $manu1->categorie_name }}</option>
                                                             @else
-                                                                <option value="{{ $manu1->categorie_name }}">
+                                                                <option value="{{ $manu1->id }}">
                                                                     {{ $manu1->categorie_name }}</option>
                                                             @endif
                                                         @endforeach
@@ -229,38 +229,43 @@
             console.log(id);
 
             $.ajax({
-                url: `get-api-model/${id}`,
+                url: `{{ url('get-api-model/${id}') }}`,
                 type: 'GET',
                 success: function(res) {
                     console.log("res", res);
 
-                    /*     if (res.length > 0) {
+                    if (res.length > 0) {
 
-                            let selectHTML =
-                                `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
-                            for (let i = 0; i < res.length; i++) {
-                                selectHTML +=
-                                    `<option value="${res[i].model_name}">${res[i].model_name}</option>`;
-                            }
-                            selectHTML += `</select>`;
-
-                            // Set the innerHTML of the output element to the generated HTML
-                            document.getElementById("sub_category").innerHTML = selectHTML;
-                        } else {
-                            let selectHTML =
-                                `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
-
+                        let selectHTML =
+                            `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
+                        for (let i = 0; i < res.length; i++) {
                             selectHTML +=
-                                `<option></option>`;
+                                `<option value="${res[i].model_name}">${res[i].model_name}</option>`;
+                        }
+                        selectHTML += `</select>`;
 
-                            selectHTML += `</select>`;
+                        // Set the innerHTML of the output element to the generated HTML
+                        document.getElementById("sub_category").innerHTML = selectHTML;
+                    } else {
+                        let selectHTML =
+                            `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
 
-                            // Set the innerHTML of the output element to the generated HTML
-                            document.getElementById("sub_category").innerHTML = selectHTML;
-                        } */
+                        selectHTML +=
+                            `<option></option>`;
+
+                        selectHTML += `</select>`;
+
+                        // Set the innerHTML of the output element to the generated HTML
+                        document.getElementById("sub_category").innerHTML = selectHTML;
+                    }
                     //   document.getElementById("sub_category").innerHTML = "You selected: " + x;
                 }
             });
         }
+
+        $(document).ready(function() {
+            // document is loaded and DOM is ready
+            myFunction()
+        });
     </script>
 @endsection
