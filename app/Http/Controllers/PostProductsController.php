@@ -197,7 +197,12 @@ class PostProductsController extends Controller
         $member->name_products = $request['name_products'];
         $member->product_details = $request['product_details'];
         $member->product_price = $request['product_price'];
-        $member->categorie_name = $request['categorie_name'];
+        $member->categorie_name_id = $request['categorie_name_id'];
+        $member->sub_category = $request['sub_category'];
+        $member->province = $request['province'];
+        $member->url_facebook = $request['url_facebook'];
+        $member->url_Line = $request['url_Line'];
+        $member->zom_name = $request['zom_name'];
         $member->zom_name = $request['zom_name'];
         $member->expiration_date = $future_date;
      

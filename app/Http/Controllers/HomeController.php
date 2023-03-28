@@ -28,8 +28,10 @@ class HomeController extends Controller
     {
         if ( Auth::user()->status != 'admin') {
             $dataAll = DB::table('post_products')
-            ->where('id_user', Auth::user()->id)
-            ->orderBy('id','DESC')
+            ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+            ->select('post_products.*', 'categories.categorie_name')
+            ->where('post_products.id_user', Auth::user()->id)
+            ->orderBy('post_products.id','DESC')
             ->paginate(50);
             return view('post_products.index',['dataAll' =>  $dataAll]);
         }else{

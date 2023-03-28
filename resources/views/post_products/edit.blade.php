@@ -64,7 +64,7 @@
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">หมวดหมู่สินค้า
                                                     *</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" id="mySelect" name="categorie_name"
+                                                    <select class="form-control" id="mySelect" name="categorie_name_id"
                                                         onchange="myFunction()" aria-label="Default select example">
                                                         <option value="null" selected>หมวดหมู่สินค้า</option>
                                                         @foreach ($manu as $manu1)
