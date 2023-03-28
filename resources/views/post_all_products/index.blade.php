@@ -1,123 +1,112 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 beet">
-                        <h6 class="text-white text-capitalize ps-3">รายการสิค้าที่ขาย</h6>
-                        <h6 class="text-white text-capitalize ps-3">
-                            <a href="{{ url('/create-post_products') }}" class="btn btn-outline-light">
-                                post สินค้า
-                            </a>
-                        </h6>
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">รายการขายทั้งหมด</h1>
+
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+
+                <!-- Area Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">รายการขายทั้งหมด</h6>
                     </div>
-                </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0 text-center ">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1 ">
-                                        ลำดับ
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                        ชื่อสินค้า</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        รายละเอียดสินค้า</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        ราคาสินค้า</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Hon Zone
-                                    </th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        รูปภาพ</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        สถานะ</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        created_at
-                                    </th>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            ลำดับ
+                                        </th>
+                                        <th>
+                                            ชื่อสินค้า</th>
+                                        <th>
+                                            รายละเอียดสินค้า</th>
+                                        <th>
+                                            ราคาสินค้า</th>
+                                        <th>
+                                            Hon Zone
+                                        </th>
+                                        <th>
+                                            รูปภาพ</th>
+                                        <th>
+                                            สถานะ</th>
+                                        <th>
+                                            created_at
+                                        </th>
 
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        updated_at</th>
+                                        <th>
+                                            updated_at</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
+                                    </tr>
+                                </thead>
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($dataAll as $data)
-                                    <tr>
-                                        <td>
-                                            <p>{{ $i++ }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $data->name_products }}</p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->product_details }}</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{ number_format($data->product_price) }}</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->zom_name }}</span>
-                                        </td>
-                                        @php
-                                            $img = json_decode($data->image);
-                                            $idimg = 0;
-                                        @endphp
-                                        <td class="align-middle text-center">
-                                            @foreach ($img as $imgUrl)
-                                                <img src="{{ URL::asset('/img/product/' . '' . $imgUrl) }}"
-                                                    {{--  onclick="showImage( $imgUrl)"  --}} onclick="myFunction(`{{ $imgUrl }}`)"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal" height="50px"
-                                                    width="50px" alt="...">
-                                            @endforeach
+                                <tbody>
+                                    @foreach ($dataAll as $data)
+                                        <tr>
+                                            <td>
+                                                {{ $i++ }}
+                                            </td>
+                                            <td>
+                                                {{ $data->name_products }}
+                                            </td>
+                                            <td>
+                                                {{ $data->product_details }}
+                                            </td>
+                                            <td>
+                                                {{ number_format($data->product_price) }}
+                                            </td>
+                                            <td>
+                                                @if ($data->zom_name == '0')
+                                                    โซน HOT
+                                                @else
+                                                    โซน ทั่วไป
+                                                @endif
+
+                                            <td>
+                                                @php
+                                                    $img = json_decode($data->image);
+                                                    $idimg = 0;
+                                                @endphp
+                                                @foreach ($img as $imgUrl)
+                                                    <img src="{{ URL::asset('/img/product/' . '' . $imgUrl) }}"
+                                                        onclick="myFunction(`{{ $imgUrl }}`)" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal" height="50px" width="50px"
+                                                        alt="...">
+                                                @endforeach
 
 
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            @if ($data->status == 'expired')
-                                                <span class="badge badge-sm bg-gradient-danger">หมดอายุเเล้ว</span>
-                                            @elseif($data->status == 'cancelSale')
-                                                <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-secondary">ยกเลิกการขาย</span>
-                                            @else
-                                                <span
-                                                    class="badge badge-sm badge badge badge-sm bg-gradient-success">กำลังขาย</span>
-                                            @endif
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->created_at }}</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{ $data->updated_at }}</span>
-                                        </td>
+                                            </td>
+                                            <td>
+                                                @if ($data->status == 'expired')
+                                                    <span class="text-red-01">หมดอายุเเล้ว</span>
+                                                @elseif($data->status == 'cancelSale')
+                                                    <span class="text-yellow-01">ยกเลิกการขาย</span>
+                                                @else
+                                                    <span class="text-green-01">กำลังขาย</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                {{ $data->created_at }}
+                                            </td>
+                                            <td>
+                                                {{ $data->updated_at }}
+                                            </td>
 
-                                    </tr>
-                                @endforeach
-                                {{--   {{ $data->links() }} --}}
-                            </tbody>
-                        </table>
-                        <div style="margin-left: 1%">
-                            <samp class="links-css">
-                                {!! $dataAll->links() !!}
-                            </samp>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {{ $dataAll->links() }}
                         </div>
                     </div>
                 </div>

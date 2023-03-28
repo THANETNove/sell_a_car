@@ -25,9 +25,9 @@ class CarModelController extends Controller
     public function index()
     {
         $data = DB::table('car_models')
-        ->leftJoin('car_brands', 'car_models.id_car_name', '=', 'car_brands.id')
-        ->orderBy('car_models.id','DESC')
-         ->select('car_brands.car_brands_name', 'car_models.*')
+        ->leftJoin('categories', 'car_models.id_car_name', '=', 'categories.id')
+        ->orderBy('categories.categorie_name','ASC')
+         ->select('categories.categorie_name', 'car_models.*')
         ->get();
 
         return view('car_model.index',['data'=> $data]);
@@ -71,7 +71,7 @@ class CarModelController extends Controller
     public function edit(string $id)
     {
         $data =  CarModel::find($id);
-        $data_car = DB::table('car_brands')
+        $data_car = DB::table('categories')
         ->orderBy('id','ASC')
         ->get();
 

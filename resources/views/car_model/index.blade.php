@@ -49,7 +49,7 @@
                                             <td>
                                                 {{ $i++ }}
                                             <td>
-                                                {{ $data->car_brands_name }}</p>
+                                                {{ $data->categorie_name }}</p>
                                             </td>
                                             <td>
                                                 {{ $data->model_name }}
