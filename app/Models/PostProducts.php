@@ -13,7 +13,7 @@ class PostProducts extends Model
         'name_products',
         'product_details',
         'product_price',
-        'categorie_name',
+        'categorie_name_id',
         'zom_name',
         'sub_category',
         'province',
