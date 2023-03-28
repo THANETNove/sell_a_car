@@ -32,7 +32,7 @@
                                                     *</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" name="name_products"
-                                                        placeholder="ชื่อสินค้า">
+                                                        placeholder="ชื่อสินค้า" required>
                                                 </div>
                                             </div>
                                         </div>

@@ -111,7 +111,7 @@
                                                     *</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" name="bank_name"
-                                                        placeholder="ชื่อบัญชี">
+                                                        placeholder="ชื่อบัญชี" required>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div class="row">
+    {{--     <div class="row">
         <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -77,6 +77,98 @@
                         </table>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">ราคาในโซน</h1>
+        <p class="mb-4">
+            <a href="{{ url('/create-point_loweste') }}">เพิ่มรายการโซน</a>
+        </p>
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+
+                <!-- Area Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">รายการโซน</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            ลำดับ
+                                        </th>
+                                        <th>
+                                            จำนวนพ้อย</th>
+                                        <th>
+                                            จำนวนวันในการขาย</th>
+                                        <th>
+                                            โซน</th>
+                                        <th>
+                                            delete
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                    </tr>
+                                </thead>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @foreach ($data as $data1)
+                                        <tr>
+                                            <td>
+                                                {{ $i++ }}
+                                            </td>
+                                            <td>
+                                                {{ $data1->point_lowest }}
+                                            </td>
+                                            <td>
+                                                {{ $data1->point_loweste_date }}
+                                                วัน
+
+                                            </td>
+                                            <td>
+                                                {{ $data1->zom_name }}
+                                            </td>
+
+
+                                            <td class="align-middle">
+                                                <a onClick="javascript:return confirm('ข้อมูล  {{ $data1->point_lowest }} ทั้งหมด จะถูกลบ คุณต้องการลบข้อมูลใช่หรือไม่ ! ');"
+                                                    href="{{ url('/delete-point_lowest', $data1->id) }}"
+                                                    class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                                                    data-original-title="delete user">
+                                                    delete
+                                                </a>
+                                            </td>
+                                            <td>
+                                                {{ $data1->created_at }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="margin-left: 1%">
+
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
