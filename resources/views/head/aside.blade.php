@@ -203,7 +203,7 @@
         <li class="nav-item">
             <a id="add-point" class="nav-link " href="{{ url('/add_point') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span class="nav-link-text ms-1">เติมเงิน</span>
+                <span class="nav-link-text ms-1">เเจ้งสลิปเติมเงิน</span>
             </a>
         </li>
         {{--         <li class="nav-item">
