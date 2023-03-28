@@ -41,7 +41,7 @@
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">เมนหลัก
                                                     *</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="zom_name"
+                                                    <select class="form-control" name="id_car_name"
                                                         aria-label="Default select example">
                                                         @foreach ($data as $data)
                                                             <option value="{{ $data->id }}">
