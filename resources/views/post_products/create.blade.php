@@ -84,14 +84,10 @@
                                                     class="col-sm-3 col-form-label">หมวดหมู่สินค้าย่อย
                                                     *</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="categorie_name"
-                                                        onchange="myFunction()" aria-label="Default select example">
-                                                        <option value="null" selected>หมวดหมู่สินค้าย่อย</option>
-                                                        @foreach ($manu as $manu1)
-                                                            <option value="{{ $manu1->categorie_name }}">
-                                                                {{ $manu1->categorie_name }}
-                                                            </option>
-                                                        @endforeach
+                                                    <select class="form-control" id="sub_category" name="sub_category"
+                                                        aria-label="Default select example">
+
+
                                                     </select>
                                                     @if (session('errorCategorie'))
                                                         <h6 class="error-input1">
@@ -219,8 +215,32 @@
                 url: `get-api-model/${id}`,
                 type: 'GET',
                 success: function(res) {
-                    console.log(res);
 
+                    if (res.length > 0) {
+
+                        let selectHTML =
+                            `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
+                        for (let i = 0; i < res.length; i++) {
+                            selectHTML +=
+                                `<option value="${res[i].model_name}">${res[i].model_name}</option>`;
+                        }
+                        selectHTML += `</select>`;
+
+                        // Set the innerHTML of the output element to the generated HTML
+                        document.getElementById("sub_category").innerHTML = selectHTML;
+                    } else {
+                        let selectHTML =
+                            `<select class="form-control" id="sub_category" name="sub_category" aria-label="Default select example">`;
+
+                        selectHTML +=
+                            `<option></option>`;
+
+                        selectHTML += `</select>`;
+
+                        // Set the innerHTML of the output element to the generated HTML
+                        document.getElementById("sub_category").innerHTML = selectHTML;
+                    }
+                    //   document.getElementById("sub_category").innerHTML = "You selected: " + x;
                 }
             });
         }
