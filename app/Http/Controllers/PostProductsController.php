@@ -36,7 +36,7 @@ class PostProductsController extends Controller
             ->where('name_products', 'like', "$search%")
             ->orWhere('product_price', 'like', "$search%")
             ->orderBy('id','DESC')
-            ->paginate(100);
+            ->paginate(50);
             return view('post_products.index',['dataAll' =>  $dataAll]);
         }else {
             $dataAll =  $dataAll
@@ -56,7 +56,8 @@ class PostProductsController extends Controller
     {
         $data = DB::table('point_lowests')->get();
         $manu = DB::table('categories')->get();
-        return view('post_products.create',['data' => $data , 'manu' => $manu]);
+        $provinces = DB::table('provinces')->get();
+        return view('post_products.create',['data' => $data , 'manu' => $manu,'provinces' => $provinces]);
     }
 
     /**

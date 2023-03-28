@@ -15,8 +15,11 @@ class PostProducts extends Model
         'product_price',
         'categorie_name',
         'zom_name',
+        'province',
+        'url_facebook',
+        'url_Line',
         'expiration_date',
         'image',
         'status'
     ];
-}
+} 

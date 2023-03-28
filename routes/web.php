@@ -81,6 +81,7 @@ Route::post('/add-model_name', [CarModelController::class, 'store']);
 Route::get('/edit-model_name/{id}', [CarModelController::class, 'edit']);
 Route::put('/update-model_name/{id}', [CarModelController::class, 'update']);
 Route::get('/delete-model_name/{id}', [CarModelController::class, 'destroy']);
+Route::get('/get-api-model/{id}', [CarModelController::class, 'get_api_model']);
 
 
 Route::get('/bank_name', [BankNameController::class, 'index']);
@@ -115,6 +116,9 @@ Route::get('/edit-post_products/{id}', [PostProductsController::class, 'edit']);
 Route::put('/update-post_products/{id}', [PostProductsController::class, 'update']);
 Route::get('/renew-post_products/{id}', [PostProductsController::class, 'renew']);
 Route::put('/update-renew/{id}', [PostProductsController::class, 'updateRenew']);
+
+
+
 Route::get('/all-car', [CarController::class, 'index']);
 Route::get('/select-car/{id}', [CarController::class, 'show']);
 Route::post('/searchCar', [CarController::class, 'selectCar']);

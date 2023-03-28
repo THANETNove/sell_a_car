@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('product_price')->nullable();
             $table->string('categorie_name')->nullable();
             $table->string('zom_name')->nullable();
+            $table->string('province')->nullable();
+            $table->string('url_facebook')->nullable();
+            $table->string('url_Line')->nullable();
             $table->string('expiration_date')->nullable();
             $table->JSON('image')->nullable();
             $table->string('status')->nullable();

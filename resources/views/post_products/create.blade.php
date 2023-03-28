@@ -61,9 +61,32 @@
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">หมวดหมู่สินค้า
                                                     *</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="categorie_name"
-                                                        aria-label="Default select example">
+                                                    <select class="form-control" id="mySelect" name="categorie_name"
+                                                        onchange="myFunction()" aria-label="Default select example">
                                                         <option value="null" selected>หมวดหมู่สินค้า</option>
+                                                        @foreach ($manu as $manu1)
+                                                            <option value="{{ $manu1->id }}">
+                                                                {{ $manu1->categorie_name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if (session('errorCategorie'))
+                                                        <h6 class="error-input1">
+                                                            {{ session('errorCategorie') }}
+                                                        </h6>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
+                                                <label for="inputPassword"
+                                                    class="col-sm-3 col-form-label">หมวดหมู่สินค้าย่อย
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" name="categorie_name"
+                                                        onchange="myFunction()" aria-label="Default select example">
+                                                        <option value="null" selected>หมวดหมู่สินค้าย่อย</option>
                                                         @foreach ($manu as $manu1)
                                                             <option value="{{ $manu1->categorie_name }}">
                                                                 {{ $manu1->categorie_name }}
@@ -80,7 +103,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3 row">
-                                                <label for="inputPassword" class="col-sm-3 col-form-label">หมวดหมู่สินค้า
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">เลือกโซน
                                                     *</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="zom_name"
@@ -112,6 +135,29 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3 row">
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">จังหวัด
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" name="province_name"
+                                                        aria-label="Default select example">
+                                                        @foreach ($provinces as $province)
+                                                            <option value="{{ $province->province_name }}">
+
+                                                                {{ $province->province_name }}
+
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if (session('errorZom'))
+                                                        <h6 class="error-input1">
+                                                            {{ session('errorZom') }}
+                                                        </h6>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">รูปภาพ
                                                     *</label>
                                                 <div class="col-sm-9">
@@ -122,6 +168,26 @@
                                                             <strong>{{ $message }} (PNG,JPEG,JPG,WEBP)</strong>
                                                         </span>
                                                     @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">url facebook
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="url_facebook"
+                                                        placeholder="url facebook">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3 row">
+                                                <label for="inputPassword" class="col-sm-3 col-form-label">url Line
+                                                    *</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="url_Line"
+                                                        placeholder="url Line">
                                                 </div>
                                             </div>
                                         </div>
@@ -143,4 +209,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function myFunction() {
+            var id = document.getElementById("mySelect").value;
+            console.log(id);
+
+            $.ajax({
+                url: `get-api-model/${id}`,
+                type: 'GET',
+                success: function(res) {
+                    console.log(res);
+
+                }
+            });
+        }
+    </script>
 @endsection

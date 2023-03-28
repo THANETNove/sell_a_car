@@ -78,6 +78,18 @@ class CarModelController extends Controller
         return view('car_model.edit',['data' => $data,'data_car' => $data_car]);
     }
 
+
+    public function get_api_model(string $id)
+    {
+        
+        $data  =   DB::table('car_models')
+        ->where('id_car_name',$id)
+        ->orderBy('id','ASC')
+        ->get();
+    
+        return  $data;
+    }
+
     /**
      * Update the specified resource in storage.
      */
