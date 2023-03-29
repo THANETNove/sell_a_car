@@ -1,6 +1,6 @@
 <div class="col-lg-3 car-imag2">
     @php
-        $carBrands = DB::table('car_brands')->get();
+        $categories = DB::table('categories')->get();
         $carModels = DB::table('car_models')->get();
     @endphp
     <div class="left_sidebar_area">
@@ -16,9 +16,9 @@
                         <a href="{{ url('/') }}">รถยนต์ทั้งหมด</a>
                     </li>
 
-                    @foreach ($carBrands as $dataCar)
+                    @foreach ($categories as $categorie)
                         <li>
-                            <a href="{{ url('/search', $dataCar->car_brands_name) }}">{{ $dataCar->car_brands_name }}</a>
+                            <a href="{{ url('/search', $categorie->categorie_name) }}">{{ $dataCar->categorie_name }}</a>
                         </li>
                     @endforeach
                 </ul>

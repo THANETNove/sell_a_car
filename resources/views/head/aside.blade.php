@@ -156,7 +156,13 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ url('/money-customers') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>ตรวจสอบสลิปเติมเงิน</span></a>
+                <span>ตรวจสอบสลิปเติมเงิน</span>
+                @if (DB::table('add_points')->where('status', 'null')->count() > 0)
+                    <span class="number-circle12">
+                        {{ DB::table('add_points')->where('status', 'null')->count() }}
+                    </span>
+                @endif
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('/manu') }}">

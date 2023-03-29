@@ -56,15 +56,15 @@
                                 {{ $datazone->product_details }}
                             </p>
                             <div class="card_area d-flex justify-content-between align-items-center">
-                                @if ($datazone->facebook)
-                                    <a href="{{ $datazone->facebook }}" target='_blank' class="btn_3">ติดต่อเรา
+                                @if ($datazone->url_facebook)
+                                    <a href="{{ $datazone->url_facebook }}" target='_blank' class="btn_3">ติดต่อเรา
                                         <i class="fab fa-facebook-f text-span" style="font-size: 20px "></i></a>
                                 @else
                                     <a href="#" class="btn_3">ติดต่อเรา
                                         <i class="fab fa-facebook-f text-span" style="font-size: 20px "></i></a>
                                 @endif
-                                @if ($datazone->line)
-                                    <a href="{{ $datazone->line }}" target='_blank' class="btn_3">ติดต่อเรา
+                                @if ($datazone->url_Line)
+                                    <a href="{{ $datazone->url_Line }}" target='_blank' class="btn_3">ติดต่อเรา
                                         <i class="fab fa-line text-span" style="font-size: 20px "></i></a>
                                 @else
                                     <a href="#" class="btn_3">ติดต่อเรา

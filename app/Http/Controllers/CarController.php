@@ -64,18 +64,22 @@ class CarController extends Controller
 
 
         $dataZone = DB::table('post_products')
-        ->where('zom_name','!=',"0")
-        ->where('status','!=' ,"expired")
-        ->where('categorie_name', 'like', "$name%")
-        ->orderBy('id','ASC')
+        ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('post_products.*', 'categories.categorie_name')
+        ->where('post_products.zom_name','!=',"0")
+        ->where('post_products.status','!=' ,"expired")
+        ->where('categories.categorie_name', 'like', "$name%")
+        ->orderBy('post_products.id','ASC')
         ->paginate(50);
 
         
         $dataGree = DB::table('post_products')
-        ->where('zom_name','=',"0")
-        ->where('status','!=' ,"expired")
-        ->where('categorie_name', 'like', "$name%")
-        ->orderBy('id','ASC')
+        ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('post_products.*', 'categories.categorie_name')
+        ->where('post_products.zom_name','=',"0")
+        ->where('post_products.status','!=' ,"expired")
+        ->where('categories.categorie_name', 'like', "$name%")
+        ->orderBy('post_products.id','ASC')
         ->paginate(50);
 
 
@@ -88,18 +92,22 @@ class CarController extends Controller
 
         $search = $name;
         $dataZone = DB::table('post_products')
-        ->where('zom_name','!=',"0")
-        ->where('status','!=' ,"expired")
-        ->where('name_products', 'like', "$search%")
-        ->orderBy('id','ASC')
+        ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('post_products.*', 'categories.categorie_name')
+        ->where('post_products.zom_name','!=',"0")
+        ->where('post_products.status','!=' ,"expired")
+        ->where('categories.name_products', 'like', "$search%")
+        ->orderBy('post_products.id','ASC')
         ->paginate(50);
 
         
         $dataGree = DB::table('post_products')
-        ->where('zom_name','==',"0")
-        ->where('status','!=' ,"expired")
-        ->where('name_products', 'like', "$search%")
-        ->orderBy('id','ASC')
+        ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('post_products.*', 'categories.categorie_name')
+        ->where('post_products.zom_name','==',"0")
+        ->where('post_products.status','!=' ,"expired")
+        ->where('categories.name_products', 'like', "$search%")
+        ->orderBy('post_products.id','ASC')
         ->paginate(50);
 
         return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
@@ -122,8 +130,6 @@ class CarController extends Controller
 
     
         $dataZone = DB::table('post_products')
-        ->leftJoin('addresses', 'post_products.id_user', '=', 'addresses.user_id')
-        ->select('post_products.*',  'addresses.user_id','addresses.facebook', 'addresses.line', 'addresses.instagram', 'addresses.twitter')
         ->where('post_products.id',$id)
         ->get();
 
