@@ -99,7 +99,7 @@
                                     </a>
                                     <div class="single_product_text">
                                         <h4>{{ $datazone->name_products }}</h4>
-                                        <h3 class="text-span">{{ number_format($datazone->product_price) }} บาท</h3>
+                                        <h3 class="add_cart">{{ number_format($datazone->product_price) }} บาท</h3>
                                         <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
                                                 class="ti-heart"></i></a>
                                     </div>
@@ -120,7 +120,7 @@
                                     </a>
                                     <div class="single_product_text">
                                         <h4>{{ $datage->name_products }}</h4>
-                                        <h3 class="text-span">{{ number_format($datage->product_price) }} บาท</h3>
+                                        <h3 class="add_cart">{{ number_format($datage->product_price) }} บาท</h3>
                                         <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
                                                 class="ti-heart"></i></a>
                                     </div>
