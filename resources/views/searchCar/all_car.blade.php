@@ -28,13 +28,12 @@
                         $categories = DB::table('categories')
                             ->orderBy('categorie_name', 'ASC')
                             ->get();
-                        if ($dataZone) {
+                        /*                if ($dataZone->count() > 0) {
                             $carModels = DB::table('car_models')
                                 ->where('id_car_name', '=', $dataZone[0]->categorie_name_id)
                                 ->orderBy('model_name', 'ASC')
                                 ->get();
-                        }
-                        
+                        } */
                     @endphp
                     <div class="left_sidebar_area">
                         <aside class="left_widgets p_filter_widgets">
@@ -61,9 +60,6 @@
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
-                                    <li>
-                                        <a href="{{ url('/') }}">รุ่นรถยนต์ทั้งหมด</a>
-                                    </li>
                                     @foreach ($carModels as $modelCar)
                                         <li>
                                             <a

@@ -61,12 +61,13 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3 row">
-                                                <label for="inputPassword" class="col-sm-3 col-form-label">หมวดหมู่สินค้า
+                                                <label for="inputPassword"
+                                                    class="col-sm-3 col-form-label">หมวดหมู่สินค้าหลัก
                                                     *</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" id="mySelect" name="categorie_name_id"
                                                         onchange="myFunction()" aria-label="Default select example">
-                                                        <option value="null" selected>หมวดหมู่สินค้า</option>
+                                                        <option value="null" selected>หมวดหมู่สินค้าหลัก</option>
                                                         @foreach ($manu as $manu1)
                                                             @if ($manu1->id == $dataProduct->categorie_name_id)
                                                                 <option value="{{ $manu1->id }}" selected>

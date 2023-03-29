@@ -71,7 +71,7 @@
                                                         @endforeach
                                                     </select>
                                                     @if (session('errorCategorie'))
-                                                        <h6 class="error-input1">
+                                                        <h6 class="error-input1" style=" color: red;">
                                                             {{ session('errorCategorie') }}
                                                         </h6>
                                                     @endif
@@ -89,11 +89,7 @@
 
 
                                                     </select>
-                                                    @if (session('errorCategorie'))
-                                                        <h6 class="error-input1">
-                                                            {{ session('errorCategorie') }}
-                                                        </h6>
-                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
@@ -121,6 +117,11 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
+                                                    @if (session('errorZom'))
+                                                        <h6 style=" color: red;">
+                                                            {{ session('errorZom') }}
+                                                        </h6>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -139,11 +140,6 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                    @if (session('errorZom'))
-                                                        <h6 class="error-input1">
-                                                            {{ session('errorZom') }}
-                                                        </h6>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

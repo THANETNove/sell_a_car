@@ -74,7 +74,7 @@ class PostProductsController extends Controller
             'image.*' => ['required', 'image', 'mimes:jpg,png,jpeg,webp'],
             /* 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'], */
         ]);
-        if ($request['categorie_name'] == "null") {
+        if ($request['categorie_name_id'] == "null") {
 
             return redirect('create-post_products')->with('errorCategorie', "กรุณาเลือกหมวดหมู่" );
 
@@ -155,6 +155,8 @@ class PostProductsController extends Controller
         $provinces = DB::table('provinces')->get();
         return view('post_products.edit',['data' =>  $data,'dataProduct'=> $dataProduct,'manu'=> $manu,'provinces' =>$provinces]);
     }
+
+
     public function renew(string $id)
     {
         $data = DB::table('point_lowests')->get();
@@ -167,6 +169,16 @@ class PostProductsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        if ($request['categorie_name_id'] == "null") {
+
+            return back()->with('errorCategorie', "กรุณาเลือกหมวดหมู่" );
+
+       }
+       if ($request['zom_name'] == "null") {
+
+        return back()->with('errorZom', "กรุณาเลือกโซน" );
+        }
 
         $data = DB::table('point_lowests')->where('point_lowest',$request['zom_name'])->get();
         $date_point = $data[0]->point_loweste_date;

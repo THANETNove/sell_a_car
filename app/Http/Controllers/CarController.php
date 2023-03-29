@@ -41,17 +41,25 @@ class CarController extends Controller
         $search = $request['search'];
 
         $dataZone = DB::table('post_products')
-        ->where('zom_name','!=',"0")
-        ->where('status','!=' ,"expired")
-        ->where('name_products', 'like', "$search%")
+        ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('post_products.*', 'categories.categorie_name')
+        ->where('post_products.zom_name','!=',"0")
+        ->where('post_products.status','!=' ,"expired")
+        ->where('post_products.name_products', 'like', "$search%")
+        ->orWhere('categories.categorie_name', 'like', "$search%")
+        ->orWhere('post_products.sub_category', 'like', "$search%")
         ->orderBy('id','ASC')
         ->paginate(50);
 
         
         $dataGree = DB::table('post_products')
-        ->where('zom_name','==',"0")
-        ->where('status','!=' ,"expired")
-        ->where('name_products', 'like', "$search%")
+        ->leftJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('post_products.*', 'categories.categorie_name')
+        ->where('post_products.zom_name','==',"0")
+        ->where('post_products.status','!=' ,"expired")
+        ->where('post_products.name_products', 'like', "$search%")
+        ->orWhere('categories.categorie_name', 'like', "$search%")
+        ->orWhere('post_products.sub_category', 'like', "$search%")
         ->orderBy('id','ASC')
         ->paginate(50);
 
@@ -69,6 +77,7 @@ class CarController extends Controller
         ->where('post_products.zom_name','!=',"0")
         ->where('post_products.status','!=' ,"expired")
         ->where('categories.categorie_name', 'like', "$name%")
+        ->orWhere('post_products.sub_category', 'like', "$name%")
         ->orderBy('post_products.id','ASC')
         ->paginate(50);
 
@@ -79,11 +88,36 @@ class CarController extends Controller
         ->where('post_products.zom_name','=',"0")
         ->where('post_products.status','!=' ,"expired")
         ->where('categories.categorie_name', 'like', "$name%")
+        ->orWhere('post_products.sub_category', 'like', "$name%")
         ->orderBy('post_products.id','ASC')
         ->paginate(50);
 
+   
 
-        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
+        $categories = DB::table('categories')
+        ->where('categorie_name', 'like', "$name%")
+        ->orderBy('categorie_name', 'ASC')
+        ->get();
+     
+    if ($categories->count() > 0) {
+        $carModels = DB::table('car_models')
+            ->where('id_car_name', '=',$categories[0]->id)
+            ->orderBy('model_name', 'ASC')
+            ->get();
+    }else {
+        $models = DB::table('post_products')
+            ->where('sub_category', 'like', "$name%")
+            ->get();
+          dd($models);
+        $carModels = DB::table('car_models')
+            ->where('id_car_name', '=',$models[0]->categorie_name_id)
+            ->orderBy('model_name', 'ASC')
+            ->get();
+            dd( $carModels);
+    }
+
+
+        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree,'carModels' =>$carModels ]);
     }
 
 
