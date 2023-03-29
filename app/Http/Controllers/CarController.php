@@ -108,12 +108,11 @@ class CarController extends Controller
         $models = DB::table('post_products')
             ->where('sub_category', 'like', "$name%")
             ->get();
-          dd($models);
+     
         $carModels = DB::table('car_models')
             ->where('id_car_name', '=',$models[0]->categorie_name_id)
             ->orderBy('model_name', 'ASC')
             ->get();
-            dd( $carModels);
     }
 
 
