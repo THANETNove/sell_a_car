@@ -175,11 +175,6 @@
                 <span>เมนู ย่อย</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/car_model') }}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>เมนู ย่อย</span></a>
-        </li>
-        <li class="nav-item">
             <a id="bank_name" class="nav-link" href="{{ url('/bank_name') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span class="nav-link-text ms-1">เพิ่ม ธนาคาร</span>

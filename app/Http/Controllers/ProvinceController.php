@@ -39,7 +39,7 @@ class ProvinceController extends Controller
         $member->save();
  
 
-        return redirect('create-province')->with('message', "บันทึกสำเร็จ" );
+        return redirect('province')->with('message', "บันทึกสำเร็จ" );
     }
 
     /**

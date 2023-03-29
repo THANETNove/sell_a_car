@@ -4,11 +4,17 @@
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
+
+    <h6 class="font-weight-bolder mb-0">
+        @if (session('message'))
+            <p class="mess"> {{ session('message') }}</p>
+        @endif
+    </h6>
     <?php
     $pathname = $_SERVER['REQUEST_URI'];
     $ex = explode('/', $pathname);
     
-    $desiredPart = $ex[4];
+    $desiredPart = $ex[3];
     
     ?>
     @if (

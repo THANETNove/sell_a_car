@@ -51,7 +51,7 @@
                                                 <label for="inputPassword" class="col-sm-3 col-form-label">ว/ด/ป/เวลา
                                                     *</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="point"
+                                                    <input type="text" class="form-control" name="date"
                                                         placeholder="ว/ด/ป/เวลา สลิป (ตัวอย่าง 8 ม.ค 66 11:54)" required>
                                                 </div>
                                             </div>
