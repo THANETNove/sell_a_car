@@ -63,7 +63,30 @@ class CarController extends Controller
         ->orderBy('id','ASC')
         ->paginate(50);
 
-        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree ]);
+
+        $categories = DB::table('categories')
+        ->where('categorie_name', 'like', "$search%")
+        ->orderBy('categorie_name', 'ASC')
+        ->get();
+     
+    if ($categories->count() > 0) {
+        $carModels = DB::table('car_models')
+            ->where('id_car_name', '=',$categories[0]->id)
+            ->orderBy('model_name', 'ASC')
+            ->get();
+    }else {
+        $models = DB::table('post_products')
+            ->where('sub_category', 'like', "$search%")
+            ->get();
+     
+        $carModels = DB::table('car_models')
+            ->where('id_car_name', '=',$models[0]->categorie_name_id)
+            ->orderBy('model_name', 'ASC')
+            ->get();
+    }
+
+
+        return view('searchCar.all_car',['dataZone' => $dataZone,'dataGree' => $dataGree,'carModels' =>$carModels  ]);
     }
 
 
