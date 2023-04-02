@@ -1,6 +1,6 @@
 <!--::footer_part start::-->
 <footer class="footer_part">
-    {{--  <div class="container">
+    {{--   <div class="container">
         <div class="row justify-content-around">
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
@@ -49,7 +49,7 @@
         </div>
     </div> --}}
 
-    {{--     <div class="copyright_part">
+    <div class="copyright_part">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </footer>
 <!--::footer_part end::-->
 

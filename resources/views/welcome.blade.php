@@ -104,6 +104,39 @@
     </div>
 
 
+    <!-- banner part start-->
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="banner_slider owl-carousel owl-carousel2">
+                        @foreach ($dataImage as $data_pag)
+                            <div class="single_banner_slider">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        {{--   <div class="banner_text">
+                                                <div class="banner_text_iner">
+                                                    <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                                        alt="">
+                                                </div>
+                                            </div> --}}
+                                        <div class="banner_text_iner">
+                                            <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                                alt="">
+                                        </div>
+                                    </div>
+                                    {{--   <div class="banner_img d-lg-block">
+                                            <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                                alt="">
+                                        </div> --}}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+    </section>
+
 
 
     @include('./head/footer')

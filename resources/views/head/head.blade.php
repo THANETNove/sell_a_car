@@ -23,3 +23,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/price_rangs.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/lightslider.min.css') }}">
+
+
+    <!-- Custom styles for this template-->

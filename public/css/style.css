@@ -8270,7 +8270,9 @@ textarea {
   overflow: hidden;
 }
 
-
+.owl-nav {
+  display: none;
+}
 
 
 /*# sourceMappingURL=style.css.map */
