@@ -2428,9 +2428,7 @@ ul {
     color: #ffffff !important;
   }
 
-  .bg-lg ul li a {
-    color: #0719ed !important;
-  }
+
 
   /* line 245, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .navbar-brand img {
@@ -7978,7 +7976,9 @@ h6 {
 
   .navbar-nav-login {
     display: none !important;
+
   }
+
 }
 
 
