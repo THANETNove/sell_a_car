@@ -115,7 +115,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="banner_slider owl-carousel owl-carousel2">
-                        @foreach ($dataImage as $data_pag)
+                        @foreach ($dataImageFooter as $imageFoot)
                             <div class="single_banner_slider">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
@@ -126,7 +126,7 @@
                                                 </div>
                                             </div> --}}
                                         <div class="banner_text_iner">
-                                            <img src="{{ URL::asset('/img/advert/' . '' . $data_pag->image) }}"
+                                            <img src="{{ URL::asset('/img/advertFooter/' . '' . $imageFoot->image) }}"
                                                 alt="">
                                         </div>
                                     </div>

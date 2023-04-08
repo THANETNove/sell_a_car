@@ -61,10 +61,12 @@ Route::get('/', function () {
 
         $dataImage = DB::table('adverts')
         ->get();
+        $dataImageFooter = DB::table('advert_footers')
+        ->get();
         $manu = DB::table('categories')
         ->get();
     
-    return view('welcome',['dataZone' => $dataZone,'dataImage'=> $dataImage,'manu' => $manu]);
+    return view('welcome',['dataZone' => $dataZone,'dataImage'=> $dataImage,'manu' => $manu, 'dataImageFooter' => $dataImageFooter]);
 });
 
 
