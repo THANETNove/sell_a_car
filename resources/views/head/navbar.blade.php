@@ -11,6 +11,7 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+
                         <div class="hearer_icon col-9  col-sm-9 col-md-8 col-lg-6">
                             <form class="d-flex" role="search" action="{{ url('searchCar') }}" method="post">
                                 @csrf
@@ -30,21 +31,30 @@
                             </ul>
                         </div>
                     </nav>
+
+
                 </div>
 
             </div>
         </div>
     </div>
-</header>
- --}}
-
-<nav class="navbar navbar-expand-lg bg-primary">
+</header> --}}
+<nav class="navbar" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand car-imag2" href="{{ url('/') }}"> <img src="{{ URL::asset('/img/favicon.png') }}"
+                alt="logo"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class=" col-8  col-sm-8 col-md-8 col-lg-8">
+            <form class="d-flex" role="search" action="{{ url('searchCar') }}" method="post">
+                @csrf
+                <input class="form-control col-12 me-2" type="search" name="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -71,10 +81,6 @@
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>
