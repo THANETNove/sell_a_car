@@ -15,9 +15,11 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\advertFooterController;
 use Illuminate\Support\Facades\DB;
 use App\Models\PostProducts;
 use App\Models\LogUserWebAccess;
+
 
 
 
@@ -158,3 +160,10 @@ Route::get('/province', [ProvinceController::class, 'index']);
 Route::get('/create-province', [ProvinceController::class, 'create']);
 Route::post('/add-province', [ProvinceController::class, 'store']);
 Route::get('/delete-province/{id}', [ProvinceController::class, 'destroy']);
+
+Route::get('/advert-footer', [advertFooterController::class, 'index']);
+Route::get('/create-advert-footer', [advertFooterController::class, 'create']);
+Route::post('/add-advert-footer', [advertFooterController::class, 'store']);
+Route::get('/edit-advert-footer/{id}', [advertFooterController::class, 'edit']);
+Route::put('/update-advert-footer/{id}', [advertFooterController::class, 'update']);
+Route::get('/delete-advert-footer/{id}', [advertFooterController::class, 'destroy']);

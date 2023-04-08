@@ -22,8 +22,8 @@
                                 <div class="col">
                                 </div>
                                 <div class="col-8">
-                                    <form role="form" class="text-start" method="POST" action="{{ 'add-advert' }}"
-                                        enctype="multipart/form-data">
+                                    <form role="form" class="text-start" method="POST"
+                                        action="{{ 'add-advert-footer' }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-12">
                                             <div class="mb-3 row">
