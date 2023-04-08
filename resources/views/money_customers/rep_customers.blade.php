@@ -18,7 +18,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">รายการสลิปเติมเงิน</h6>
                         @php
                             $sum = DB::table('add_points')
-                                ->where('add_points.status', 'null')
+                                ->where('add_points.status', '!=', 'null')
                                 ->sum('point');
                         @endphp
                         <br>
@@ -88,44 +88,14 @@
 
                                             </td>
                                             <td>
-                                                <div>
-                                                    <div class="row col-12">
-                                                        <div class="col-12 col-md-6">
-                                                            <form role="form" class="text-start" method="POST"
-                                                                action="{{ url('update-point', $data1->id) }}">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <div class="mb-3 my-3" style="display:none">
-                                                                    <input type="text" class="form-control"
-                                                                        name="add_point" value="{{ $data1->point }}"
-                                                                        id="exampleFormControlInput1">
-                                                                    <input type="text" class="form-control"
-                                                                        name="app_rej" value="approved"
-                                                                        id="exampleFormControlInput1">
-                                                                </div>
-                                                                <button type="submit"
-                                                                    class="btn btn-success">เติมเงิน</button>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <form role="form" class="text-start" method="POST"
-                                                                action="{{ url('update-point', $data1->id) }}">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <div class="mb-3 my-3" style="display:none">
-                                                                    <input type="text" class="form-control"
-                                                                        name="car_name" value="{{ $data1->point }}"
-                                                                        id="exampleFormControlInput1">
-                                                                    <input type="text" class="form-control"
-                                                                        name="app_rej" value="reject"
-                                                                        id="exampleFormControlInput1">
-                                                                </div>
-                                                                <button type="submit"
-                                                                    class="btn btn-danger">ปฏิเสธ</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+                                                @if ($data1->status === 'approved')
+                                                    <p style="color: green">สำเร็จ</p>
+                                                @else
+                                                    <p style="color: red">ไม่สำเร็จ</p>
+                                                @endif
+
+
                                             </td>
                                             <td>
                                                 {{ $data1->created_at }}

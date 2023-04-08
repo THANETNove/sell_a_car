@@ -165,6 +165,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ url('/rep-customers') }}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>รายงานสลิปเติมเงิน</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ url('/manu') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>เพิ่ม เมนู</span></a>

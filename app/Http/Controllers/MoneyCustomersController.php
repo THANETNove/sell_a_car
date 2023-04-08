@@ -52,6 +52,16 @@ class MoneyCustomersController extends Controller
     {
         //
     }
+    public function repCustomers()
+    {
+        $data = DB::table('add_points')->where('add_points.status', '!=','null')
+        ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+        ->select('add_points.*', 'users.username')
+        ->orderBy('add_points.id','DESC')
+        ->paginate(100);
+        return view('money_customers.rep_customers',['data' => $data]);
+
+    }
     public function products(Request $request)
     {
         if (Auth::user()->status == "admin") { 

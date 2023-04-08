@@ -37,6 +37,9 @@
                                         <th>
                                             รูปภาพ</th>
                                         <th>
+                                        <th>
+                                            ดู</th>
+                                        <th>
                                             สถานะ</th>
                                         <th>
                                             created_at
@@ -85,6 +88,9 @@
                                                 @endforeach
 
 
+                                            </td>
+                                            <td>
+                                                {{ $data->product_details }}
                                             </td>
                                             <td>
                                                 @if ($data->status == 'expired')
