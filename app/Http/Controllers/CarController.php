@@ -189,6 +189,21 @@ class CarController extends Controller
         ->where('post_products.id',$id)
         ->get();
 
+            if ($dataZone[0]->number_of_times == null) {
+              
+                DB::table('post_products')
+                ->where('id',$id)
+                ->update([
+                    'number_of_times' => 1,
+                ]);
+            }else{
+                DB::table('post_products')
+                ->where('id',$id)
+                ->update([
+                    'number_of_times' => $dataZone[0]->number_of_times+1,
+                ]);
+            }
+
 
         $search1 = $dataZone[0]->name_products;
         $search2 =  $dataZone[0]->product_details;

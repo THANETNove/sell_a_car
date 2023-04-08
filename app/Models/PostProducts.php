@@ -20,6 +20,7 @@ class PostProducts extends Model
         'url_facebook',
         'url_Line',
         'expiration_date',
+        'number_of_times',
         'image',
         'status'
     ];

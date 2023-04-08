@@ -17,6 +17,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProvinceController;
 use Illuminate\Support\Facades\DB;
 use App\Models\PostProducts;
+use App\Models\LogUserWebAccess;
 
 
 
@@ -32,6 +33,14 @@ use App\Models\PostProducts;
 */
 
 Route::get('/', function () {
+
+
+
+    $pathip = $_SERVER['REMOTE_ADDR'];
+    $member = new LogUserWebAccess;
+    $member->log_url_ip = $pathip;
+    $member->save();
+
     $current_date = date('Y-m-d H:i:s');
     $data = DB::table('post_products')
     ->where('expiration_date','<' ,$current_date)

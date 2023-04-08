@@ -281,9 +281,16 @@ public  function updateRenew(Request $request, string $id)
       
 
         $member = PostProducts::find($id);
-        $member->status = $request['exp_cas'];
-        $member->save();
-
+       $image =  json_decode($member->image);
+     /*    $member->status = $request['exp_cas'];
+        $member->save(); */
+    
+        foreach($image as $image) {
+    
+            $image_path = public_path().'/img/product/'.$image; 
+            unlink($image_path);
+        }
+        $member->delete();
         return redirect('post_products')->with('message', "ยกเลิกการขายเรียบร้อย" );
         
         
