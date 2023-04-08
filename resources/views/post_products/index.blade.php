@@ -30,12 +30,13 @@
                                         <th scope="col"> ราคาสินค้า </th>
                                         <th scope="col"> วันหมดอายุ </th>
                                         <th scope="col"> หมวดหมู่ </th>
-                                        <th scope="col"> รูปภาพ </th>
                                         <th scope="col"> โซน </th>
+                                        <th scope="col"> รูปภาพ </th>
+                                        <th scope="col"> ดู </th>
                                         <th scope="col"> สถานะ </th>
                                         <th scope="col"></th>
                                         <th scope="col"> </th>
-                                        <th scope="col"> updated_a </th>
+                                        {{--  <th scope="col"> updated_a </th> --}}
                                     </tr>
                                 </thead>
                                 @php
@@ -64,6 +65,7 @@
                                             <td>
                                                 {{ $data->categorie_name }}
                                             </td>
+
                                             <td>
                                                 @if ($data->zom_name == '0')
                                                     โซน HOT
@@ -84,6 +86,14 @@
                                                         alt="...">
                                                 @endforeach
 
+
+                                            </td>
+                                            <td>
+                                                @if ($data->number_of_times)
+                                                    {{ $data->number_of_times }} ครั้ง
+                                                @else
+                                                    0 ครั้ง
+                                                @endif
 
                                             </td>
                                             <td>
@@ -126,10 +136,10 @@
                                                     </a>
                                                 @endif
                                             </td>
-                                            <td class="align-middle text-center">
+                                            {{--      <td class="align-middle text-center">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $data->created_at }}</span>
-                                            </td>
+                                            </td> --}}
 
                                         </tr>
                                     @endforeach

@@ -102,6 +102,7 @@
                                         <h3 class="add_cart">{{ number_format($datazone->product_price) }} บาท</h3>
                                         <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
                                                 class="ti-heart"></i></a>
+                                        <i class="fas fa-eye"></i> &nbsp; {{ $datazone->number_of_times }}
                                     </div>
                                 </div>
                             </div>
@@ -123,6 +124,7 @@
                                         <h3 class="add_cart">{{ number_format($datage->product_price) }} บาท</h3>
                                         <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
                                                 class="ti-heart"></i></a>
+                                        <i class="fas fa-eye"></i> &nbsp; {{ $datage->number_of_times }}
                                     </div>
                                 </div>
                             </div>

@@ -8334,4 +8334,19 @@ textarea {
   text-align: right;
 }
 
+.boxHot {
+  margin-top: -150px;
+  margin-left: 10px;
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background-color: red;
+
+}
+
+.boxTextHot {
+  color: white;
+
+}
+
 /*# sourceMappingURL=style.css.map */

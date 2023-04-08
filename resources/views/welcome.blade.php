@@ -48,7 +48,7 @@
     <div class="container">
         <div class="row">
             <div class="box-manu01-1">
-                <div class="container-fluid">
+                <div class="">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <p class="text-Shop">Shop by category</p>
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row">
             <div class="box-manu01-1">
-                <div class="container-fluid">
+                <div class="">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <p class="text-hot">HOT</p>
@@ -90,8 +90,13 @@
                                             <img src="{{ URL::asset('/img/product/' . '' . $imgp[0]) }}"
                                                 class="image-car" height="150" width="150" alt="...">
                                         </a>
+                                        <div class="boxHot">
+                                            <p class="boxTextHot">Hot</p>
+                                        </div>
                                         <h6 class="text-name_products">{{ $data_pag->name_products }}</h6>
                                         <p>{{ number_format($data_pag->product_price) }} บาท</p>
+                                        <i class="fas fa-eye"></i> &nbsp; {{ $data_pag->number_of_times }}
+
                                     </div>
                                 @endforeach
                             </div>

@@ -51,6 +51,10 @@
                                     <a> <span>วันที่ลงขาย</span> :
                                         {{ date('Y-m-d', strtotime($datazone->created_at)) }}</a>
                                 </li>
+                                <li>
+                                    <a> <span> <i class="fas fa-eye"></i></span> :
+                                        &nbsp; {{ $datazone->number_of_times }}</a>
+                                </li>
                             </ul>
                             <p>
                                 {{ $datazone->product_details }}
@@ -104,6 +108,7 @@
 
                                     <h4>{{ $data->name_products }}</h4>
                                     <h3 class="text-span">{{ number_format($data->product_price) }}</h3>
+
                                 </div>
                             </div>
                         @endforeach
