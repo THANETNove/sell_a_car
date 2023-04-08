@@ -7932,6 +7932,17 @@ h6 {
     border-radius: 0.25rem;
   }
 
+  .navbar {
+
+
+    display: -webkit-box;
+
+  }
+
+  .right-login {
+    display: none;
+  }
+
 }
 
 /* line 187, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_footer.scss */
@@ -8187,7 +8198,7 @@ textarea {
 .navbar {
   position: relative;
   display: -ms-flexbox;
-  display: flex;
+  /*  display: -webkit-box; */
   -ms-flex-wrap: wrap;
   flex-wrap: inherit;
   -ms-flex-align: center;
@@ -8294,7 +8305,7 @@ textarea {
 .navbar>.container,
 .navbar>.container-fluid {
   display: -ms-flexbox;
-  display: flex;
+  display: contents !important;
   -ms-flex-wrap: wrap;
   /* flex-wrap: wrap; */
   -ms-flex-align: center;
@@ -8308,6 +8319,19 @@ textarea {
   margin-left: 15px;
 }
 
+/* .right-login {
+  position: absolute;
+  top: 0;
+  right: 0;
+} */
 
+.right-login {
+  margin-left: 50px !important;
+  float: right;
+}
+
+.container-fluid {
+  text-align: right;
+}
 
 /*# sourceMappingURL=style.css.map */
