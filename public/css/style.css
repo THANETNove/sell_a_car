@@ -8349,4 +8349,8 @@ textarea {
 
 }
 
+.single_social_icon:hover {
+  background-color: #007bff !important;
+}
+
 /*# sourceMappingURL=style.css.map */
