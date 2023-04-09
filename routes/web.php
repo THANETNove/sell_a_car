@@ -16,6 +16,7 @@ use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\advertFooterController;
+use App\Http\Controllers\AccessReportController;
 use Illuminate\Support\Facades\DB;
 use App\Models\PostProducts;
 use App\Models\LogUserWebAccess;
@@ -170,3 +171,7 @@ Route::post('/add-advert-footer', [advertFooterController::class, 'store']);
 Route::get('/edit-advert-footer/{id}', [advertFooterController::class, 'edit']);
 Route::put('/update-advert-footer/{id}', [advertFooterController::class, 'update']);
 Route::get('/delete-advert-footer/{id}', [advertFooterController::class, 'destroy']);
+
+
+Route::get('/access-report', [AccessReportController::class, 'index']);
+Route::get('/get-chart', [AccessReportController::class, 'createChart']);

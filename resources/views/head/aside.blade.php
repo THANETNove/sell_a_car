@@ -205,6 +205,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a id="all-products" class="nav-link" href="{{ url('/access-report') }}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span class="nav-link-text ms-1">รายงานการเข้าใช้งาน</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a id="all-products" class="nav-link" href="{{ url('/province') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span class="nav-link-text ms-1">จังหวัด</span>
