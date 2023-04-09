@@ -22,12 +22,12 @@
                         <div class="table-responsive">
 
                             <canvas id="myChart" style="width:100%"></canvas>
-                            {{--  <p>สมัครสามชิกทั้งหมด {{ $users }} คน</p>
+                            <p>สมัครสามชิกทั้งหมด {{ $users }} คน</p>
                             @foreach ($usersByMonth as $usersMonth)
                                 <p>การเข้าใช้งานเว็บทั้งหมดของเดือน {{ $usersMonth->month_name }}
                                     {{ $usersMonth->count }} คน</p>
                             @endforeach
-                            <p>การเข้าใช้งานเว็บทั้งหมดของปี ปัจจุบัน {{ $userYear }} คน</p> --}}
+                            <p>การเข้าใช้งานเว็บทั้งหมดของปี ปัจจุบัน {{ $userYear }} คน</p>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
             success: function(res) {
 
 
-
+                console.log("res", res);
 
                 var xValues = [];
                 var yValues = [];
@@ -51,8 +51,10 @@
                     xValues.push(res[i].month_name)
                     yValues.push(res[i].count)
                 }
-
-                var barColors = ["#009688", "#259b24", "#9c27b0", "#673ab7", "#3f51b5", "#5677fc",
+                console.log("xValues", xValues);
+                /*       var xValues = ["Italy", "France", "Spain", "USA", "Argentina"]; */
+                /*    var yValues = [55, 49, 44, 24, 15]; */
+                var barColors = ["#e51c23", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#5677fc",
                     "#03a9f4", "#00bcd4", "#009688", "#259b24", "#8bc34a", "#cddc39"
                 ];
                 let thaiYear = new Date().getFullYear() + 543;
