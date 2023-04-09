@@ -14,19 +14,21 @@
     $pathname = $_SERVER['REQUEST_URI'];
     $ex = explode('/', $pathname);
     
-    $desiredPart = $ex[3];
+    $desiredPart = $ex[4];
     
     ?>
     @if (
         $desiredPart == 'post_products' ||
             $desiredPart == 'all-products' ||
             $desiredPart == 'home' ||
+            $desiredPart == 'rep-customers' ||
             $desiredPart == 'money-customers')
         <!-- Topbar Search -->
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             @if ($desiredPart == 'post_products') action="{{ url('/post_products') }}"
             @elseif($desiredPart == 'all-products')  action="{{ url('/all-products') }}"
             @elseif($desiredPart == 'money-customers')  action="{{ url('/money-customers') }}"
+            @elseif($desiredPart == 'rep-customers')  action="{{ url('/rep-customers') }}"
             @elseif($desiredPart == 'home')  action="{{ url('/home') }}" @endif
             method="post">
             @csrf

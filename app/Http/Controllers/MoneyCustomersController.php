@@ -29,7 +29,7 @@ class MoneyCustomersController extends Controller
                 $data = DB::table('add_points')->where('add_points.status', 'null')
                 ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
                 ->select('add_points.*', 'users.username')
-                ->where('users.username', 'like', "$search%")->paginate(1);
+                ->where('users.username', 'like', "$search%")->paginate(100);
                 return view('money_customers.index',['data' => $data]);
             }else {
                 $data = DB::table('add_points')->where('add_points.status', 'null')
@@ -52,14 +52,25 @@ class MoneyCustomersController extends Controller
     {
         //
     }
-    public function repCustomers()
-    {
-        $data = DB::table('add_points')->where('add_points.status', '!=','null')
-        ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
-        ->select('add_points.*', 'users.username')
-        ->orderBy('add_points.id','DESC')
-        ->paginate(100);
-        return view('money_customers.rep_customers',['data' => $data]);
+    public function repCustomers(Request $request)
+    { $search = $request['search'];
+        if ($search != null) {
+            $data = DB::table('add_points')->where('add_points.status', '!=','null')
+            ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+            ->select('add_points.*', 'users.username')
+            ->where('users.username', 'like', "$search%")
+            ->orderBy('add_points.id','DESC')
+            ->paginate(100);
+            return view('money_customers.rep_customers',['data' => $data]);
+        }else{
+            $data = DB::table('add_points')->where('add_points.status', '!=','null')
+            ->leftJoin('users', 'add_points.id_user', '=', 'users.id')
+            ->select('add_points.*', 'users.username')
+            ->orderBy('add_points.id','DESC')
+            ->paginate(100);
+            return view('money_customers.rep_customers',['data' => $data]);
+        }
+
 
     }
     public function products(Request $request)

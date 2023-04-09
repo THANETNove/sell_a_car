@@ -114,6 +114,7 @@ Route::post('/money-customers', [MoneyCustomersController::class, 'index']);
 Route::get('/all-products', [MoneyCustomersController::class, 'products']);
 Route::post('/all-products', [MoneyCustomersController::class, 'products']);
 Route::get('/rep-customers', [MoneyCustomersController::class, 'repCustomers']);
+Route::post('/rep-customers', [MoneyCustomersController::class, 'repCustomers']);
 
 Route::get('/point-loweste', [PointLowestController::class, 'index']);
 Route::get('/create-point_loweste', [PointLowestController::class, 'create']);
