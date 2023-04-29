@@ -7,7 +7,8 @@
         <h1 class="h3 mb-2 text-gray-800">รายการโฆษณา</h1>
 
         <p class="mb-4">
-            <a href="{{ url('/create-advert') }}">เพิ่มโฆษณา</a>
+            <a href="{{ url('/create-advert') }}">
+                <button type="button" class="btn btn-primary">เพิ่มโฆษณา</button></a>
         </p>
         <!-- Content Row -->
         <div class="row">

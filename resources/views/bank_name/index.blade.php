@@ -6,7 +6,8 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">รายการธนาคาร</h1>
         <p class="mb-4">
-            <a href="{{ url('/create_bank_name') }}">เพิ่มรายธนาคาร</a>
+            <a href="{{ url('/create_bank_name') }}">
+                <button type="button" class="btn btn-primary">เพิ่มรายธนาคาร</button></a>
         </p>
 
         <!-- Content Row -->

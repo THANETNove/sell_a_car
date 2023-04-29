@@ -6,7 +6,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">รายการเมนู</h1>
         <p class="mb-4">
-            <a href="{{ url('create_manu') }}">เพิ่มเมนู</a>
+            <a href="{{ url('create_manu') }}"> <button type="button" class="btn btn-primary">เพิ่มเมนู</button></a>
         </p>
 
         <!-- Content Row -->

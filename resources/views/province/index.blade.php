@@ -6,7 +6,8 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">รายการจังหวัด</h1>
         <p class="mb-4">
-            <a href="{{ url('/create-province') }}">เพิ่มรายการจังหวัด</a>
+            <a href="{{ url('/create-province') }}">
+                <button type="button" class="btn btn-primary">เพิ่มรายการจังหวัด</button> </a>
         </p>
 
         <!-- Content Row -->

@@ -99,7 +99,7 @@
                                 $img = json_decode($data->image);
                                 
                             @endphp
-                            <div class="single_product_item">
+                            <div class="single_product_item shadow3-box">
                                 <a href="{{ url('select-car', $data->id) }}"><img
                                         src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
                                         width="200px" alt="..."></a>

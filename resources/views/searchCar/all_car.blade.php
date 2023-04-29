@@ -93,16 +93,18 @@
                             @endphp
                             <div class="col-lg-4 col-sm-6">
                                 <div class="single_product_item">
-                                    <a href="{{ url('select-car', $datazone->id) }}">
-                                        <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
-                                            width="100%" alt="...">
-                                    </a>
-                                    <div class="single_product_text">
-                                        <h4>{{ $datazone->name_products }}</h4>
-                                        <h3 class="add_cart">{{ number_format($datazone->product_price) }} บาท</h3>
-                                        <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
-                                                class="ti-heart"></i></a>
-                                        <i class="fas fa-eye"></i> &nbsp; {{ $datazone->number_of_times }}
+                                    <div class="shadow3-box">
+                                        <a href="{{ url('select-car', $datazone->id) }}">
+                                            <img src="{{ URL::asset('/img/product/' . '' . $img[0]) }}" height="180px"
+                                                width="100%" alt="...">
+                                        </a>
+                                        <div class="single_product_text">
+                                            <h4>{{ $datazone->name_products }}</h4>
+                                            <h3 class="add_cart">{{ number_format($datazone->product_price) }} บาท</h3>
+                                            <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
+                                                    class="ti-heart"></i></a>
+                                            <i class="fas fa-eye"></i> &nbsp; {{ $datazone->number_of_times }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -115,16 +117,18 @@
                             @endphp
                             <div class="col-lg-4 col-sm-6">
                                 <div class="single_product_item">
-                                    <a href="{{ url('select-car', $datage->id) }}">
-                                        <img src="{{ URL::asset('/img/product/' . '' . $imgg[0]) }}" height="180px"
-                                            width="100%" alt="...">
-                                    </a>
-                                    <div class="single_product_text">
-                                        <h4>{{ $datage->name_products }}</h4>
-                                        <h3 class="add_cart">{{ number_format($datage->product_price) }} บาท</h3>
-                                        <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
-                                                class="ti-heart"></i></a>
-                                        <i class="fas fa-eye"></i> &nbsp; {{ $datage->number_of_times }}
+                                    <div class="shadow3-box">
+                                        <a href="{{ url('select-car', $datage->id) }}">
+                                            <img src="{{ URL::asset('/img/product/' . '' . $imgg[0]) }}" height="180px"
+                                                width="100%" alt="...">
+                                        </a>
+                                        <div class="single_product_text">
+                                            <h4>{{ $datage->name_products }}</h4>
+                                            <h3 class="add_cart">{{ number_format($datage->product_price) }} บาท</h3>
+                                            <a href="#" class="add_cart">ดูรายละเอียดเพิ่มเติม<i
+                                                    class="ti-heart"></i></a>
+                                            <i class="fas fa-eye"></i> &nbsp; {{ $datage->number_of_times }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

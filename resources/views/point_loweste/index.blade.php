@@ -87,7 +87,8 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">ราคาในโซน</h1>
         <p class="mb-4">
-            <a href="{{ url('/create-point_loweste') }}">เพิ่มรายการโซน</a>
+            <a href="{{ url('/create-point_loweste') }}">
+                <button type="button" class="btn btn-primary">เพิ่มรายการโซน</button></a>
         </p>
 
         <!-- Content Row -->

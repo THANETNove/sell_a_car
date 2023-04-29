@@ -65,7 +65,7 @@
                                     @if (Route::has('password.request'))
                                         <a class="btn add_cart2" href="{{ route('password.request') }}">
 
-                                            Forgot Your Password?
+                                            ลืม Password
                                         </a>
                                     @endif
                                 </div>
