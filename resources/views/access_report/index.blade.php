@@ -22,6 +22,7 @@
                         <div class="table-responsive">
 
                             <canvas id="myChart" style="width:100%"></canvas>
+                            <br>
                             <p>สมัครสามชิกทั้งหมด {{ $users }} คน</p>
                             @foreach ($usersByMonth as $usersMonth)
                                 <p>การเข้าใช้งานเว็บทั้งหมดของเดือน {{ $usersMonth->month_name }}

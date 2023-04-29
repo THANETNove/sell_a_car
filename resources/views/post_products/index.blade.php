@@ -6,7 +6,10 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">รายการขาย</h1>
         <p class="mb-4">
-            <a href="{{ url('/create-post_products') }}">เพิ่มรายการขาย</a>
+            <a href="{{ url('/create-post_products') }}"><button type="button"
+                    class="btn btn-primary">ลงขายสินค้า</button></a>
+
+
         </p>
 
         <!-- Content Row -->

@@ -8013,13 +8013,35 @@ h6 {
   .footer_part .justify-content-around {
     justify-content: flex-start !important;
   }
+
+  .shop-too-md {
+    margin-left: 12%;
+  }
 }
+
+@media only screen and (max-width: 740px) {
+
+
+  /* line 225, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_footer.scss */
+  .footer_part .justify-content-around {
+    justify-content: flex-start !important;
+  }
+
+  .shop-too-md2 {
+    display: none !important;
+  }
+}
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
   /* line 231, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_footer.scss */
   .footer_part .justify-content-around {
     justify-content: flex-start !important;
+  }
+
+  .shop-too-md {
+    margin-left: 10%;
   }
 
 
@@ -8353,6 +8375,40 @@ textarea {
   background-color: #007bff !important;
 }
 
+.scop-too {
+  color: white;
+}
+
+.box-manu {
+  width: auto;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+
+}
+
+.shadow1-box {
+  box-shadow: 0px 10px 20px 0px rgba(0, 23, 51, 0.09);
+  max-width: 150px;
+  width: auto;
+  padding-top: 10px;
+}
+
+.shadow2-box {
+  box-shadow: 0px 10px 20px 0px rgba(0, 23, 51, 0.09);
+  /*   max-width: 150px; */
+  width: auto;
+  /*   padding-top: 10px; */
+}
+
+.imag-wi {
+  width: "100%";
+  height: "100%";
+  max-width: 1300px;
+  max-height: 300px;
+}
 
 
-/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=style.css.map
+ 1350 × 300 px  */

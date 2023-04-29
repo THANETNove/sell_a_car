@@ -71,6 +71,9 @@
         </li>
 
         <!-- Nav Item - Alerts -->
+        <div>
+            <img class="image-shell" src="{{ URL::asset('assets/img/shell2.png') }}">
+        </div>
         <br>
         {{ number_format(Auth::user()->point) }}
         point

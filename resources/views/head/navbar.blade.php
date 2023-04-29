@@ -43,17 +43,23 @@
     <div class="container-fluid">
 
         <a class="navbar-brand car-imag2" href="{{ url('/') }}"> <img src="{{ URL::asset('/img/favicon.png') }}"
-                alt="logo"> </a>
+                alt="logo">
+
+        </a>
+        <div class="shop-too-md shop-too-md2">
+            <a href="{{ url('/') }}" class="shop-too" style="color: aliceblue">ตลาดของมือสอง</a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars buy-now" style="color: aliceblue"></i>
         </button>
-        <div class=" col-8  col-sm-4 col-md-5 col-lg-6">
+
+        <div class=" col-8  col-sm-4 col-md-4 col-lg-6">
             <form class="d-flex" role="search" action="{{ url('searchCar') }}" method="post">
                 @csrf
                 <input class="form-control col-12 me-2" type="search" name="search" placeholder="Search"
                     aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <button class="btn btn-outline-light" type="submit">Searcha</button>
             </form>
         </div>
         <div class="col-sm-4 col-md-3 col-lg-2 right-login">
