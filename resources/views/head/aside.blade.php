@@ -137,7 +137,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
         {{--      <img src="{{ URL::asset('img/favicon.png') }}" class="navbar-brand-img h-100" alt="main_logo"> --}}
         <div class="sidebar-brand-text mx-3">101landshop</div>
     </a>
@@ -229,6 +229,12 @@
             <a id="add-point" class="nav-link " href="{{ url('/add_point') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span class="nav-link-text ms-1">เเจ้งสลิปเติมเงิน</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a id="add-point" class="nav-link " href="{{ url('/streaming') }}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span class="nav-link-text ms-1">live สด</span>
             </a>
         </li>
         {{--         <li class="nav-item">

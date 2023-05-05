@@ -17,6 +17,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\advertFooterController;
 use App\Http\Controllers\AccessReportController;
+use App\Http\Controllers\WebrtcStreamingController;
 use Illuminate\Support\Facades\DB;
 use App\Models\PostProducts;
 use App\Models\LogUserWebAccess;
@@ -66,6 +67,10 @@ Route::get('/', function () {
         ->get();
         $manu = DB::table('categories')
         ->get();
+
+
+      
+
     
     return view('welcome',['dataZone' => $dataZone,'dataImage'=> $dataImage,'manu' => $manu, 'dataImageFooter' => $dataImageFooter]);
 });
@@ -175,3 +180,5 @@ Route::get('/delete-advert-footer/{id}', [advertFooterController::class, 'destro
 
 Route::get('/access-report', [AccessReportController::class, 'index']);
 Route::get('/get-chart', [AccessReportController::class, 'createChart']);
+Route::get('/live', [AccessReportController::class, 'index']);
+Route::get('/streaming', [WebrtcStreamingController::class, 'index']);

@@ -8389,9 +8389,12 @@ textarea {
 
 .shadow1-box {
   box-shadow: 0px 10px 20px 0px rgba(0, 23, 51, 0.09);
-  max-width: 150px;
+  max-width: 170px;
   width: auto;
+
   padding-top: 10px;
+  padding-bottom: 10px;
+
 }
 
 .shadow2-box {
@@ -8399,6 +8402,8 @@ textarea {
   /*   max-width: 150px; */
   width: auto;
   /*   padding-top: 10px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .shadow3-box {
@@ -8416,7 +8421,25 @@ textarea {
   max-height: 300px;
 }
 
+.tiktok_512 {
+  width: 18px;
+  height: 18px;
+  margin-top: 30px;
+}
 
+
+.box-nav1 {
+  border: 1px solid #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.hr {
+  /*   position: absolute; */
+  margin-top: 100px;
+  margin-bottom: -50px;
+}
 
 /*# sourceMappingURL=style.css.map
  1350 × 300 px  */

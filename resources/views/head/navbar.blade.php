@@ -46,7 +46,7 @@
                 alt="logo">
 
         </a>
-        <div class="shop-too-md shop-too-md2">
+        <div class="shop-too-md shop-too-md2 box-nav1">
             <a href="{{ url('/') }}" class="shop-too" style="color: aliceblue">ตลาดของมือสอง</a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

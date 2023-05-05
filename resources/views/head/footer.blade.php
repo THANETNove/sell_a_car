@@ -1,14 +1,59 @@
 <!--::footer_part start::-->
+@php
+    $categorieFooter = DB::table('post_products')
+        ->rightJoin('categories', 'post_products.categorie_name_id', '=', 'categories.id')
+        ->select('categories.categorie_name', DB::raw('COUNT(*) as count'))
+        ->groupBy('categories.categorie_name')
+        ->orderBy('count', 'desc')
+        ->take(4) // take only the 4th item
+        ->get();
+    
+    $carModelsFooter = DB::table('post_products')
+        ->select('post_products.sub_category', DB::raw('COUNT(*) as count'))
+        ->whereNotNull('sub_category')
+        ->groupBy('post_products.sub_category')
+        ->orderBy('count', 'desc')
+        ->take(4) // take only the 4th item
+        ->get();
+    $carModelsFooter2 = DB::table('post_products')
+        ->select('post_products.sub_category', DB::raw('COUNT(*) as count'))
+        ->whereNotNull('sub_category')
+        ->groupBy('post_products.sub_category')
+        ->orderBy('count', 'desc')
+        ->skip(4) // skip the first three items
+        ->take(4) // take only the 4th item
+        ->get();
+    $currentMonth = date('m'); // get the current month in the format 'mm'
+    $dataFooter3 = DB::table('post_products')
+        ->whereMonth('post_products.created_at', '=', $currentMonth)
+        ->orderBy('post_products.id', 'DESC')
+        ->take(5) // take only the 4th item
+        ->get();
+    
+    /*     dd($dataFooter3); */
+    
+@endphp
+<footer class="">
+    <div class="container">
+        <hr class="hr" />
+    </div>
+</footer>
+
+
 <footer class="footer_part">
-    {{--   <div class="container">
+    <div class="container">
         <div class="row justify-content-around">
+
+
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
                     <h4>Top Products</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">บริการซื้อ</a></li>
-                        <li><a href="">บริการขายรถ</a></li>
-
+                        @foreach ($categorieFooter as $categorie)
+                            <li><a
+                                    href="{{ url('/searchPo-ma', $categorie->categorie_name) }}">{{ $categorie->categorie_name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -16,38 +61,53 @@
                 <div class="single_footer_part">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">instagram</a></li>
-                        <li><a href="">twitter</a></li>
+                        <li><a target="_blank"
+                                href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1683270715&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fcobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26nlp%3d1%26deeplink%3dowa%252f%253frealm%253dhotmail.co.th%26RpsCsrfState%3d5f2b1f5d-3958-a473-dcd2-b937142ed8b4&id=292841&aadredir=1&whr=hotmail.co.th&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c">Email:
+                                101landshop@gmail.com</a></li>
+                        <li><a target="_blank" href="https://www.tiktok.com/@101landshop">tiktok</a></li>
+                        <li><a target="_blank"
+                                href="https://www.facebook.com/profile.php?id=100092294259760">Facebook</a>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Features</h4>
+                    <h4>สินค้านิยม</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">Facebook</a></li>
-                        <li><a href="">Line</a></li>
+                        @foreach ($carModelsFooter as $carModels)
+                            <li><a
+                                    href="{{ url('/searchPo-ma', $carModels->sub_category) }}">{{ $carModels->sub_category }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Resources</h4>
+                    <h4>Top 10 products</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">บริการขายรถสอง</a></li>
-                        <li><a href="">บริการขายรถสองซื้อรถ ทุกชนิด</a></li>
+                        @foreach ($carModelsFooter2 as $carModels2)
+                            <li><a
+                                    href="{{ url('/searchPo-ma', $carModels2->sub_category) }}">{{ $carModels2->sub_category }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
                 <div class="single_footer_part">
-                    <h4>Newsletter</h4>
-                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping
-                    </p>
+                    <h4>new product</h4>
+                    <ul class="list-unstyled">
+                        @foreach ($dataFooter3 as $carModels3)
+                            <li><a href="{{ url('/select-car', $carModels3->id) }}">{{ $carModels3->name_products }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <div class="copyright_part">
         <div class="container">
@@ -69,10 +129,16 @@
                 <div class="col-lg-4">
                     <div class="footer_icon social_icon">
                         <ul class="list-unstyled">
-                            <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
-                            <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/profile.php?id=100092294259760"
+                                    class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a target="_blank" href="https://www.tiktok.com/@101landshop"
+                                    class="single_social_icon"> <img src="{{ URL::asset('img/tiktok_512.webp') }}"
+                                        class="tiktok_512"></a>
+                            </li>
+                            <li><a target="_blank"
+                                    href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1683270715&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fcobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26nlp%3d1%26deeplink%3dowa%252f%253frealm%253dhotmail.co.th%26RpsCsrfState%3d5f2b1f5d-3958-a473-dcd2-b937142ed8b4&id=292841&aadredir=1&whr=hotmail.co.th&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c"
+                                    class="single_social_icon"><i class="fas fa-globe"></i></a></li>
+                            {{--   <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li> --}}
                         </ul>
                     </div>
                 </div>

@@ -6,8 +6,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">เเจ้งสลิปเติมเงิน</h1>
         <p class="mb-4">
-            <a href="{{ url('/create_point') }}"> <button type="button"
-                    class="btn btn-primary">เพิ่มรายการสลิปเติมเงิน</button></a>
+            <a href="{{ url('/create_point') }}"> <button type="button" class="btn btn-primary">เติมเงินโฆษณา</button></a>
         </p>
 
         <!-- Content Row -->
