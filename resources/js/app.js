@@ -6,6 +6,9 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import Home from './components/Home.vue';
+import Broadcaster from './components/Broadcaster.vue';
+
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -16,8 +19,16 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+app.component('example', ExampleComponent);
 
+app.component('home-component', Home);
+app.component('broadcaster', Broadcaster);
+
+/* 
+Vue.component(
+        'example',
+        require('./components/ExampleComponent.vue').default
+    ); */
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

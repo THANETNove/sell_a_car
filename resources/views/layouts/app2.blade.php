@@ -20,6 +20,7 @@
         @include('./head/footerJs')
 
     </div>
+    @vite('resources/js/app.js')
 </body>
 
 </html>

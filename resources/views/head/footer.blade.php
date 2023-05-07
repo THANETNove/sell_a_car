@@ -30,8 +30,6 @@
         ->take(5) // take only the 4th item
         ->get();
     
-    /*     dd($dataFooter3); */
-    
 @endphp
 <footer class="">
     <div class="container">

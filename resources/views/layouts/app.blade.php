@@ -18,6 +18,7 @@
     <!-- subscribe_area part start-->
 
     @include('./head/footer')
+
 </body>
 
 </html>
